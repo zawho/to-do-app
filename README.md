@@ -1,1 +1,1 @@
-# to-do-app
+4/26/23 - I am now beginning the to do app project as a part of the The Odin Project's Javascript track. The goal here is to apply what I have learned recently about webpack, modules, and code organization (factory functions, composition, etc) in building a simple to do app.
