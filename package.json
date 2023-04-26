@@ -1,0 +1,28 @@
+{
+  "name": "to-do-app",
+  "version": "1.0.0",
+  "description": "4/26/23 - I am now beginning the to do app project as a part of the The Odin Project's Javascript track. The goal here is to apply what I have learned recently about webpack, modules, and code organization (factory functions, composition, etc) in building a simple to do app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zawho/to-do-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zawho/to-do-app/issues"
+  },
+  "homepage": "https://github.com/zawho/to-do-app#readme",
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "webpack": "^5.80.0",
+    "webpack-cli": "^5.0.2"
+  }
+}
