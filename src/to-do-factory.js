@@ -3,10 +3,14 @@ const toDo = () => {
 
     const title = '';
     const description = '';
+    const dueDate = '';
+    const priority = '';
 
     return {
         title,
-        description
+        description,
+        dueDate,
+        priority
     }
 };
 
