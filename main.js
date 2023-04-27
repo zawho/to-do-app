@@ -1,1 +1,1 @@
-(()=>{"use strict";console.log([])})();
+(()=>{"use strict";!function(){const e=document.querySelector(".main-content"),t=document.createElement("button");t.className="to-do-button",t.innerText="new",e.appendChild(t)}(),console.log([])})();
