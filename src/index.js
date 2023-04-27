@@ -1,7 +1,6 @@
 import toDo from "./to-do-factory";
 
-const newToDo = toDo();
+// Default list.
+const defaultList = [];
 
-newToDo.title = 'hey buddies';
-
-console.log(newToDo.title);
+console.log(defaultList);
