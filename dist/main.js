@@ -1,1 +1,1 @@
-console.log("hey");
+(()=>{"use strict";const t={title:("","hey buddies"),description:""};console.log(t.title)})();
