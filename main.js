@@ -1,1 +1,1 @@
-(()=>{"use strict";!function(){const e=document.querySelector(".main-content"),t=document.createElement("button");t.className="to-do-button",t.innerText="new",e.appendChild(t)}(),console.log([])})();
+(()=>{"use strict";const t=()=>({title:"",description:"",dueDate:"",priority:""}),e=document.querySelector(".main-content"),n=document.createElement("button");n.className="to-do-button",n.innerText="new",e.appendChild(n);const o=[];n.addEventListener("click",(function(){o.push(t),console.log(o)}))})();
