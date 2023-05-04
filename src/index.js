@@ -1,9 +1,13 @@
 import toDo from "./to-do-factory";
-import createUI from "./ui";
+import { createUI, newToDoButton } from "./ui";
 
 createUI();
 
 // Default list.
 const defaultList = [];
 
-console.log(defaultList);
+function test() {
+    defaultList.push(toDo);
+    console.log(defaultList);
+}
+newToDoButton.addEventListener('click', test);
