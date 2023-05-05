@@ -1,1 +1,1 @@
-(()=>{"use strict";document.querySelector(".new-to-do-button")})();
+(()=>{"use strict";const e=document.querySelector(".new-to-do-form");document.querySelector(".new-to-do-button").addEventListener("click",(function(){e.style.display="flex"}))})();
