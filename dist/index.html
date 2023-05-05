@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/style.css">
     <script src="main.js" defer></script>
     <title>To do</title>
 </head>
 <body>
-    <div class="main-content"></div>
+    <div class="main-content">
+        <button type="button" class="new-to-do-button">new</button>
+        <form class="new-to-do-form">
+            <input type="text" placeholder="title" class="to-do-title" required>
+            <button type="submit" class="add-to-do-button">add</button>
+        </form>
+    </div>
 </body>
 </html>
