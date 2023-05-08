@@ -5,6 +5,7 @@ const descriptionInput = document.querySelector('.description-input');
 const dueDateInput = document.querySelector('.due-date-input');
 const priorityInput = document.querySelector('.priority-input');
 const addToDoButton = document.querySelector('.add-to-do-button');
+const cancelToDoButton = document.querySelector('.cancel-to-do-button');
 
 export { 
     newToDoButton, 
@@ -13,5 +14,6 @@ export {
     descriptionInput, 
     dueDateInput, 
     priorityInput, 
-    addToDoButton 
+    addToDoButton,
+    cancelToDoButton 
 };

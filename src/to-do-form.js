@@ -9,4 +9,9 @@ function openToDoForm() {
     newToDoForm.style.gap = '10px';
 }
 
-export default openToDoForm;
+function cancelToDoForm() {
+    newToDoButton.style.display = 'flex';
+    newToDoForm.style.display = 'none';
+}
+
+export { openToDoForm, cancelToDoForm };
