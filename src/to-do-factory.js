@@ -1,7 +1,8 @@
-// To do factory function.
-const toDo = () => {
 
-    const title = '';
+
+// To do factory function.
+const toDo = (title) => {
+
     const description = '';
     const dueDate = '';
     const priority = '';
@@ -10,7 +11,7 @@ const toDo = () => {
         title,
         description,
         dueDate,
-        priority
+        priority,
     }
 };
 
