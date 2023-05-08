@@ -1,5 +1,3 @@
-
-
 // To do factory function.
 const toDo = (title) => {
 
