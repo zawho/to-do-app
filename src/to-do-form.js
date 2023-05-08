@@ -1,5 +1,4 @@
-const newToDoButton = document.querySelector('.new-to-do-button');
-const newToDoForm = document.querySelector('.new-to-do-form');
+import { newToDoButton, newToDoForm } from "./ui";
 
 function openToDoForm() {
     newToDoForm.reset();

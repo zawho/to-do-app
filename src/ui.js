@@ -1,0 +1,17 @@
+const newToDoButton = document.querySelector('.new-to-do-button');
+const newToDoForm = document.querySelector('.new-to-do-form');
+const titleInput = document.querySelector('.title-input');
+const descriptionInput = document.querySelector('.description-input');
+const dueDateInput = document.querySelector('.due-date-input');
+const priorityInput = document.querySelector('.priority-input');
+const addToDoButton = document.querySelector('.add-to-do-button');
+
+export { 
+    newToDoButton, 
+    newToDoForm, 
+    titleInput, 
+    descriptionInput, 
+    dueDateInput, 
+    priorityInput, 
+    addToDoButton 
+};
