@@ -15,6 +15,7 @@ function test(e) {
         e.preventDefault();
         defaultList.push(toDo(titleInput.value));
         newToDoForm.style.display = 'none';
+        newToDoButton.style.display = 'flex';
         console.log(defaultList);
     }
 }

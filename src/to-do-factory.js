@@ -1,16 +1,5 @@
 // To do factory function.
-const toDo = (title) => {
-
-    const description = '';
-    const dueDate = '';
-    const priority = '';
-
-    return {
-        title,
-        description,
-        dueDate,
-        priority,
-    }
-};
+const toDo = (title, description, dueDate, priority) => ({
+    title, description, dueDate, priority});
 
 export default toDo;

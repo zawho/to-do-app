@@ -1,3 +1,7 @@
 .new-to-do-form {
     display: none;
 }
+
+.description-input {
+    resize: none;
+}
