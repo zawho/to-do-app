@@ -1,9 +1,14 @@
-.new-to-do-button, .new-to-do-form {
+.form-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 10px;
+    gap: 10px;
 }
 
 .new-to-do-form {
     display: none;
+    margin-bottom: 10px;
 }
 
 .description-input {

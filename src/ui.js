@@ -1,4 +1,5 @@
 const newToDoButton = document.querySelector('.new-to-do-button');
+const newListButton = document.querySelector('.new-list-button');
 const newToDoForm = document.querySelector('.new-to-do-form');
 const titleInput = document.querySelector('.title-input');
 const descriptionInput = document.querySelector('.description-input');
@@ -9,7 +10,8 @@ const cancelToDoButton = document.querySelector('.cancel-to-do-button');
 const projectDiv = document.querySelector('.project-div');
 
 export { 
-    newToDoButton, 
+    newToDoButton,
+    newListButton, 
     newToDoForm, 
     titleInput, 
     descriptionInput, 
