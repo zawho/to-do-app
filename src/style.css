@@ -6,7 +6,7 @@
     gap: 10px;
 }
 
-.new-to-do-form {
+.new-to-do-form, .new-list-form {
     display: none;
     margin-bottom: 10px;
 }
