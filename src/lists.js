@@ -3,6 +3,7 @@ import { newToDoButton, newListButton, listMenu, newListForm, listNameInput } fr
 // List object.
 const allLists = {
     default: [],
+    other: [],
 }
 
 // Create new list.
