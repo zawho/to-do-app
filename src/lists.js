@@ -1,4 +1,4 @@
-import { newToDoButton, newListButton, newListForm, listNameInput } from "./ui";
+import { newToDoButton, newListButton, listMenu, newListForm, listNameInput } from "./ui";
 
 // List object.
 const allLists = {
@@ -15,5 +15,15 @@ function createList(e) {
     console.log(allLists);
 }
 
+function checkForList() {
+    const keys = Object.keys(allLists);
+    let y = 'nope';
+    keys.forEach(x => {
+        if (x === listMenu.value) {
+            y = x;
+        }
+    });
+    return y;
+}
 
-export { allLists, createList };
+export { allLists, createList, checkForList };
