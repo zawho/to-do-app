@@ -2,7 +2,7 @@ import { newToDoButton, newListButton, newListForm, listNameInput } from "./ui";
 
 // List object.
 const allLists = {
-    defaultList: [],
+    default: [],
 }
 
 // Create new list.

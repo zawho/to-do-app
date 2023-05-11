@@ -15,12 +15,12 @@ function displayToDo() {
     toDoDisplay.className = 'to-do-display';
     toDoDisplay.style.display = 'flex';
     toDoDisplay.style.gap = '10px';
-    for (let i = 0; i < allLists.defaultList.length; i++) {
-        displayTitle.innerText = allLists.defaultList[allLists.defaultList.length - 1].title;
-        if (allLists.defaultList[allLists.defaultList.length - 1].dueDate === '') {
+    for (let i = 0; i < allLists.default.length; i++) {
+        displayTitle.innerText = allLists.default[allLists.default.length - 1].title;
+        if (allLists.default[allLists.default.length - 1].dueDate === '') {
             displayDueDate.innerText = 'no due date';
         } else {
-            displayDueDate.innerText = allLists.defaultList[allLists.defaultList.length - 1].dueDate;
+            displayDueDate.innerText = allLists.default[allLists.default.length - 1].dueDate;
         }
         projectDiv.appendChild(toDoDisplay);
         toDoDisplay.appendChild(displayTitle);
@@ -36,13 +36,13 @@ function displayToDo() {
 function createToDo(e) {
     if (!(titleInput.value === '')) {
         e.preventDefault();
-        allLists.defaultList.push(toDo(titleInput.value, descriptionInput.value, 
+        allLists.default.push(toDo(titleInput.value, descriptionInput.value, 
             dueDateInput.value, priorityInput.checked, listMenu.value));
         newToDoForm.style.display = 'none';
         newToDoButton.style.display = 'flex';
         newListButton.style.display = 'flex';
         displayToDo();
-        console.log(allLists.defaultList);
+        console.log(allLists.default);
     }
 }
 
