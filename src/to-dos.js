@@ -2,14 +2,12 @@ import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput
     dueDateInput, priorityInput, listMenu, projectDiv } from "./ui";
 import { allLists, checkForList } from "./lists";
 
-let currentList;
-
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
     title, description, dueDate, priority, list});
 
 // Display to do in default project.
-function displayToDo() {
+function displayToDo(listVar) {
     const toDoDisplay = document.createElement('div');
     const displayTitle = document.createElement('div');
     const displayDueDate = document.createElement('div');
@@ -17,12 +15,12 @@ function displayToDo() {
     toDoDisplay.className = 'to-do-display';
     toDoDisplay.style.display = 'flex';
     toDoDisplay.style.gap = '10px';
-    for (let i = 0; i < allLists[currentList].length; i++) {
-        displayTitle.innerText = allLists[currentList][allLists[currentList].length - 1].title;
-        if (allLists[currentList][allLists[currentList].length - 1].dueDate === '') {
+    for (let i = 0; i < allLists[listVar].length; i++) {
+        displayTitle.innerText = allLists[listVar][allLists[listVar].length - 1].title;
+        if (allLists[listVar][allLists[listVar].length - 1].dueDate === '') {
             displayDueDate.innerText = 'no due date';
         } else {
-            displayDueDate.innerText = allLists[currentList][allLists[currentList].length - 1].dueDate;
+            displayDueDate.innerText = allLists[listVar][allLists[listVar].length - 1].dueDate;
         }
         projectDiv.appendChild(toDoDisplay);
         toDoDisplay.appendChild(displayTitle);
@@ -38,13 +36,13 @@ function displayToDo() {
 function createToDo(e) {
     if (!(titleInput.value === '')) {
         e.preventDefault();
-        currentList = checkForList();
+        const currentList = checkForList();
         allLists[currentList].push(toDo(titleInput.value, descriptionInput.value, 
             dueDateInput.value, priorityInput.checked, listMenu.value));
         newToDoForm.style.display = 'none';
         newToDoButton.style.display = 'flex';
         newListButton.style.display = 'flex';
-        displayToDo();
+        displayToDo(currentList);
         console.log(currentList);
         console.log(allLists);
     }
