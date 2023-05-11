@@ -1,9 +1,10 @@
-import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput, dueDateInput, priorityInput, projectDiv } from "./ui";
+import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput, 
+    dueDateInput, priorityInput, listMenu, projectDiv } from "./ui";
 import { allLists } from "./lists";
 
 // To do factory function.
-const toDo = (title, description, dueDate, priority) => ({
-    title, description, dueDate, priority});
+const toDo = (title, description, dueDate, priority, list) => ({
+    title, description, dueDate, priority, list});
 
 // Display to do in default project.
 function displayToDo() {
@@ -35,7 +36,8 @@ function displayToDo() {
 function createToDo(e) {
     if (!(titleInput.value === '')) {
         e.preventDefault();
-        allLists.defaultList.push(toDo(titleInput.value, descriptionInput.value, dueDateInput.value, priorityInput.checked));
+        allLists.defaultList.push(toDo(titleInput.value, descriptionInput.value, 
+            dueDateInput.value, priorityInput.checked, listMenu.value));
         newToDoForm.style.display = 'none';
         newToDoButton.style.display = 'flex';
         newListButton.style.display = 'flex';
