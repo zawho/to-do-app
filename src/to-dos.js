@@ -43,7 +43,6 @@ function createToDo(e) {
         newToDoButton.style.display = 'flex';
         newListButton.style.display = 'flex';
         displayToDo(currentList);
-        console.log(currentList);
         console.log(allLists);
     }
 }
