@@ -10,6 +10,10 @@ const allLists = {
 function createList(e) {
     e.preventDefault();
     allLists[listNameInput.value] = [];
+    const newListOption = document.createElement('option');
+    newListOption.value = listNameInput.value;
+    newListOption.innerText = listNameInput.value;
+    listMenu.appendChild(newListOption);
     newListForm.style.display = 'none';
     newToDoButton.style.display = 'flex';
     newListButton.style.display = 'flex';
@@ -18,7 +22,7 @@ function createList(e) {
 
 function checkForList() {
     const keys = Object.keys(allLists);
-    let y = 'nope';
+    let y = '';
     keys.forEach(x => {
         if (x === listMenu.value) {
             y = x;
