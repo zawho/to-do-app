@@ -20,7 +20,6 @@ function createList(e) {
     console.log(allLists);
 }
 
-
 // Check for list name from array and menu.
 function checkForList() {
     const keys = Object.keys(allLists);
