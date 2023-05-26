@@ -13,7 +13,7 @@ function displayToDo(listVar) {
     const displayDueDate = document.createElement('div');
     const displayPriority = document.createElement('div');
     toDoDisplay.className = 'to-do-display';
-    toDoDisplay.style.display = 'flex';
+    // toDoDisplay.style.display = 'flex';
     toDoDisplay.style.gap = '10px';
     for (let i = 0; i < allLists[listVar].length; i++) {
         displayTitle.innerText = allLists[listVar][allLists[listVar].length - 1].title;
@@ -28,6 +28,11 @@ function displayToDo(listVar) {
         if (priorityInput.checked) {
             displayPriority.innerText = 'important';
             toDoDisplay.appendChild(displayPriority);
+        }
+        if (projectDiv.id === listVar) {
+            toDoDisplay.style.display = 'flex';
+        } else {
+            toDoDisplay.style.display = 'none';
         }
     }
 }
