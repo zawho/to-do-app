@@ -17,7 +17,6 @@ function createList(e) {
     newListForm.style.display = 'none';
     newToDoButton.style.display = 'flex';
     newListButton.style.display = 'flex';
-    console.log(allLists);
 }
 
 // Check for list name from array and menu.

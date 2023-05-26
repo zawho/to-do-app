@@ -7,17 +7,7 @@ const toDo = (title, description, dueDate, priority, list) => ({
     title, description, dueDate, priority, list});
 
 // Display to do in default project.
-function displayToDo(listVar, displayVar) {
-        if (projectDiv.id === listVar) {
-            displayVar.style.display = 'flex';
-        } else {
-            displayVar.style.display = 'none';
-        }
-}
-
-// Create to do.
-function createToDo(e) {
-    let currentList;
+function displayToDo(listVar) {
     const toDoDisplay = document.createElement('div');
     const displayTitle = document.createElement('div');
     const displayDueDate = document.createElement('div');
@@ -25,22 +15,12 @@ function createToDo(e) {
     toDoDisplay.className = `${listMenu.value}`;
     toDoDisplay.style.display = 'flex';
     toDoDisplay.style.gap = '10px';
-    if (!(titleInput.value === '')) {
-        e.preventDefault();
-        currentList = checkForList();
-        allLists[currentList].push(toDo(titleInput.value, descriptionInput.value, 
-            dueDateInput.value, priorityInput.checked, listMenu.value));
-        newToDoForm.style.display = 'none';
-        newToDoButton.style.display = 'flex';
-        newListButton.style.display = 'flex';
-        console.log(allLists);
-    }
-    for (let i = 0; i < allLists[currentList].length; i++) {
-        displayTitle.innerText = allLists[currentList][allLists[currentList].length - 1].title;
-        if (allLists[currentList][allLists[currentList].length - 1].dueDate === '') {
+    for (let i = 0; i < allLists[listVar].length; i++) {
+        displayTitle.innerText = allLists[listVar][allLists[listVar].length - 1].title;
+        if (allLists[listVar][allLists[listVar].length - 1].dueDate === '') {
             displayDueDate.innerText = 'no due date';
         } else {
-            displayDueDate.innerText = allLists[currentList][allLists[currentList].length - 1].dueDate;
+            displayDueDate.innerText = allLists[listVar][allLists[listVar].length - 1].dueDate;
         }
         projectDiv.appendChild(toDoDisplay);
         toDoDisplay.appendChild(displayTitle);
@@ -50,7 +30,25 @@ function createToDo(e) {
             toDoDisplay.appendChild(displayPriority);
         }
     }
-    displayToDo(currentList, toDoDisplay);
+    if (projectDiv.id === listVar) {
+        toDoDisplay.style.display = 'flex';
+    } else {
+        toDoDisplay.style.display = 'none';
+    }
+}
+
+// Create to do.
+function createToDo(e) {
+    if (!(titleInput.value === '')) {
+        e.preventDefault();
+        const currentList = checkForList();
+        allLists[currentList].push(toDo(titleInput.value, descriptionInput.value, 
+            dueDateInput.value, priorityInput.checked, listMenu.value));
+        newToDoForm.style.display = 'none';
+        newToDoButton.style.display = 'flex';
+        newListButton.style.display = 'flex';
+        displayToDo(currentList);
+    }
 }
 
 export default createToDo;
