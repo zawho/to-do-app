@@ -32,9 +32,17 @@ function checkForList() {
     return y;
 }
 
-// Display list.
+// Display List.
 function displayList() {
     projectDiv.id = this.className.replace('-list', '');
+    const testArr = Array.from(projectDiv.childNodes);
+    for (let i = 0; i < testArr.length; i++) {
+        if (testArr[i].className === projectDiv.id) {
+            testArr[i].style.display = 'flex';
+        } else {
+            testArr[i].style.display = 'none';
+        }
+    }
 }
 
 export { allLists, createList, checkForList, displayList };

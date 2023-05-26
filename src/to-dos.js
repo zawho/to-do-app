@@ -22,7 +22,7 @@ function createToDo(e) {
     const displayTitle = document.createElement('div');
     const displayDueDate = document.createElement('div');
     const displayPriority = document.createElement('div');
-    toDoDisplay.className = 'to-do-display';
+    toDoDisplay.className = `${listMenu.value}`;
     toDoDisplay.style.display = 'flex';
     toDoDisplay.style.gap = '10px';
     if (!(titleInput.value === '')) {
