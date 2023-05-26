@@ -34,7 +34,7 @@ function checkForList() {
 
 // Display list.
 function displayList() {
-    projectDiv.id = this.className;
+    projectDiv.id = this.className.replace('-list', '');
 }
 
 export { allLists, createList, checkForList, displayList };
