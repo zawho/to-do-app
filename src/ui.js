@@ -13,6 +13,8 @@ const listNameInput = document.querySelector('.list-name-input');
 const addListButton = document.querySelector('.add-list-button');
 const cancelListButton = document.querySelector('.cancel-list-button');
 const projectDiv = document.querySelector('.project-div');
+const defaultListButton = document.querySelector('.default-list');
+const otherListButton = document.querySelector('.other-list');
 
 export { 
     newToDoButton,
@@ -29,5 +31,7 @@ export {
     listNameInput,
     addListButton,
     cancelListButton,
-    projectDiv 
+    projectDiv,
+    defaultListButton,
+    otherListButton 
 };

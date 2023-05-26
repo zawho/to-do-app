@@ -1,4 +1,4 @@
-import { newToDoButton, newListButton, listMenu, newListForm, listNameInput } from "./ui";
+import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, projectDiv } from "./ui";
 
 // List object.
 const allLists = {
@@ -32,4 +32,9 @@ function checkForList() {
     return y;
 }
 
-export { allLists, createList, checkForList };
+// Display list.
+function displayList() {
+    projectDiv.id = this.className;
+}
+
+export { allLists, createList, checkForList, displayList };
