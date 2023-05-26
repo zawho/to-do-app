@@ -12,9 +12,10 @@ const newListForm = document.querySelector('.new-list-form');
 const listNameInput = document.querySelector('.list-name-input');
 const addListButton = document.querySelector('.add-list-button');
 const cancelListButton = document.querySelector('.cancel-list-button');
-const projectDiv = document.querySelector('.project-div');
+const listButtonDiv = document.querySelector('.list-button-div');
 const defaultListButton = document.querySelector('.default-list');
 const otherListButton = document.querySelector('.other-list');
+const projectDiv = document.querySelector('.project-div');
 
 export { 
     newToDoButton,
@@ -31,7 +32,8 @@ export {
     listNameInput,
     addListButton,
     cancelListButton,
-    projectDiv,
+    listButtonDiv,
     defaultListButton,
-    otherListButton 
+    otherListButton, 
+    projectDiv
 };

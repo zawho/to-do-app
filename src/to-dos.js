@@ -6,7 +6,7 @@ import { allLists, checkForList } from "./lists";
 const toDo = (title, description, dueDate, priority, list) => ({
     title, description, dueDate, priority, list});
 
-// Display to do in default project.
+// Display to do.
 function displayToDo(listVar) {
     const toDoDisplay = document.createElement('div');
     const displayTitle = document.createElement('div');
