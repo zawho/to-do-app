@@ -14,3 +14,12 @@
 .description-input {
     resize: none;
 }
+
+.list-button-div {
+    display: flex;
+    gap: 10px;
+}
+
+.list-button-div > button {
+    border: 2px solid black;
+}

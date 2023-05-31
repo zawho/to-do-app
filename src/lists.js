@@ -6,6 +6,18 @@ const allLists = {
     other: [],
 }
 
+// Highlight selected list.
+function highlightList() {
+    const listButtonArr = Array.from(listButtonDiv.childNodes);
+    for (let i = 0; i < listButtonArr.length; i++) {
+        if (listButtonArr[i].className === projectDiv.id) {
+            listButtonArr[i].style.border = '2px solid red';
+        } else {
+            listButtonArr[i].style.border = '2px solid black';
+        }
+    }
+}
+
 // Display List.
 function displayList() {
     projectDiv.id = this.className;
@@ -17,6 +29,7 @@ function displayList() {
             listArr[i].style.display = 'none';
         }
     }
+    highlightList();
 }
 
 // Create new list.
