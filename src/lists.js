@@ -8,7 +8,7 @@ const allLists = {
 
 // Display List.
 function displayList() {
-    projectDiv.id = this.className.replace('-list', '');
+    projectDiv.id = this.className;
     const listArr = Array.from(projectDiv.childNodes);
     for (let i = 0; i < listArr.length; i++) {
         if (listArr[i].className === projectDiv.id) {
@@ -28,7 +28,8 @@ function createList(e) {
     newListOption.innerText = listNameInput.value;
     listMenu.appendChild(newListOption);
     const newList = document.createElement('button');
-    newList.className = `${listNameInput.value}-list`;
+    newList.className = `${listNameInput.value}`;
+    newList.id = `${listNameInput.value}-list`.replaceAll(' ', '-');
     newList.innerText = listNameInput.value;
     listButtonDiv.appendChild(newList);
     newList.addEventListener('click', displayList);

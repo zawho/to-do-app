@@ -13,8 +13,8 @@ const listNameInput = document.querySelector('.list-name-input');
 const addListButton = document.querySelector('.add-list-button');
 const cancelListButton = document.querySelector('.cancel-list-button');
 const listButtonDiv = document.querySelector('.list-button-div');
-const defaultListButton = document.querySelector('.default-list');
-const otherListButton = document.querySelector('.other-list');
+const defaultListButton = document.getElementById('default-list');
+const otherListButton = document.getElementById('other-list');
 const projectDiv = document.querySelector('.project-div');
 
 export { 
