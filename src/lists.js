@@ -9,12 +9,12 @@ const allLists = {
 // Display List.
 function displayList() {
     projectDiv.id = this.className.replace('-list', '');
-    const testArr = Array.from(projectDiv.childNodes);
-    for (let i = 0; i < testArr.length; i++) {
-        if (testArr[i].className === projectDiv.id) {
-            testArr[i].style.display = 'flex';
+    const listArr = Array.from(projectDiv.childNodes);
+    for (let i = 0; i < listArr.length; i++) {
+        if (listArr[i].className === projectDiv.id) {
+            listArr[i].style.display = 'flex';
         } else {
-            testArr[i].style.display = 'none';
+            listArr[i].style.display = 'none';
         }
     }
 }
@@ -31,7 +31,7 @@ function createList(e) {
     newList.className = `${listNameInput.value}-list`;
     newList.innerText = listNameInput.value;
     listButtonDiv.appendChild(newList);
-    newList.addEventListener('click', displayList)
+    newList.addEventListener('click', displayList);
     newListForm.style.display = 'none';
     newToDoButton.style.display = 'flex';
     newListButton.style.display = 'flex';
