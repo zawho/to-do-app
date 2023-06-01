@@ -18,6 +18,7 @@
 .list-button-div {
     display: flex;
     gap: 10px;
+    margin-bottom: 10px;
 }
 
 .list-button-div > button {
@@ -27,4 +28,15 @@
 
 #default-list {
     border: 2px solid red;
+}
+
+.project-div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.project-div > * {
+    border: 1px solid black;
+    padding: 3px;
 }
