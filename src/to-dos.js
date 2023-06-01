@@ -6,9 +6,15 @@ import { allLists, checkForList } from "./lists";
 const toDo = (title, description, dueDate, priority, list) => ({
     title, description, dueDate, priority, list});
 
-// Hide to do.
-function hideToDo() {
-    this.style.display = 'none';
+// Expand to do.
+function expandToDo() {
+    const toDoArr = Array.from(projectDiv.childNodes);
+    for (let i = 0; i < toDoArr.length; i++) {
+        if (toDoArr[i].id.replace('-expanded', '') === this.id) {
+            toDoArr[i].style.display = 'flex';
+            this.style.display = 'none';
+        }
+    }
 }
 
 // Create expanded to do.
@@ -19,8 +25,12 @@ function createExpandedToDo(listVar) {
     const expandedDueDate = document.createElement('div');
     const expandedPriority = document.createElement('div');
     expandedToDoDiv.className = `${listMenu.value}-expanded`.replaceAll(' ', '-');
+    expandedToDoDiv.style.display = 'flex';
+    expandedToDoDiv.style.flexDirection = 'column';
+    expandedToDoDiv.style.gap = '10px';
     expandedToDoDiv.style.display = 'none';
     for (let i = 0; i < allLists[listVar].length; i++) {
+        expandedToDoDiv.id = `${allLists[listVar][allLists[listVar].length - 1].title}-expanded`.replaceAll(' ', '-');
         expandedTitle.innerText = allLists[listVar][allLists[listVar].length - 1].title;
         if (allLists[listVar][allLists[listVar].length - 1].dueDate === '') {
             expandedDueDate.innerText = 'no due date';
@@ -53,6 +63,7 @@ function displayToDo(listVar) {
     toDoDisplay.style.display = 'flex';
     toDoDisplay.style.gap = '10px';
     for (let i = 0; i < allLists[listVar].length; i++) {
+        toDoDisplay.id = `${allLists[listVar][allLists[listVar].length - 1].title}`.replaceAll(' ', '-');
         displayTitle.innerText = allLists[listVar][allLists[listVar].length - 1].title;
         if (allLists[listVar][allLists[listVar].length - 1].dueDate === '') {
             displayDueDate.innerText = 'no due date';
@@ -66,7 +77,7 @@ function displayToDo(listVar) {
             displayPriority.innerText = 'important';
             toDoDisplay.appendChild(displayPriority);
         }
-        toDoDisplay.addEventListener('click', hideToDo);
+        toDoDisplay.addEventListener('click', expandToDo);
     }
     if (projectDiv.id === listVar) {
         toDoDisplay.style.display = 'flex';
