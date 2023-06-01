@@ -6,6 +6,11 @@ import { allLists, checkForList } from "./lists";
 const toDo = (title, description, dueDate, priority, list) => ({
     title, description, dueDate, priority, list});
 
+// Hide to do.
+function hideToDo() {
+    this.style.display = 'none';
+}
+
 // Create expanded to do.
 function createExpandedToDo(listVar) {
     const expandedToDoDiv = document.createElement('div');
@@ -61,6 +66,7 @@ function displayToDo(listVar) {
             displayPriority.innerText = 'important';
             toDoDisplay.appendChild(displayPriority);
         }
+        toDoDisplay.addEventListener('click', hideToDo);
     }
     if (projectDiv.id === listVar) {
         toDoDisplay.style.display = 'flex';
