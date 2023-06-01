@@ -8,12 +8,13 @@ const toDo = (title, description, dueDate, priority, list) => ({
 
 // Expand to do.
 function expandToDo() {
-    const toDoArr = Array.from(projectDiv.childNodes);
-    for (let i = 0; i < toDoArr.length; i++) {
-        if (toDoArr[i].id.replace('-expanded', '') === this.id) {
-            toDoArr[i].style.display = 'flex';
-            this.style.display = 'none';
-        }
+    if (!(this.id.includes('-expanded')) && this.style.display === 'flex') {
+        this.style.display = 'none';
+        this.nextSibling.style.display = 'flex'
+    }
+    if (this.id.includes('-expanded') && this.style.display === 'flex') {
+        this.style.display = 'none';
+        this.previousSibling.style.display = 'flex'
     }
 }
 
@@ -50,6 +51,7 @@ function createExpandedToDo(listVar) {
             expandedPriority.innerText = 'important';
             expandedToDoDiv.appendChild(expandedPriority);
         }
+        expandedToDoDiv.addEventListener('click', expandToDo);
     }
 }
 
