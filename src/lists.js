@@ -20,7 +20,7 @@ function highlightList() {
 
 // Display List.
 function displayList() {
-    projectDiv.id = this.className;
+    projectDiv.id = this.className.replaceAll(' ', '-');
     const listArr = Array.from(projectDiv.childNodes);
     for (let i = 0; i < listArr.length; i++) {
         if (listArr[i].className === projectDiv.id) {
@@ -41,7 +41,7 @@ function createList(e) {
     newListOption.innerText = listNameInput.value;
     listMenu.appendChild(newListOption);
     const newList = document.createElement('button');
-    newList.className = `${listNameInput.value}`;
+    newList.className = `${listNameInput.value}`.replaceAll(' ', '-');
     newList.id = `${listNameInput.value}-list`.replaceAll(' ', '-');
     newList.innerText = listNameInput.value;
     listButtonDiv.appendChild(newList);
