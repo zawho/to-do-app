@@ -28,11 +28,19 @@ function openEditor(event, a) {
     preventPropagation(event);
     const toDoEdit = a;
     const titleEdit = document.createElement('textarea');
+    const doneButton = document.createElement('button');
     titleEdit.style.resize = 'none';
     titleEdit.cols = '20';
     titleEdit.rows = '1';
+    doneButton.className = 'done-button';
+    doneButton.innerText = 'done';
+    doneButton.style.alignSelf = 'flex-end';
+    toDoEdit.appendChild(doneButton);
     const toDoArr = Array.from(toDoEdit.childNodes);
     for (let i = 0; i < toDoArr.length; i++) {
+        if (toDoArr[i].className === 'edit-button') {
+            toDoArr[i].style.display = 'none';
+        }
         if (toDoArr[i].className === 'title-div') {
             titleEdit.addEventListener('click', preventPropagation);
             titleEdit.innerText = toDoArr[i].innerText;
