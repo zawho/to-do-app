@@ -19,7 +19,8 @@ function expandToDo() {
 }
 
 // Edit to do.
-function editToDo(e, a) {
+function editToDo(event, a) {
+    event.stopPropagation();
     const toDoEdit = a;
     const toDoArr = Array.from(toDoEdit.childNodes);
     console.log(toDoArr);
