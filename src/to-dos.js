@@ -25,6 +25,10 @@ function helpToDo(listVar, a, b, c, d, e) {
     const dueDateVar = c;
     const priorityVar = d;
     const descriptionVar = e;
+    const editButton = document.createElement('button');
+    editButton.innerText = 'edit';
+    editButton.className = 'edit-button';
+    editButton.style.alignSelf = 'flex-end';
     for (let i = 0; i < allLists[listVar].length; i++) {
         titleVar.innerText = allLists[listVar][allLists[listVar].length - 1].title;
         if (allLists[listVar][allLists[listVar].length - 1].dueDate === '') {
@@ -46,6 +50,7 @@ function helpToDo(listVar, a, b, c, d, e) {
             priorityVar.innerText = 'important';
             toDoVar.appendChild(priorityVar);
         }
+        toDoVar.appendChild(editButton);
         toDoVar.addEventListener('click', expandToDo);
     }
 }
@@ -61,6 +66,7 @@ function createExpandedToDo(currentList) {
     expandedToDoDiv.style.display = 'flex';
     expandedToDoDiv.style.flexDirection = 'column';
     expandedToDoDiv.style.gap = '10px';
+    expandedToDoDiv.style.padding = '5px';
     expandedToDoDiv.style.display = 'none';
     for (let i = 0; i < allLists[currentList].length; i++) {
         expandedToDoDiv.id = `${allLists[currentList][allLists[currentList].length - 1]
@@ -79,7 +85,9 @@ function displayToDo(currentList) {
     const displayPriority = document.createElement('div');
     toDoDisplay.className = `${listMenu.value}`.replaceAll(' ', '-');
     toDoDisplay.style.display = 'flex';
+    toDoDisplay.style.justifyContent = 'space-between';
     toDoDisplay.style.gap = '10px';
+    toDoDisplay.style.padding = '5px';
     displayDescription.style.display = 'none';
     for (let i = 0; i < allLists[currentList].length; i++) {
         toDoDisplay.id = `${allLists[currentList][allLists[currentList].length - 1].title}`
