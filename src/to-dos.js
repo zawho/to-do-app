@@ -18,12 +18,28 @@ function expandToDo() {
     }
 }
 
-// Edit to do.
-function editToDo(event, a) {
-    event.stopPropagation();
+// Prevent click event propagation on editable to do.
+function preventPropagation(e) {
+    e.stopPropagation();
+}
+
+// Open to do editor.
+function openEditor(event, a) {
+    preventPropagation(event);
     const toDoEdit = a;
+    const titleEdit = document.createElement('textarea');
+    titleEdit.style.resize = 'none';
+    titleEdit.cols = '20';
+    titleEdit.rows = '1';
     const toDoArr = Array.from(toDoEdit.childNodes);
-    console.log(toDoArr);
+    for (let i = 0; i < toDoArr.length; i++) {
+        if (toDoArr[i].className === 'title-div') {
+            titleEdit.addEventListener('click', preventPropagation);
+            titleEdit.innerText = toDoArr[i].innerText;
+            toDoArr[i].innerText = '';
+            toDoArr[i].appendChild(titleEdit);
+        }
+    }
 }
 
 // Helper function for display to do and create expanded to do.
@@ -86,7 +102,7 @@ function createExpandedToDo(currentList) {
     helpToDo(currentList, expandedToDoDiv, expandedTitle, expandedDueDate, expandedPriority, 
         expandedDescription);
     expandedToDoDiv.appendChild(editButton);
-    editButton.addEventListener('click', (event) => editToDo(event, expandedToDoDiv));
+    editButton.addEventListener('click', (event) => openEditor(event, expandedToDoDiv));
 }
 
 // Display to do.
