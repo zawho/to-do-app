@@ -19,8 +19,10 @@ function expandToDo() {
 }
 
 // Edit to do.
-function editToDo() {
-    
+function editToDo(e, a) {
+    const toDoEdit = a;
+    const toDoArr = Array.from(toDoEdit.childNodes);
+    console.log(toDoArr);
 }
 
 // Helper function for display to do and create expanded to do.
@@ -30,6 +32,10 @@ function helpToDo(listVar, a, b, c, d, e) {
     const dueDateVar = c;
     const priorityVar = d;
     const descriptionVar = e;
+    titleVar.className = 'title-div';
+    dueDateVar.className = 'date-div';
+    priorityVar.className = 'priority-div';
+    descriptionVar.className = 'description-div';
     for (let i = 0; i < allLists[listVar].length; i++) {
         titleVar.innerText = allLists[listVar][allLists[listVar].length - 1].title;
         if (allLists[listVar][allLists[listVar].length - 1].dueDate === '') {
@@ -79,6 +85,7 @@ function createExpandedToDo(currentList) {
     helpToDo(currentList, expandedToDoDiv, expandedTitle, expandedDueDate, expandedPriority, 
         expandedDescription);
     expandedToDoDiv.appendChild(editButton);
+    editButton.addEventListener('click', (event) => editToDo(event, expandedToDoDiv));
 }
 
 // Display to do.
