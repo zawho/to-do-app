@@ -18,6 +18,11 @@ function expandToDo() {
     }
 }
 
+// Edit to do.
+function editToDo() {
+    
+}
+
 // Helper function for display to do and create expanded to do.
 function helpToDo(listVar, a, b, c, d, e) {
     const toDoVar = a;
@@ -25,10 +30,6 @@ function helpToDo(listVar, a, b, c, d, e) {
     const dueDateVar = c;
     const priorityVar = d;
     const descriptionVar = e;
-    const editButton = document.createElement('button');
-    editButton.innerText = 'edit';
-    editButton.className = 'edit-button';
-    editButton.style.alignSelf = 'flex-end';
     for (let i = 0; i < allLists[listVar].length; i++) {
         titleVar.innerText = allLists[listVar][allLists[listVar].length - 1].title;
         if (allLists[listVar][allLists[listVar].length - 1].dueDate === '') {
@@ -50,7 +51,6 @@ function helpToDo(listVar, a, b, c, d, e) {
             priorityVar.innerText = 'important';
             toDoVar.appendChild(priorityVar);
         }
-        toDoVar.appendChild(editButton);
         toDoVar.addEventListener('click', expandToDo);
     }
 }
@@ -62,11 +62,15 @@ function createExpandedToDo(currentList) {
     const expandedDescription = document.createElement('div');
     const expandedDueDate = document.createElement('div');
     const expandedPriority = document.createElement('div');
+    const editButton = document.createElement('button');
     expandedToDoDiv.className = `${listMenu.value}-expanded`.replaceAll(' ', '-');
     expandedToDoDiv.style.display = 'flex';
     expandedToDoDiv.style.flexDirection = 'column';
     expandedToDoDiv.style.gap = '10px';
     expandedToDoDiv.style.padding = '5px';
+    editButton.innerText = 'edit';
+    editButton.className = 'edit-button';
+    editButton.style.alignSelf = 'flex-end';
     expandedToDoDiv.style.display = 'none';
     for (let i = 0; i < allLists[currentList].length; i++) {
         expandedToDoDiv.id = `${allLists[currentList][allLists[currentList].length - 1]
@@ -74,6 +78,7 @@ function createExpandedToDo(currentList) {
     }
     helpToDo(currentList, expandedToDoDiv, expandedTitle, expandedDueDate, expandedPriority, 
         expandedDescription);
+    expandedToDoDiv.appendChild(editButton);
 }
 
 // Display to do.
