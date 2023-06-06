@@ -24,8 +24,16 @@ function preventPropagation(e) {
 }
 
 // Confirm edit.
-function confirmEdit(event) {
+function confirmEdit(event, editedTitle) {
     preventPropagation(event);
+    const selectedList = checkForList();
+    for (let i = 0; i < allLists[selectedList].length; i++) {
+        if (allLists[selectedList][i].title === editedTitle.id) {
+            allLists[selectedList][i].title = editedTitle.value;
+            console.log(allLists[selectedList]);
+        }
+    }
+    
 }
 
 // Open to do editor.
@@ -41,7 +49,6 @@ function openEditor(event, a) {
     doneButton.innerText = 'done';
     doneButton.style.alignSelf = 'flex-end';
     toDoEdit.appendChild(doneButton);
-    doneButton.addEventListener('click', confirmEdit);
     const toDoArr = Array.from(toDoEdit.childNodes);
     for (let i = 0; i < toDoArr.length; i++) {
         if (toDoArr[i].className === 'edit-button') {
@@ -50,10 +57,12 @@ function openEditor(event, a) {
         if (toDoArr[i].className === 'title-div') {
             titleEdit.addEventListener('click', preventPropagation);
             titleEdit.innerText = toDoArr[i].innerText;
+            titleEdit.id = toDoArr[i].innerText;
             toDoArr[i].innerText = '';
             toDoArr[i].appendChild(titleEdit);
         }
     }
+    doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, titleEdit));
 }
 
 // Helper function for display to do and create expanded to do.
