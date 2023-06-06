@@ -23,6 +23,11 @@ function preventPropagation(e) {
     e.stopPropagation();
 }
 
+// Confirm edit.
+function confirmEdit(event) {
+    preventPropagation(event);
+}
+
 // Open to do editor.
 function openEditor(event, a) {
     preventPropagation(event);
@@ -36,6 +41,7 @@ function openEditor(event, a) {
     doneButton.innerText = 'done';
     doneButton.style.alignSelf = 'flex-end';
     toDoEdit.appendChild(doneButton);
+    doneButton.addEventListener('click', confirmEdit);
     const toDoArr = Array.from(toDoEdit.childNodes);
     for (let i = 0; i < toDoArr.length; i++) {
         if (toDoArr[i].className === 'edit-button') {
