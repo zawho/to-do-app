@@ -69,11 +69,8 @@ function confirmEdit(event, a, b) {
 function openEditor(event, a) {
     preventPropagation(event);
     const toDoEdit = a;
-    const titleEdit = document.createElement('textarea');
+    const titleEdit = document.createElement('input');
     const doneButton = document.createElement('button');
-    titleEdit.style.resize = 'none';
-    titleEdit.cols = '20';
-    titleEdit.rows = '1';
     doneButton.className = 'done-button';
     doneButton.innerText = 'done';
     doneButton.style.alignSelf = 'flex-end';
@@ -85,7 +82,7 @@ function openEditor(event, a) {
         }
         if (toDoArr[i].className === 'title-div') {
             titleEdit.addEventListener('click', preventPropagation);
-            titleEdit.innerText = toDoArr[i].innerText;
+            titleEdit.value = toDoArr[i].innerText;
             titleEdit.id = toDoArr[i].innerText;
             toDoArr[i].innerText = '';
             toDoArr[i].appendChild(titleEdit);
