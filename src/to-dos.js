@@ -71,6 +71,7 @@ function openEditor(event, a) {
     const toDoEdit = a;
     const titleEdit = document.createElement('input');
     const doneButton = document.createElement('button');
+    titleEdit.type = 'text';
     doneButton.className = 'done-button';
     doneButton.innerText = 'done';
     doneButton.style.alignSelf = 'flex-end';
