@@ -28,23 +28,32 @@ function confirmEdit(event, a, b) {
     preventPropagation(event);
     const editedToDo = a;
     const editedTitle = b;
-    const toDoArr = Array.from(editedToDo.childNodes);
+    const toDoArr = Array.from(projectDiv.childNodes);
+    const expandedToDoArr = Array.from(editedToDo.childNodes);
     const selectedList = checkForList();
+    for (let i = 0; i < toDoArr.length; i++) {
+        if (toDoArr[i].id === editedTitle.id) {
+            toDoArr[i].id = editedTitle.value;
+        }
+        if (toDoArr[i].id === `${editedTitle.id}-expanded`) {
+            toDoArr[i].id = `${editedTitle.value}-expanded`;
+        }
+    }
     for (let i = 0; i < allLists[selectedList].length; i++) {
         if (allLists[selectedList][i].title === editedTitle.id) {
             allLists[selectedList][i].title = editedTitle.value;
             console.log(allLists[selectedList][i]);
         }
     }
-    for (let i = 0; i < toDoArr.length; i++) {
-        if (toDoArr[i].className === 'done-button') {
-            toDoArr[i].style.display = 'none';
+    for (let i = 0; i < expandedToDoArr.length; i++) {
+        if (expandedToDoArr[i].className === 'done-button') {
+            expandedToDoArr[i].style.display = 'none';
         }
-        if (toDoArr[i].className === 'edit-button') {
-            toDoArr[i].style.display = 'flex';
+        if (expandedToDoArr[i].className === 'edit-button') {
+            expandedToDoArr[i].style.display = 'flex';
         }
-        if (toDoArr[i].className === 'title-div') {
-            toDoArr[i].innerText = editedTitle.value;
+        if (expandedToDoArr[i].className === 'title-div') {
+            expandedToDoArr[i].innerText = editedTitle.value;
             editedTitle.style.display = 'none';
         }
     }
