@@ -29,6 +29,7 @@ function confirmEdit(event, a, b) {
     const editedToDo = a;
     const editedTitle = b;
     const projectArr = Array.from(projectDiv.childNodes);
+    const toDoArr = Array.from(editedToDo.previousSibling.childNodes)
     const expandedToDoArr = Array.from(editedToDo.childNodes);
     const selectedList = checkForList();
     for (let i = 0; i < projectArr.length; i++) {
@@ -37,6 +38,11 @@ function confirmEdit(event, a, b) {
         }
         if (projectArr[i].id === `${editedTitle.id}-expanded`) {
             projectArr[i].id = `${editedTitle.value}-expanded`;
+        }
+    }
+    for (let i = 0; i < toDoArr.length; i++) {
+        if (toDoArr[i].className === 'title-div') {
+            toDoArr[i].innerText = editedTitle.value;
         }
     }
     for (let i = 0; i < allLists[selectedList].length; i++) {
