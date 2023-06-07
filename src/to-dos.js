@@ -24,16 +24,30 @@ function preventPropagation(e) {
 }
 
 // Confirm edit.
-function confirmEdit(event, editedTitle) {
+function confirmEdit(event, a, b) {
     preventPropagation(event);
+    const editedToDo = a;
+    const editedTitle = b;
+    const toDoArr = Array.from(editedToDo.childNodes);
     const selectedList = checkForList();
     for (let i = 0; i < allLists[selectedList].length; i++) {
         if (allLists[selectedList][i].title === editedTitle.id) {
             allLists[selectedList][i].title = editedTitle.value;
-            console.log(allLists[selectedList]);
+            console.log(allLists[selectedList][i]);
         }
     }
-    
+    for (let i = 0; i < toDoArr.length; i++) {
+        if (toDoArr[i].className === 'done-button') {
+            toDoArr[i].style.display = 'none';
+        }
+        if (toDoArr[i].className === 'edit-button') {
+            toDoArr[i].style.display = 'flex';
+        }
+        if (toDoArr[i].className === 'title-div') {
+            toDoArr[i].innerText = editedTitle.value;
+            editedTitle.style.display = 'none';
+        }
+    }
 }
 
 // Open to do editor.
@@ -62,7 +76,8 @@ function openEditor(event, a) {
             toDoArr[i].appendChild(titleEdit);
         }
     }
-    doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, titleEdit));
+    doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
+         titleEdit));
 }
 
 // Helper function for display to do and create expanded to do.
