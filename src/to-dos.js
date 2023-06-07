@@ -53,14 +53,14 @@ function confirmEdit(event, a, b) {
     }
     for (let i = 0; i < expandedToDoArr.length; i++) {
         if (expandedToDoArr[i].className === 'done-button') {
-            expandedToDoArr[i].style.display = 'none';
+            expandedToDoArr[i].remove();
         }
         if (expandedToDoArr[i].className === 'edit-button') {
             expandedToDoArr[i].style.display = 'flex';
         }
         if (expandedToDoArr[i].className === 'title-div') {
             expandedToDoArr[i].innerText = editedTitle.value;
-            editedTitle.style.display = 'none';
+            editedTitle.remove();
         }
     }
 }
