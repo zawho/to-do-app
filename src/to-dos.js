@@ -28,15 +28,15 @@ function confirmEdit(event, a, b) {
     preventPropagation(event);
     const editedToDo = a;
     const editedTitle = b;
-    const toDoArr = Array.from(projectDiv.childNodes);
+    const projectArr = Array.from(projectDiv.childNodes);
     const expandedToDoArr = Array.from(editedToDo.childNodes);
     const selectedList = checkForList();
-    for (let i = 0; i < toDoArr.length; i++) {
-        if (toDoArr[i].id === editedTitle.id) {
-            toDoArr[i].id = editedTitle.value;
+    for (let i = 0; i < projectArr.length; i++) {
+        if (projectArr[i].id === editedTitle.id) {
+            projectArr[i].id = editedTitle.value;
         }
-        if (toDoArr[i].id === `${editedTitle.id}-expanded`) {
-            toDoArr[i].id = `${editedTitle.value}-expanded`;
+        if (projectArr[i].id === `${editedTitle.id}-expanded`) {
+            projectArr[i].id = `${editedTitle.value}-expanded`;
         }
     }
     for (let i = 0; i < allLists[selectedList].length; i++) {
