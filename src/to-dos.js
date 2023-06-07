@@ -28,15 +28,16 @@ function confirmEdit(event, a, b) {
     preventPropagation(event);
     const editedToDo = a;
     const editedTitle = b;
+    const editedID = editedTitle.id.replace('-edit', '');
     const projectArr = Array.from(projectDiv.childNodes);
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes)
     const expandedToDoArr = Array.from(editedToDo.childNodes);
     const selectedList = checkForList();
     for (let i = 0; i < projectArr.length; i++) {
-        if (projectArr[i].id === editedTitle.id) {
+        if (projectArr[i].id === editedID) {
             projectArr[i].id = editedTitle.value;
         }
-        if (projectArr[i].id === `${editedTitle.id}-expanded`) {
+        if (projectArr[i].id === `${editedID}-expanded`) {
             projectArr[i].id = `${editedTitle.value}-expanded`;
         }
     }
@@ -46,7 +47,7 @@ function confirmEdit(event, a, b) {
         }
     }
     for (let i = 0; i < allLists[selectedList].length; i++) {
-        if (allLists[selectedList][i].title === editedTitle.id) {
+        if (allLists[selectedList][i].title === editedID) {
             allLists[selectedList][i].title = editedTitle.value;
             console.log(allLists[selectedList][i]);
         }
@@ -84,7 +85,7 @@ function openEditor(event, a) {
         if (toDoArr[i].className === 'title-div') {
             titleEdit.addEventListener('click', preventPropagation);
             titleEdit.value = toDoArr[i].innerText;
-            titleEdit.id = toDoArr[i].innerText;
+            titleEdit.id = `${toDoArr[i].innerText}-edit`.replaceAll(' ', '-');
             toDoArr[i].innerText = '';
             toDoArr[i].appendChild(titleEdit);
         }
