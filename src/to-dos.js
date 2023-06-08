@@ -24,10 +24,11 @@ function preventPropagation(e) {
 }
 
 // Confirm edit.
-function confirmEdit(event, a, b) {
+function confirmEdit(event, a, b, c) {
     preventPropagation(event);
     const editedToDo = a;
     const editedTitle = b;
+    const editedDescrption = c;
     const editedID = editedTitle.id.replace('-edit', '');
     const projectArr = Array.from(projectDiv.childNodes);
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes)
@@ -49,6 +50,7 @@ function confirmEdit(event, a, b) {
     for (let i = 0; i < allLists[selectedList].length; i++) {
         if (allLists[selectedList][i].title === editedID) {
             allLists[selectedList][i].title = editedTitle.value;
+            allLists[selectedList][i].description = editedDescrption.value;
             console.log(allLists[selectedList][i]);
         }
     }
@@ -62,6 +64,10 @@ function confirmEdit(event, a, b) {
         if (expandedToDoArr[i].className === 'title-div') {
             expandedToDoArr[i].innerText = editedTitle.value;
             editedTitle.remove();
+        }
+        if (expandedToDoArr[i].className === 'description-div') {
+            expandedToDoArr[i].innerText = editedDescrption.value;
+            editedDescrption.remove();
         }
     }
 }
@@ -104,7 +110,7 @@ function openEditor(event, a) {
         }
     }
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
-         titleEdit));
+         titleEdit, descriptionEdit));
 }
 
 // Helper function for display to do and create expanded to do.
