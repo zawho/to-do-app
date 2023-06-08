@@ -50,7 +50,8 @@ function confirmEdit(event, a, b, c) {
     for (let i = 0; i < allLists[selectedList].length; i++) {
         if (allLists[selectedList][i].title === editedID) {
             allLists[selectedList][i].title = editedTitle.value;
-            allLists[selectedList][i].description = editedDescrption.value;
+            allLists[selectedList][i].description = editedDescrption.value.
+            replaceAll('\n', ' ');
             console.log(allLists[selectedList][i]);
         }
     }
@@ -80,6 +81,9 @@ function openEditor(event, a) {
     const descriptionEdit = document.createElement('textarea');
     const doneButton = document.createElement('button');
     titleEdit.type = 'text';
+    descriptionEdit.style.resize = 'none';
+    descriptionEdit.cols = '20';
+    descriptionEdit.rows = '5';
     doneButton.className = 'done-button';
     doneButton.innerText = 'done';
     doneButton.style.alignSelf = 'flex-end';
