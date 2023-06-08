@@ -71,6 +71,7 @@ function openEditor(event, a) {
     preventPropagation(event);
     const toDoEdit = a;
     const titleEdit = document.createElement('input');
+    const descriptionEdit = document.createElement('textarea');
     const doneButton = document.createElement('button');
     titleEdit.type = 'text';
     doneButton.className = 'done-button';
@@ -88,6 +89,18 @@ function openEditor(event, a) {
             titleEdit.id = `${toDoArr[i].innerText}-edit`.replaceAll(' ', '-');
             toDoArr[i].innerText = '';
             toDoArr[i].appendChild(titleEdit);
+        }
+        if (toDoArr[i].className === 'description-div') {
+            descriptionEdit.addEventListener('click', preventPropagation);
+            if (toDoArr[i].innerText === 'no description') {
+                descriptionEdit.innerText = '';
+            } else {
+                descriptionEdit.innerText = toDoArr[i].innerText;
+            }
+            descriptionEdit.id = `${toDoEdit.id.replace('-expanded', '')}-description-edit`.
+            replaceAll(' ', '-');
+            toDoArr[i].innerText = '';
+            toDoArr[i].appendChild(descriptionEdit);
         }
     }
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
