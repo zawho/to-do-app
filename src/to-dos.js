@@ -105,7 +105,7 @@ function openEditor(event, a) {
             if (toDoArr[i].innerText === 'no description') {
                 descriptionEdit.innerText = '';
             } else {
-                descriptionEdit.innerText = toDoArr[i].innerText;
+                descriptionEdit.innerText = toDoArr[i].innerText.replaceAll('\n', ' ');
             }
             descriptionEdit.id = `${toDoEdit.id.replace('-expanded', '')}-description-edit`.
             replaceAll(' ', '-');
@@ -211,8 +211,10 @@ function createToDo(e) {
     if (!(titleInput.value === '')) {
         e.preventDefault();
         const selectedList = checkForList();
-        allLists[selectedList].push(toDo(titleInput.value, descriptionInput.value, 
-            dueDateInput.value, priorityInput.checked, listMenu.value));
+        allLists[selectedList].push(toDo(titleInput.value, 
+            descriptionInput.value.replaceAll('\n', ' '), 
+            dueDateInput.value, 
+            priorityInput.checked, listMenu.value));
         newToDoForm.style.display = 'none';
         newToDoButton.style.display = 'flex';
         newListButton.style.display = 'flex';
