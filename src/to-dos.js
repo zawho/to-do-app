@@ -24,13 +24,14 @@ function preventPropagation(e) {
 }
 
 // Confirm edit.
-function confirmEdit(event, a, b, c, d, e) {
+function confirmEdit(event, a, b, c, d, e, f) {
     preventPropagation(event);
     const editedToDo = a;
     const editedTitle = b;
     const editedDescrption = c;
     const editedDate = d;
     const editedPriority = e;
+    const editedTitleLabel = f;
     const editedID = editedTitle.id.replace('-edit', '');
     const projectArr = Array.from(projectDiv.childNodes);
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes)
@@ -81,6 +82,7 @@ function confirmEdit(event, a, b, c, d, e) {
         }
         if (expandedToDoArr[i].className === 'title-div') {
             expandedToDoArr[i].innerText = editedTitle.value;
+            editedTitleLabel.remove();
             editedTitle.remove();
         }
         if (expandedToDoArr[i].className === 'description-div') {
@@ -114,6 +116,7 @@ function confirmEdit(event, a, b, c, d, e) {
 function openEditor(event, a) {
     preventPropagation(event);
     const toDoEdit = a;
+    const titleEditLabel = document.createElement('div');
     const titleEdit = document.createElement('input');
     const descriptionEdit = document.createElement('textarea');
     const dateEdit = document.createElement('input');
@@ -139,6 +142,9 @@ function openEditor(event, a) {
             titleEdit.value = toDoArr[i].innerText;
             titleEdit.id = `${toDoArr[i].innerText}-edit`.replaceAll(' ', '-');
             toDoArr[i].innerText = '';
+            titleEditLabel.id = `${titleEdit.id}-label`;
+            titleEditLabel.innerText = 'title';
+            toDoArr[i].appendChild(titleEditLabel);
             toDoArr[i].appendChild(titleEdit);
         }
         if (toDoArr[i].className === 'description-div') {
@@ -175,7 +181,7 @@ function openEditor(event, a) {
         }
     }
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
-         titleEdit, descriptionEdit, dateEdit, priorityEdit));
+         titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel));
 }
 
 // Helper function for display to do and create expanded to do.
