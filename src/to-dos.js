@@ -24,12 +24,13 @@ function preventPropagation(e) {
 }
 
 // Confirm edit.
-function confirmEdit(event, a, b, c, d) {
+function confirmEdit(event, a, b, c, d, e) {
     preventPropagation(event);
     const editedToDo = a;
     const editedTitle = b;
     const editedDescrption = c;
     const editedDate = d;
+    const editedPriority = e;
     const editedID = editedTitle.id.replace('-edit', '');
     const projectArr = Array.from(projectDiv.childNodes);
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes)
@@ -54,6 +55,13 @@ function confirmEdit(event, a, b, c, d) {
                 toDoArr[i].innerText = editedDate.value;
             }
         }
+        if (toDoArr[i].className === 'priority-div') {
+            if (editedPriority.checked) {
+                toDoArr[i].innerText = 'important';
+            } else {
+                toDoArr[i].innerText = '';
+            }
+        }
     }
     for (let i = 0; i < allLists[selectedList].length; i++) {
         if (allLists[selectedList][i].title === editedID) {
@@ -61,7 +69,7 @@ function confirmEdit(event, a, b, c, d) {
             allLists[selectedList][i].description = editedDescrption.value.
             replaceAll('\n', ' ');
             allLists[selectedList][i].dueDate = editedDate.value;
-            console.log(allLists[selectedList][i]);
+            allLists[selectedList][i].priority = editedPriority.checked;
         }
     }
     for (let i = 0; i < expandedToDoArr.length; i++) {
@@ -88,6 +96,14 @@ function confirmEdit(event, a, b, c, d) {
                 expandedToDoArr[i].innerText = 'no due date';
             } else {
                 expandedToDoArr[i].innerText = editedDate.value;
+            }
+            editedDate.remove();
+        }
+        if (expandedToDoArr[i].className === 'priority-div') {
+            if (editedPriority.checked) {
+                expandedToDoArr[i].innerText = 'important';
+            } else {
+                expandedToDoArr[i].innerText = '';
             }
             editedDate.remove();
         }
@@ -267,7 +283,6 @@ function createToDo(e) {
         newListButton.style.display = 'flex';
         displayToDo(selectedList);
         createExpandedToDo(selectedList);
-        console.log(allLists[selectedList][0]);
     }
 }
 
