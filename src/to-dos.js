@@ -24,11 +24,12 @@ function preventPropagation(e) {
 }
 
 // Confirm edit.
-function confirmEdit(event, a, b, c) {
+function confirmEdit(event, a, b, c, d) {
     preventPropagation(event);
     const editedToDo = a;
     const editedTitle = b;
     const editedDescrption = c;
+    const editedDate = d;
     const editedID = editedTitle.id.replace('-edit', '');
     const projectArr = Array.from(projectDiv.childNodes);
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes)
@@ -46,12 +47,16 @@ function confirmEdit(event, a, b, c) {
         if (toDoArr[i].className === 'title-div') {
             toDoArr[i].innerText = editedTitle.value;
         }
+        if (toDoArr[i].className === 'date-div') {
+            toDoArr[i].innerText = editedDate.value;
+        }
     }
     for (let i = 0; i < allLists[selectedList].length; i++) {
         if (allLists[selectedList][i].title === editedID) {
             allLists[selectedList][i].title = editedTitle.value;
             allLists[selectedList][i].description = editedDescrption.value.
             replaceAll('\n', ' ');
+            allLists[selectedList][i].dueDate = editedDate.value;
             console.log(allLists[selectedList][i]);
         }
     }
@@ -69,6 +74,14 @@ function confirmEdit(event, a, b, c) {
         if (expandedToDoArr[i].className === 'description-div') {
             expandedToDoArr[i].innerText = editedDescrption.value;
             editedDescrption.remove();
+        }
+        if (expandedToDoArr[i].className === 'date-div') {
+            if (editedDate.value === '') {
+                expandedToDoArr[i].innerText = 'no due date';
+            } else {
+                expandedToDoArr[i].innerText = editedDate.value;
+            }
+            editedDate.remove();
         }
     }
 }
@@ -123,7 +136,7 @@ function openEditor(event, a) {
         }
     }
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
-         titleEdit, descriptionEdit));
+         titleEdit, descriptionEdit, dateEdit));
 }
 
 // Helper function for display to do and create expanded to do.
@@ -229,6 +242,7 @@ function createToDo(e) {
         newListButton.style.display = 'flex';
         displayToDo(selectedList);
         createExpandedToDo(selectedList);
+        console.log(allLists[selectedList][0]);
     }
 }
 
