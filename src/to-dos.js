@@ -24,14 +24,15 @@ function preventPropagation(e) {
 }
 
 // Confirm edit.
-function confirmEdit(event, a, b, c, d, e, f) {
+function confirmEdit(event, a, b, c, d, e, f, g) {
     preventPropagation(event);
     const editedToDo = a;
     const editedTitle = b;
-    const editedDescrption = c;
+    const editedDescription = c;
     const editedDate = d;
     const editedPriority = e;
     const editedTitleLabel = f;
+    const editedDescriptionLabel = g;
     const editedID = editedTitle.id.replace('-edit', '');
     const projectArr = Array.from(projectDiv.childNodes);
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes)
@@ -67,7 +68,7 @@ function confirmEdit(event, a, b, c, d, e, f) {
     for (let i = 0; i < allLists[selectedList].length; i++) {
         if (allLists[selectedList][i].title === editedID) {
             allLists[selectedList][i].title = editedTitle.value;
-            allLists[selectedList][i].description = editedDescrption.value.
+            allLists[selectedList][i].description = editedDescription.value.
             replaceAll('\n', ' ');
             allLists[selectedList][i].dueDate = editedDate.value;
             allLists[selectedList][i].priority = editedPriority.checked;
@@ -86,12 +87,13 @@ function confirmEdit(event, a, b, c, d, e, f) {
             editedTitle.remove();
         }
         if (expandedToDoArr[i].className === 'description-div') {
-            if (editedDescrption.value === '') {
+            if (editedDescription.value === '') {
                 expandedToDoArr[i].innerText = 'no description';
             } else {
-                expandedToDoArr[i].innerText = editedDescrption.value;
+                expandedToDoArr[i].innerText = editedDescription.value;
             }
-            editedDescrption.remove();
+            editedDescriptionLabel.remove();
+            editedDescription.remove();
         }
         if (expandedToDoArr[i].className === 'date-div') {
             if (editedDate.value === '') {
@@ -118,6 +120,7 @@ function openEditor(event, a) {
     const toDoEdit = a;
     const titleEditLabel = document.createElement('div');
     const titleEdit = document.createElement('input');
+    const descriptionEditLabel = document.createElement('div');
     const descriptionEdit = document.createElement('textarea');
     const dateEdit = document.createElement('input');
     const priorityEdit = document.createElement('input');
@@ -157,6 +160,9 @@ function openEditor(event, a) {
             descriptionEdit.id = `${toDoEdit.id.replace('-expanded', '')}-description-edit`.
             replaceAll(' ', '-');
             toDoArr[i].innerText = '';
+            descriptionEditLabel.id = `${descriptionEdit.id}-label`;
+            descriptionEditLabel.innerText = 'description';
+            toDoArr[i].appendChild(descriptionEditLabel);
             toDoArr[i].appendChild(descriptionEdit);
         }
         if (toDoArr[i].className === 'date-div') {
@@ -181,7 +187,8 @@ function openEditor(event, a) {
         }
     }
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
-         titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel));
+         titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel, 
+         descriptionEdit));
 }
 
 // Helper function for display to do and create expanded to do.
