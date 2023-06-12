@@ -24,7 +24,7 @@ function preventPropagation(e) {
 }
 
 // Confirm edit.
-function confirmEdit(event, a, b, c, d, e, f, g) {
+function confirmEdit(event, a, b, c, d, e, f, g, h) {
     preventPropagation(event);
     const editedToDo = a;
     const editedTitle = b;
@@ -33,6 +33,7 @@ function confirmEdit(event, a, b, c, d, e, f, g) {
     const editedPriority = e;
     const editedTitleLabel = f;
     const editedDescriptionLabel = g;
+    const editedPriorityLabel = h;
     const editedID = editedTitle.id.replace('-edit', '');
     const projectArr = Array.from(projectDiv.childNodes);
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes)
@@ -109,7 +110,8 @@ function confirmEdit(event, a, b, c, d, e, f, g) {
             } else {
                 expandedToDoArr[i].innerText = '';
             }
-            editedDate.remove();
+            editedPriority.remove();
+            editedPriorityLabel.remove();
         }
     }
 }
@@ -124,6 +126,7 @@ function openEditor(event, a) {
     const descriptionEdit = document.createElement('textarea');
     const dateEdit = document.createElement('input');
     const priorityEdit = document.createElement('input');
+    const priorityEditLabel = document.createElement('div');
     const doneButton = document.createElement('button');
     titleEdit.type = 'text';
     descriptionEdit.style.resize = 'none';
@@ -182,13 +185,18 @@ function openEditor(event, a) {
             priorityEdit.addEventListener('click', preventPropagation);
             priorityEdit.id = `${toDoEdit.id.replace('-expanded', '')}-priority-edit`.
             replaceAll(' ', '-');
+            toDoArr[i].style.display = 'flex';
+            toDoArr[i].style.gap = '5px';
             toDoArr[i].innerText = '';
+            priorityEditLabel.id = `${priorityEdit.id}-label`;
+            priorityEditLabel.innerText = 'important';
             toDoArr[i].appendChild(priorityEdit);
+            toDoArr[i].appendChild(priorityEditLabel);
         }
     }
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
          titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel, 
-         descriptionEditLabel));
+         descriptionEditLabel, priorityEditLabel));
 }
 
 // Helper function for display to do and create expanded to do.
