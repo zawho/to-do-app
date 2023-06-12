@@ -101,12 +101,14 @@ function openEditor(event, a) {
     const titleEdit = document.createElement('input');
     const descriptionEdit = document.createElement('textarea');
     const dateEdit = document.createElement('input');
+    const priorityEdit = document.createElement('input');
     const doneButton = document.createElement('button');
     titleEdit.type = 'text';
     descriptionEdit.style.resize = 'none';
     descriptionEdit.cols = '20';
     descriptionEdit.rows = '5';
     dateEdit.type = 'date';
+    priorityEdit.type = 'checkbox';
     doneButton.className = 'done-button';
     doneButton.innerText = 'done';
     doneButton.style.alignSelf = 'flex-end';
@@ -145,9 +147,19 @@ function openEditor(event, a) {
             toDoArr[i].innerText = '';
             toDoArr[i].appendChild(dateEdit);
         }
+        if (toDoArr[i].className === 'priority-div') {
+            if (toDoArr[i].innerText === 'important') {
+                priorityEdit.checked = true;
+            }
+            priorityEdit.addEventListener('click', preventPropagation);
+            priorityEdit.id = `${toDoEdit.id.replace('-expanded', '')}-priority-edit`.
+            replaceAll(' ', '-');
+            toDoArr[i].innerText = '';
+            toDoArr[i].appendChild(priorityEdit);
+        }
     }
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
-         titleEdit, descriptionEdit, dateEdit));
+         titleEdit, descriptionEdit, dateEdit, priorityEdit));
 }
 
 // Helper function for display to do and create expanded to do.
@@ -180,8 +192,10 @@ function helpToDo(listVar, a, b, c, d, e) {
         toDoVar.appendChild(dueDateVar);
         if (priorityInput.checked) {
             priorityVar.innerText = 'important';
-            toDoVar.appendChild(priorityVar);
+        } else {
+            priorityVar.innerText = '';
         }
+        toDoVar.appendChild(priorityVar);
         toDoVar.addEventListener('click', expandToDo);
     }
 }

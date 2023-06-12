@@ -15,6 +15,10 @@
     resize: none;
 }
 
+input[type=checkbox] {
+    margin: 0px;
+}
+
 .list-button-div {
     display: flex;
     gap: 10px;
