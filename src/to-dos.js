@@ -48,7 +48,11 @@ function confirmEdit(event, a, b, c, d) {
             toDoArr[i].innerText = editedTitle.value;
         }
         if (toDoArr[i].className === 'date-div') {
-            toDoArr[i].innerText = editedDate.value;
+            if (editedDate.value === '') {
+                toDoArr[i].innerText = 'no due date';
+            } else {
+                toDoArr[i].innerText = editedDate.value;
+            }
         }
     }
     for (let i = 0; i < allLists[selectedList].length; i++) {
@@ -72,7 +76,11 @@ function confirmEdit(event, a, b, c, d) {
             editedTitle.remove();
         }
         if (expandedToDoArr[i].className === 'description-div') {
-            expandedToDoArr[i].innerText = editedDescrption.value;
+            if (editedDescrption.value === '') {
+                expandedToDoArr[i].innerText = 'no description';
+            } else {
+                expandedToDoArr[i].innerText = editedDescrption.value;
+            }
             editedDescrption.remove();
         }
         if (expandedToDoArr[i].className === 'date-div') {
