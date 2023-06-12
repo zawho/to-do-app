@@ -79,6 +79,9 @@ function confirmEdit(event, a, b, c, d, e, f, g, h) {
         if (expandedToDoArr[i].className === 'done-button') {
             expandedToDoArr[i].remove();
         }
+        if (expandedToDoArr[i].className === 'cancel-edit-button') {
+            expandedToDoArr[i].remove();
+        }
         if (expandedToDoArr[i].className === 'edit-button') {
             expandedToDoArr[i].style.display = 'flex';
         }
