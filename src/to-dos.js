@@ -136,6 +136,9 @@ function openEditor(event, a) {
             toDoArr[i].appendChild(descriptionEdit);
         }
         if (toDoArr[i].className === 'date-div') {
+            if (!(toDoArr[i].innerText === 'no due date')) {
+                dateEdit.value = toDoArr[i].innerText;
+            }
             dateEdit.addEventListener('click', preventPropagation);
             dateEdit.id = `${toDoEdit.id.replace('-expanded', '')}-date-edit`.
             replaceAll(' ', '-');
