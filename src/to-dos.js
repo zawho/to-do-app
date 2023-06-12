@@ -116,6 +116,11 @@ function confirmEdit(event, a, b, c, d, e, f, g, h) {
     }
 }
 
+// Cancel edit and close editor.
+function cancelEdit(event) {
+    preventPropagation(event);
+}
+
 // Open to do editor.
 function openEditor(event, a) {
     preventPropagation(event);
@@ -128,6 +133,7 @@ function openEditor(event, a) {
     const priorityEdit = document.createElement('input');
     const priorityEditLabel = document.createElement('div');
     const doneButton = document.createElement('button');
+    const cancelEditButton = document.createElement('button');
     titleEdit.type = 'text';
     descriptionEdit.style.resize = 'none';
     descriptionEdit.cols = '20';
@@ -137,7 +143,11 @@ function openEditor(event, a) {
     doneButton.className = 'done-button';
     doneButton.innerText = 'done';
     doneButton.style.alignSelf = 'flex-end';
+    cancelEditButton.className = 'cancel-edit-button';
+    cancelEditButton.innerText = 'cancel';
+    cancelEditButton.style.alignSelf = 'flex-end';
     toDoEdit.appendChild(doneButton);
+    toDoEdit.appendChild(cancelEditButton);
     const toDoArr = Array.from(toDoEdit.childNodes);
     for (let i = 0; i < toDoArr.length; i++) {
         if (toDoArr[i].className === 'edit-button') {
@@ -197,6 +207,7 @@ function openEditor(event, a) {
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
          titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel, 
          descriptionEditLabel, priorityEditLabel));
+    cancelEditButton.addEventListener('click', (eventThree) => cancelEdit(eventThree));
 }
 
 // Helper function for display to do and create expanded to do.
