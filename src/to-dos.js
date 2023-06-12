@@ -79,11 +79,13 @@ function openEditor(event, a) {
     const toDoEdit = a;
     const titleEdit = document.createElement('input');
     const descriptionEdit = document.createElement('textarea');
+    const dateEdit = document.createElement('input');
     const doneButton = document.createElement('button');
     titleEdit.type = 'text';
     descriptionEdit.style.resize = 'none';
     descriptionEdit.cols = '20';
     descriptionEdit.rows = '5';
+    dateEdit.type = 'date';
     doneButton.className = 'done-button';
     doneButton.innerText = 'done';
     doneButton.style.alignSelf = 'flex-end';
@@ -111,6 +113,13 @@ function openEditor(event, a) {
             replaceAll(' ', '-');
             toDoArr[i].innerText = '';
             toDoArr[i].appendChild(descriptionEdit);
+        }
+        if (toDoArr[i].className === 'date-div') {
+            dateEdit.addEventListener('click', preventPropagation);
+            dateEdit.id = `${toDoEdit.id.replace('-expanded', '')}-date-edit`.
+            replaceAll(' ', '-');
+            toDoArr[i].innerText = '';
+            toDoArr[i].appendChild(dateEdit);
         }
     }
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
