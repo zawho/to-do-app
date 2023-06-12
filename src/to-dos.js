@@ -188,7 +188,7 @@ function openEditor(event, a) {
     }
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
          titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel, 
-         descriptionEdit));
+         descriptionEditLabel));
 }
 
 // Helper function for display to do and create expanded to do.
