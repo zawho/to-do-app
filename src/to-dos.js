@@ -130,7 +130,14 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
     const editedTitleLabel = f;
     const editedDescriptionLabel = g;
     const editedPriorityLabel = h;
+    const toDoArr = Array.from(editedToDo.previousSibling.childNodes);
+    let toDoTitle;
     const expandedToDoArr = Array.from(editedToDo.childNodes);
+    for (let i = 0; i < toDoArr.length; i++) {
+        if (toDoArr[i].className === 'title-div') {
+            toDoTitle = toDoArr[i].innerText;
+        }
+    }
     for (let i = 0; i < expandedToDoArr.length; i++) {
         if (expandedToDoArr[i].className === 'done-button') {
             expandedToDoArr[i].remove();
@@ -142,6 +149,7 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
             expandedToDoArr[i].style.display = 'flex';
         }
         if (expandedToDoArr[i].className === 'title-div') {
+            expandedToDoArr[i].innerText = toDoTitle;
             editedTitleLabel.remove();
             editedTitle.remove();
         }
