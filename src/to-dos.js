@@ -130,15 +130,7 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
     const editedTitleLabel = f;
     const editedDescriptionLabel = g;
     const editedPriorityLabel = h;
-    const selectedList = checkForList();
-    const toDoArr = Array.from(editedToDo.previousSibling.childNodes);
     const expandedToDoArr = Array.from(editedToDo.childNodes);
-    for (let i = 0; i < allLists[selectedList].length; i++) {
-        //
-    }
-    for (let i = 0; i < toDoArr.length; i++) {
-        //
-    }
     for (let i = 0; i < expandedToDoArr.length; i++) {
         if (expandedToDoArr[i].className === 'done-button') {
             expandedToDoArr[i].remove();
@@ -148,6 +140,21 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
         }
         if (expandedToDoArr[i].className === 'edit-button') {
             expandedToDoArr[i].style.display = 'flex';
+        }
+        if (expandedToDoArr[i].className === 'title-div') {
+            editedTitleLabel.remove();
+            editedTitle.remove();
+        }
+        if (expandedToDoArr[i].className === 'description-div') {
+            editedDescriptionLabel.remove();
+            editedDescription.remove();
+        }
+        if (expandedToDoArr[i].className === 'date-div') {
+            editedDate.remove();
+        }
+        if (expandedToDoArr[i].className === 'priority-div') {
+            editedPriority.remove();
+            editedPriorityLabel.remove();
         }
     }
 }
