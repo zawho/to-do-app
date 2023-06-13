@@ -60,6 +60,13 @@ function confirmEdit(event, a, b, c, d, e, f, g, h) {
         if (toDoArr[i].className === 'title-div') {
             toDoArr[i].innerText = editedTitle.value;
         }
+        if (toDoArr[i].className === 'description-div') {
+            if (editedDescription.value === '') {
+                toDoArr[i].innerText = 'no description';
+            } else {
+                toDoArr[i].innerText = editedDescription.value;
+            }
+        }
         if (toDoArr[i].className === 'date-div') {
             if (editedDate.value === '') {
                 toDoArr[i].innerText = 'no due date';
@@ -132,10 +139,14 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
     const editedPriorityLabel = h;
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes);
     let toDoTitle;
+    let toDoDescription;
     const expandedToDoArr = Array.from(editedToDo.childNodes);
     for (let i = 0; i < toDoArr.length; i++) {
         if (toDoArr[i].className === 'title-div') {
             toDoTitle = toDoArr[i].innerText;
+        }
+        if (toDoArr[i].className === 'description-div') {
+            toDoDescription = toDoArr[i].innerText;
         }
     }
     for (let i = 0; i < expandedToDoArr.length; i++) {
@@ -154,6 +165,7 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
             editedTitle.remove();
         }
         if (expandedToDoArr[i].className === 'description-div') {
+            expandedToDoArr[i].innerText = toDoDescription;
             editedDescriptionLabel.remove();
             editedDescription.remove();
         }
