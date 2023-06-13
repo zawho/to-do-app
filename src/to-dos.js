@@ -140,6 +140,7 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes);
     let toDoTitle;
     let toDoDescription;
+    let toDoDate;
     const expandedToDoArr = Array.from(editedToDo.childNodes);
     for (let i = 0; i < toDoArr.length; i++) {
         if (toDoArr[i].className === 'title-div') {
@@ -147,6 +148,9 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
         }
         if (toDoArr[i].className === 'description-div') {
             toDoDescription = toDoArr[i].innerText;
+        }
+        if (toDoArr[i].className === 'date-div') {
+            toDoDate = toDoArr[i].textContent;
         }
     }
     for (let i = 0; i < expandedToDoArr.length; i++) {
@@ -170,6 +174,7 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
             editedDescription.remove();
         }
         if (expandedToDoArr[i].className === 'date-div') {
+            expandedToDoArr[i].innerText = toDoDate;
             editedDate.remove();
         }
         if (expandedToDoArr[i].className === 'priority-div') {
