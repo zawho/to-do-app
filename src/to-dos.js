@@ -35,10 +35,19 @@ function confirmEdit(event, a, b, c, d, e, f, g, h) {
     const editedDescriptionLabel = g;
     const editedPriorityLabel = h;
     const editedID = editedTitle.id.replace('-edit', '');
-    const projectArr = Array.from(projectDiv.childNodes);
-    const toDoArr = Array.from(editedToDo.previousSibling.childNodes)
-    const expandedToDoArr = Array.from(editedToDo.childNodes);
     const selectedList = checkForList();
+    const projectArr = Array.from(projectDiv.childNodes);
+    const toDoArr = Array.from(editedToDo.previousSibling.childNodes);
+    const expandedToDoArr = Array.from(editedToDo.childNodes);
+    for (let i = 0; i < allLists[selectedList].length; i++) {
+        if (allLists[selectedList][i].title === editedID) {
+            allLists[selectedList][i].title = editedTitle.value;
+            allLists[selectedList][i].description = editedDescription.value.
+            replaceAll('\n', ' ');
+            allLists[selectedList][i].dueDate = editedDate.value;
+            allLists[selectedList][i].priority = editedPriority.checked;
+        }
+    }
     for (let i = 0; i < projectArr.length; i++) {
         if (projectArr[i].id === editedID) {
             projectArr[i].id = editedTitle.value;
@@ -64,15 +73,6 @@ function confirmEdit(event, a, b, c, d, e, f, g, h) {
             } else {
                 toDoArr[i].innerText = '';
             }
-        }
-    }
-    for (let i = 0; i < allLists[selectedList].length; i++) {
-        if (allLists[selectedList][i].title === editedID) {
-            allLists[selectedList][i].title = editedTitle.value;
-            allLists[selectedList][i].description = editedDescription.value.
-            replaceAll('\n', ' ');
-            allLists[selectedList][i].dueDate = editedDate.value;
-            allLists[selectedList][i].priority = editedPriority.checked;
         }
     }
     for (let i = 0; i < expandedToDoArr.length; i++) {
@@ -120,8 +120,36 @@ function confirmEdit(event, a, b, c, d, e, f, g, h) {
 }
 
 // Cancel edit and close editor.
-function cancelEdit(event) {
+function cancelEdit(event, a, b, c, d, e, f, g, h) {
     preventPropagation(event);
+    const editedToDo = a;
+    const editedTitle = b;
+    const editedDescription = c;
+    const editedDate = d;
+    const editedPriority = e;
+    const editedTitleLabel = f;
+    const editedDescriptionLabel = g;
+    const editedPriorityLabel = h;
+    const selectedList = checkForList();
+    const toDoArr = Array.from(editedToDo.previousSibling.childNodes);
+    const expandedToDoArr = Array.from(editedToDo.childNodes);
+    for (let i = 0; i < allLists[selectedList].length; i++) {
+        //
+    }
+    for (let i = 0; i < toDoArr.length; i++) {
+        //
+    }
+    for (let i = 0; i < expandedToDoArr.length; i++) {
+        if (expandedToDoArr[i].className === 'done-button') {
+            expandedToDoArr[i].remove();
+        }
+        if (expandedToDoArr[i].className === 'cancel-edit-button') {
+            expandedToDoArr[i].remove();
+        }
+        if (expandedToDoArr[i].className === 'edit-button') {
+            expandedToDoArr[i].style.display = 'flex';
+        }
+    }
 }
 
 // Open to do editor.
@@ -210,7 +238,9 @@ function openEditor(event, a) {
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
          titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel, 
          descriptionEditLabel, priorityEditLabel));
-    cancelEditButton.addEventListener('click', (eventThree) => cancelEdit(eventThree));
+    cancelEditButton.addEventListener('click', (eventThree) => cancelEdit(eventThree, toDoEdit,
+        titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel, 
+        descriptionEditLabel, priorityEditLabel));
 }
 
 // Helper function for display to do and create expanded to do.
