@@ -68,7 +68,8 @@ function test() {
     let z;
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     for (let i = 0; i < listButtonArr.length; i++) {
-        if (listButtonArr[i].style.border === '2px solid red') {
+        const listStyles = window.getComputedStyle(listButtonArr[i]);
+        if (listStyles.border === '2px solid rgb(255, 0, 0)') {
             z = listButtonArr[i].className.replaceAll('-', ' ');
         }
     }
