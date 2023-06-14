@@ -1,6 +1,6 @@
 import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput, 
     dueDateInput, priorityInput, listMenu, projectDiv } from "./ui";
-import { allLists, checkForList } from "./lists";
+import { allLists, checkListMenu } from "./lists";
 
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
@@ -35,7 +35,7 @@ function confirmEdit(event, a, b, c, d, e, f, g, h) {
     const editedDescriptionLabel = g;
     const editedPriorityLabel = h;
     const editedID = editedTitle.id.replace('-edit', '');
-    const selectedList = checkForList();
+    const selectedList = checkListMenu();
     const projectArr = Array.from(projectDiv.childNodes);
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes);
     const expandedToDoArr = Array.from(editedToDo.childNodes);
@@ -395,7 +395,7 @@ function displayToDo(currentList) {
 function createToDo(e) {
     if (!(titleInput.value === '')) {
         e.preventDefault();
-        const selectedList = checkForList();
+        const selectedList = checkListMenu();
         allLists[selectedList].push(toDo(titleInput.value, 
             descriptionInput.value.replaceAll('\n', ' '), 
             dueDateInput.value, 

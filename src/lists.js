@@ -52,7 +52,7 @@ function createList(e) {
 }
 
 // Check for list name from array and menu.
-function checkForList() {
+function checkListMenu() {
     const keys = Object.keys(allLists);
     let y = '';
     keys.forEach(x => {
@@ -63,8 +63,8 @@ function checkForList() {
     return y;
 }
 
-// test.
-function test() {
+// Check for currently selected list from list button array.
+function checkCurrentList() {
     let z;
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     for (let i = 0; i < listButtonArr.length; i++) {
@@ -77,4 +77,4 @@ function test() {
     return z;
 }
 
-export { allLists, createList, checkForList, displayList, test };
+export { allLists, createList, checkListMenu, displayList, checkCurrentList };
