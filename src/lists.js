@@ -63,4 +63,17 @@ function checkForList() {
     return y;
 }
 
-export { allLists, createList, checkForList, displayList };
+// test.
+function test() {
+    let z;
+    const listButtonArr = Array.from(listButtonDiv.childNodes);
+    for (let i = 0; i < listButtonArr.length; i++) {
+        if (listButtonArr[i].style.border === '2px solid red') {
+            z = listButtonArr[i].className.replaceAll('-', ' ');
+        }
+    }
+    console.log(z);
+    return z;
+}
+
+export { allLists, createList, checkForList, displayList, test };
