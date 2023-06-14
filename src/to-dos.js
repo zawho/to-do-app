@@ -92,6 +92,9 @@ function confirmEdit(event, a, b, c, d, e, f, g, h) {
         if (expandedToDoArr[i].className === 'edit-button') {
             expandedToDoArr[i].style.display = 'flex';
         }
+        if (expandedToDoArr[i].className === 'delete-button') {
+            expandedToDoArr[i].style.display = 'flex';
+        }
         if (expandedToDoArr[i].className === 'title-div') {
             expandedToDoArr[i].innerText = editedTitle.value;
             editedTitleLabel.remove();
@@ -167,6 +170,9 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
         if (expandedToDoArr[i].className === 'edit-button') {
             expandedToDoArr[i].style.display = 'flex';
         }
+        if (expandedToDoArr[i].className === 'delete-button') {
+            expandedToDoArr[i].style.display = 'flex';
+        }
         if (expandedToDoArr[i].className === 'title-div') {
             expandedToDoArr[i].innerText = toDoTitle;
             editedTitleLabel.remove();
@@ -219,6 +225,9 @@ function openEditor(event, a) {
     const toDoArr = Array.from(toDoEdit.childNodes);
     for (let i = 0; i < toDoArr.length; i++) {
         if (toDoArr[i].className === 'edit-button') {
+            toDoArr[i].style.display = 'none';
+        }
+        if (toDoArr[i].className === 'delete-button') {
             toDoArr[i].style.display = 'none';
         }
         if (toDoArr[i].className === 'title-div') {
@@ -341,7 +350,7 @@ function createExpandedToDo(currentList) {
     editButton.className = 'edit-button';
     editButton.style.alignSelf = 'flex-end';
     deleteButton.innerText = 'delete';
-    deleteButton.classname = 'delete-button';
+    deleteButton.className = 'delete-button';
     deleteButton.style.alignSelf = 'flex-end';
     expandedToDoDiv.style.display = 'none';
     for (let i = 0; i < allLists[currentList].length; i++) {
