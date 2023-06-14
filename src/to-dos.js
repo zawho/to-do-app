@@ -326,6 +326,7 @@ function createExpandedToDo(currentList) {
     const expandedDueDate = document.createElement('div');
     const expandedPriority = document.createElement('div');
     const editButton = document.createElement('button');
+    const deleteButton = document.createElement('button');
     expandedToDoDiv.className = `${listMenu.value}-expanded`.replaceAll(' ', '-');
     expandedToDoDiv.style.display = 'flex';
     expandedToDoDiv.style.flexDirection = 'column';
@@ -334,6 +335,9 @@ function createExpandedToDo(currentList) {
     editButton.innerText = 'edit';
     editButton.className = 'edit-button';
     editButton.style.alignSelf = 'flex-end';
+    deleteButton.innerText = 'delete';
+    deleteButton.classname = 'delete-button';
+    deleteButton.style.alignSelf = 'flex-end';
     expandedToDoDiv.style.display = 'none';
     for (let i = 0; i < allLists[currentList].length; i++) {
         expandedToDoDiv.id = `${allLists[currentList][allLists[currentList].length - 1]
@@ -342,6 +346,7 @@ function createExpandedToDo(currentList) {
     helpToDo(currentList, expandedToDoDiv, expandedTitle, expandedDueDate, expandedPriority, 
         expandedDescription);
     expandedToDoDiv.appendChild(editButton);
+    expandedToDoDiv.appendChild(deleteButton);
     editButton.addEventListener('click', (event) => openEditor(event, expandedToDoDiv));
 }
 
@@ -385,6 +390,7 @@ function createToDo(e) {
         newListButton.style.display = 'flex';
         displayToDo(selectedList);
         createExpandedToDo(selectedList);
+        console.log(allLists[selectedList]);
     }
 }
 
