@@ -318,6 +318,11 @@ function helpToDo(listVar, a, b, c, d, e) {
     }
 }
 
+// Delete to do.
+function deleteToDo(event) {
+    preventPropagation(event);
+}
+
 // Create expanded to do.
 function createExpandedToDo(currentList) {
     const expandedToDoDiv = document.createElement('div');
@@ -348,6 +353,7 @@ function createExpandedToDo(currentList) {
     expandedToDoDiv.appendChild(editButton);
     expandedToDoDiv.appendChild(deleteButton);
     editButton.addEventListener('click', (event) => openEditor(event, expandedToDoDiv));
+    deleteButton.addEventListener('click', deleteToDo);
 }
 
 // Display to do.
