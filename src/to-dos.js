@@ -330,6 +330,11 @@ function helpToDo(listVar, a, b, c, d, e) {
 // Delete to do.
 function deleteToDo(event) {
     preventPropagation(event);
+    const currentList = checkCurrentList();
+    const currentToDo = this.parentNode;
+    currentToDo.previousSibling.remove();
+    currentToDo.remove();
+    console.log(allLists[currentList]);
 }
 
 // Create expanded to do.
