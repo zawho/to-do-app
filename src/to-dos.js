@@ -1,6 +1,6 @@
 import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput, 
     dueDateInput, priorityInput, listMenu, projectDiv } from "./ui";
-import { allLists, checkListMenu } from "./lists";
+import { allLists, checkListMenu, checkCurrentList } from "./lists";
 
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
@@ -35,17 +35,17 @@ function confirmEdit(event, a, b, c, d, e, f, g, h) {
     const editedDescriptionLabel = g;
     const editedPriorityLabel = h;
     const editedID = editedTitle.id.replace('-edit', '');
-    const selectedList = checkListMenu();
+    const currentList = checkCurrentList();
     const projectArr = Array.from(projectDiv.childNodes);
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes);
     const expandedToDoArr = Array.from(editedToDo.childNodes);
-    for (let i = 0; i < allLists[selectedList].length; i++) {
-        if (allLists[selectedList][i].title === editedID) {
-            allLists[selectedList][i].title = editedTitle.value;
-            allLists[selectedList][i].description = editedDescription.value.
+    for (let i = 0; i < allLists[currentList].length; i++) {
+        if (allLists[currentList][i].title === editedID) {
+            allLists[currentList][i].title = editedTitle.value;
+            allLists[currentList][i].description = editedDescription.value.
             replaceAll('\n', ' ');
-            allLists[selectedList][i].dueDate = editedDate.value;
-            allLists[selectedList][i].priority = editedPriority.checked;
+            allLists[currentList][i].dueDate = editedDate.value;
+            allLists[currentList][i].priority = editedPriority.checked;
         }
     }
     for (let i = 0; i < projectArr.length; i++) {
@@ -405,7 +405,6 @@ function createToDo(e) {
         newListButton.style.display = 'flex';
         displayToDo(selectedList);
         createExpandedToDo(selectedList);
-        console.log(allLists[selectedList]);
     }
 }
 

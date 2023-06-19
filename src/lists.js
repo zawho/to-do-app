@@ -73,7 +73,6 @@ function checkCurrentList() {
             currentList = listButtonArr[i].className.replaceAll('-', ' ');
         }
     }
-    console.log(currentList);
     return currentList;
 }
 
