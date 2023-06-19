@@ -54,27 +54,27 @@ function createList(e) {
 // Check for list name from array and menu.
 function checkListMenu() {
     const keys = Object.keys(allLists);
-    let y = '';
+    let selectedList = '';
     keys.forEach(x => {
         if (x === listMenu.value) {
-            y = x;
+            selectedList = x;
         }
     });
-    return y;
+    return selectedList;
 }
 
 // Check for currently selected list from list button array.
 function checkCurrentList() {
-    let z;
+    let currentList;
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     for (let i = 0; i < listButtonArr.length; i++) {
         const listStyles = window.getComputedStyle(listButtonArr[i]);
         if (listStyles.border === '2px solid rgb(255, 0, 0)') {
-            z = listButtonArr[i].className.replaceAll('-', ' ');
+            currentList = listButtonArr[i].className.replaceAll('-', ' ');
         }
     }
-    console.log(z);
-    return z;
+    console.log(currentList);
+    return currentList;
 }
 
 export { allLists, createList, checkListMenu, displayList, checkCurrentList };
