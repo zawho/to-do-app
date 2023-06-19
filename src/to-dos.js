@@ -332,9 +332,14 @@ function deleteToDo(event) {
     preventPropagation(event);
     const currentList = checkCurrentList();
     const currentToDo = this.parentNode;
+    const currentToDoID = this.parentNode.id.replace('-expanded', '').replaceAll('-', ' ');
+    for (let i = 0; i < allLists[currentList].length; i++) {
+        if (allLists[currentList][i].title === currentToDoID) {
+            allLists[currentList].splice(i, 1);
+        }
+    }
     currentToDo.previousSibling.remove();
     currentToDo.remove();
-    console.log(allLists[currentList]);
 }
 
 // Create expanded to do.
