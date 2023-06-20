@@ -196,7 +196,7 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
 }
 
 // test.
-function setSelectedList(listMenuVar) {
+function displaySelectedList(listMenuVar) {
     const currentList = checkCurrentList();
     const listMenuArr = Array.from(listMenuVar);
     for (let i = 0; i < listMenuArr.length; i++) {
@@ -297,7 +297,7 @@ function openEditor(event, a) {
             toDoArr[i].appendChild(priorityEditLabel);
         }
     }
-    setSelectedList(listMenuEdit);
+    displaySelectedList(listMenuEdit);
     listMenuEdit.addEventListener('click', preventPropagation);
     listEditDiv.appendChild(listEditLabel);
     listEditDiv.appendChild(listMenuEdit);
