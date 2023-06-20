@@ -206,6 +206,9 @@ function openEditor(event, a) {
     const dateEdit = document.createElement('input');
     const priorityEdit = document.createElement('input');
     const priorityEditLabel = document.createElement('div');
+    const listEditDiv = document.createElement('div');
+    const listEditLabel = document.createElement('div');
+    const listMenuEdit = listMenu.cloneNode(true);
     const doneButton = document.createElement('button');
     const cancelEditButton = document.createElement('button');
     titleEdit.type = 'text';
@@ -214,14 +217,15 @@ function openEditor(event, a) {
     descriptionEdit.rows = '5';
     dateEdit.type = 'date';
     priorityEdit.type = 'checkbox';
+    listEditDiv.className = 'list-edit-div';
+    listEditLabel.innerText = 'list';
+    listMenuEdit.id = 'list-select-edit';
     doneButton.className = 'done-button';
     doneButton.innerText = 'done';
     doneButton.style.alignSelf = 'flex-end';
     cancelEditButton.className = 'cancel-edit-button';
     cancelEditButton.innerText = 'cancel';
     cancelEditButton.style.alignSelf = 'flex-end';
-    toDoEdit.appendChild(doneButton);
-    toDoEdit.appendChild(cancelEditButton);
     const toDoArr = Array.from(toDoEdit.childNodes);
     for (let i = 0; i < toDoArr.length; i++) {
         if (toDoArr[i].className === 'edit-button') {
@@ -281,6 +285,12 @@ function openEditor(event, a) {
             toDoArr[i].appendChild(priorityEditLabel);
         }
     }
+    listMenuEdit.addEventListener('click', preventPropagation);
+    listEditDiv.appendChild(listEditLabel);
+    listEditDiv.appendChild(listMenuEdit);
+    toDoEdit.appendChild(listEditDiv);
+    toDoEdit.appendChild(doneButton);
+    toDoEdit.appendChild(cancelEditButton);
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
          titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel, 
          descriptionEditLabel, priorityEditLabel));
