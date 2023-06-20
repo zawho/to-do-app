@@ -41,17 +41,6 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
     const projectArr = Array.from(projectDiv.childNodes);
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes);
     const expandedToDoArr = Array.from(editedToDo.childNodes);
-    for (let i = 0; i < allLists[currentList].length; i++) {
-        if (allLists[currentList][i].title === editedID) {
-            allLists[currentList][i].title = editedTitle.value;
-            allLists[currentList][i].description = editedDescription.value.
-            replaceAll('\n', ' ');
-            allLists[currentList][i].dueDate = editedDate.value;
-            allLists[currentList][i].priority = editedPriority.checked;
-            allLists[currentList][i].list = selectedListEdit;
-        }
-    }
-    console.log(allLists[currentList][0]);
     for (let i = 0; i < projectArr.length; i++) {
         if (projectArr[i].id === editedID) {
             projectArr[i].id = editedTitle.value;
@@ -68,6 +57,21 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
            !(projectArr[i].className.replace('-expanded', '') === selectedListEdit)) {
             projectArr[i].className = `${selectedListEdit}-expanded`;
             projectArr[i].style.display = 'none';
+        }
+    }
+    for (let i = 0; i < allLists[currentList].length; i++) {
+        if (allLists[currentList][i].title === editedID) {
+            allLists[currentList][i].title = editedTitle.value;
+            allLists[currentList][i].description = editedDescription.value.
+            replaceAll('\n', ' ');
+            allLists[currentList][i].dueDate = editedDate.value;
+            allLists[currentList][i].priority = editedPriority.checked;
+            allLists[currentList][i].list = selectedListEdit;
+        }
+        if (!(allLists[currentList][i].list === currentList)) {
+            allLists[selectedListEdit].push(allLists[currentList][i]);
+            allLists[currentList].splice(i, 1);
+            console.log(allLists);
         }
     }
     for (let i = 0; i < toDoArr.length; i++) {
