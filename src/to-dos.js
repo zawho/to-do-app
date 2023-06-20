@@ -24,7 +24,7 @@ function preventPropagation(e) {
 }
 
 // Confirm edit.
-function confirmEdit(event, a, b, c, d, e, f, g, h) {
+function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
     preventPropagation(event);
     const editedToDo = a;
     const editedTitle = b;
@@ -34,6 +34,8 @@ function confirmEdit(event, a, b, c, d, e, f, g, h) {
     const editedTitleLabel = f;
     const editedDescriptionLabel = g;
     const editedPriorityLabel = h;
+    const editedList = j;
+    const selectedListEdit = checkListMenu(editedList);
     const editedID = editedTitle.id.replace('-edit', '');
     const currentList = checkCurrentList();
     const projectArr = Array.from(projectDiv.childNodes);
@@ -46,8 +48,10 @@ function confirmEdit(event, a, b, c, d, e, f, g, h) {
             replaceAll('\n', ' ');
             allLists[currentList][i].dueDate = editedDate.value;
             allLists[currentList][i].priority = editedPriority.checked;
+            allLists[currentList][i].list = selectedListEdit;
         }
     }
+    console.log(allLists[currentList][0]);
     for (let i = 0; i < projectArr.length; i++) {
         if (projectArr[i].id === editedID) {
             projectArr[i].id = editedTitle.value;
@@ -312,7 +316,7 @@ function openEditor(event, a) {
     toDoEdit.appendChild(cancelEditButton);
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
          titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel, 
-         descriptionEditLabel, priorityEditLabel));
+         descriptionEditLabel, priorityEditLabel, listMenuEdit));
     cancelEditButton.addEventListener('click', (eventThree) => cancelEdit(eventThree, toDoEdit,
         titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel, 
         descriptionEditLabel, priorityEditLabel));
@@ -434,7 +438,7 @@ function displayToDo(currentList) {
 function createToDo(e) {
     if (!(titleInput.value === '')) {
         e.preventDefault();
-        const selectedList = checkListMenu();
+        const selectedList = checkListMenu(listMenu);
         allLists[selectedList].push(toDo(titleInput.value, 
             descriptionInput.value.replaceAll('\n', ' '), 
             dueDateInput.value, 

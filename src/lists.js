@@ -52,11 +52,11 @@ function createList(e) {
 }
 
 // Check for list name from array and menu.
-function checkListMenu() {
+function checkListMenu(listMenuVar) {
     const keys = Object.keys(allLists);
     let selectedList = '';
     keys.forEach(x => {
-        if (x === listMenu.value) {
+        if (x === listMenuVar.value) {
             selectedList = x;
         }
     });
