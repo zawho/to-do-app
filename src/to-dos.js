@@ -49,12 +49,13 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
             projectArr[i].id = `${editedTitle.value}-expanded`;
         }
         if (!(projectArr[i].className.includes('-expanded')) &&
-           !(projectArr[i].className === selectedListEdit)) {
+           !(projectArr[i].className === selectedListEdit) && projectArr[i].id === editedID) {
             projectArr[i].className = selectedListEdit;
             projectArr[i].style.display = 'none';
         }
         if (projectArr[i].className.includes('-expanded') && 
-           !(projectArr[i].className.replace('-expanded', '') === selectedListEdit)) {
+           !(projectArr[i].className.replace('-expanded', '') === selectedListEdit) &&
+           projectArr[i].id === `${editedID}-expanded`) {
             projectArr[i].className = `${selectedListEdit}-expanded`;
             projectArr[i].style.display = 'none';
         }
