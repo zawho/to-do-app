@@ -126,6 +126,9 @@ function confirmEdit(event, a, b, c, d, e, f, g, h) {
             editedPriority.remove();
             editedPriorityLabel.remove();
         }
+        if (expandedToDoArr[i].className === 'list-div') {
+            expandedToDoArr[i].remove();
+        }
     }
 }
 
@@ -192,10 +195,13 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
             editedPriority.remove();
             editedPriorityLabel.remove();
         }
+        if (expandedToDoArr[i].className === 'list-div') {
+            expandedToDoArr[i].remove();
+        }
     }
 }
 
-// test.
+// Display correct list in editor list menu.
 function displaySelectedList(listMenuVar) {
     const currentList = checkCurrentList();
     const listMenuArr = Array.from(listMenuVar);
@@ -228,7 +234,7 @@ function openEditor(event, a) {
     descriptionEdit.rows = '5';
     dateEdit.type = 'date';
     priorityEdit.type = 'checkbox';
-    listEditDiv.className = 'list-edit-div';
+    listEditDiv.className = 'list-div';
     listEditLabel.innerText = 'list';
     listMenuEdit.id = `${toDoEdit.id.replace('-expanded', '')}-list-select`.
     replaceAll(' ', '-');
