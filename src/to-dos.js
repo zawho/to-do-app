@@ -195,6 +195,17 @@ function cancelEdit(event, a, b, c, d, e, f, g, h) {
     }
 }
 
+// test.
+function setSelectedList(listMenuVar) {
+    const currentList = checkCurrentList();
+    const listMenuArr = Array.from(listMenuVar);
+    for (let i = 0; i < listMenuArr.length; i++) {
+        if (listMenuArr[i].innerText === currentList) {
+            listMenuArr[i].selected = true;
+        }
+    }
+}
+
 // Open to do editor.
 function openEditor(event, a) {
     preventPropagation(event);
@@ -219,7 +230,8 @@ function openEditor(event, a) {
     priorityEdit.type = 'checkbox';
     listEditDiv.className = 'list-edit-div';
     listEditLabel.innerText = 'list';
-    listMenuEdit.id = 'list-select-edit';
+    listMenuEdit.id = `${toDoEdit.id.replace('-expanded', '')}-list-select`.
+    replaceAll(' ', '-');
     doneButton.className = 'done-button';
     doneButton.innerText = 'done';
     doneButton.style.alignSelf = 'flex-end';
@@ -285,6 +297,7 @@ function openEditor(event, a) {
             toDoArr[i].appendChild(priorityEditLabel);
         }
     }
+    setSelectedList(listMenuEdit);
     listMenuEdit.addEventListener('click', preventPropagation);
     listEditDiv.appendChild(listEditLabel);
     listEditDiv.appendChild(listMenuEdit);
