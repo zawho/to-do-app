@@ -42,12 +42,6 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes);
     const expandedToDoArr = Array.from(editedToDo.childNodes);
     for (let i = 0; i < projectArr.length; i++) {
-        if (projectArr[i].id === editedID) {
-            projectArr[i].id = editedTitle.value;
-        }
-        if (projectArr[i].id === `${editedID}-expanded`) {
-            projectArr[i].id = `${editedTitle.value}-expanded`;
-        }
         if (!(projectArr[i].className.includes('-expanded')) &&
            !(projectArr[i].className === selectedListEdit) && projectArr[i].id === editedID) {
             projectArr[i].className = selectedListEdit;
@@ -58,6 +52,12 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
            projectArr[i].id === `${editedID}-expanded`) {
             projectArr[i].className = `${selectedListEdit}-expanded`;
             projectArr[i].style.display = 'none';
+        }
+        if (projectArr[i].id === editedID) {
+            projectArr[i].id = editedTitle.value;
+        }
+        if (projectArr[i].id === `${editedID}-expanded`) {
+            projectArr[i].id = `${editedTitle.value}-expanded`;
         }
     }
     for (let i = 0; i < allLists[currentList].length; i++) {
