@@ -133,7 +133,7 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
                 expandedToDoArr[i].innerText = 'no due date';
             } else {
                 expandedToDoArr[i].innerText = format(new Date(editedDate.value),
-                 'E, MMM d, yyyy');
+                 'EEEE, MMMM d, yyyy');
             }
             editedDate.remove();
         }
@@ -351,12 +351,6 @@ function helpToDo(listVar, a, b, c, d, e) {
     descriptionVar.className = 'description-div';
     for (let i = 0; i < allLists[listVar].length; i++) {
         titleVar.innerText = allLists[listVar][allLists[listVar].length - 1].title;
-        if (allLists[listVar][allLists[listVar].length - 1].dueDate === '') {
-            dueDateVar.innerText = 'no due date';
-        } else {
-            dueDateVar.innerText = format(new Date(allLists[listVar][allLists[listVar].
-            length - 1].dueDate), 'E, MMM d, yyyy');
-        }
         if (allLists[listVar][allLists[listVar].length - 1].description === '') {
             descriptionVar.innerText = 'no description';
         } else {
@@ -416,6 +410,12 @@ function createExpandedToDo(currentList) {
     for (let i = 0; i < allLists[currentList].length; i++) {
         expandedToDoDiv.id = `${allLists[currentList][allLists[currentList].length - 1]
             .title}-expanded`.replaceAll(' ', '-');
+        if (allLists[currentList][i].dueDate === '') {
+            expandedDueDate.innerText = 'no due date';
+        } else {
+                expandedDueDate.innerText = format(new Date(allLists[currentList][i].
+                    dueDate),'EEEE, MMMM d, yyyy');
+        }
     }
     helpToDo(currentList, expandedToDoDiv, expandedTitle, expandedDueDate, expandedPriority, 
         expandedDescription);
@@ -441,9 +441,13 @@ function displayToDo(currentList) {
     for (let i = 0; i < allLists[currentList].length; i++) {
         toDoDisplay.id = `${allLists[currentList][allLists[currentList].length - 1].title}`
         .replaceAll(' ', '-');
+        if (allLists[currentList][i].dueDate === '') {
+            displayDueDate.innerText = 'no due date';
+        } else {
+            displayDueDate.innerText = format(new Date(allLists[currentList][i].dueDate), 'E, MMM d, yyyy');
+        }
     }
-    helpToDo(currentList, toDoDisplay, displayTitle, displayDueDate, displayPriority, 
-        displayDescription);
+    helpToDo(currentList, toDoDisplay, displayTitle, displayDueDate, displayPriority, displayDescription);
     if (projectDiv.id === currentList) {
         toDoDisplay.style.display = 'flex';
     } else {
