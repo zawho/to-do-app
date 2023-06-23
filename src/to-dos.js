@@ -72,7 +72,6 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
         if (!(allLists[currentList][i].list === currentList)) {
             allLists[selectedListEdit].push(allLists[currentList][i]);
             allLists[currentList].splice(i, 1);
-            console.log(allLists);
         }
     }
     for (let i = 0; i < toDoArr.length; i++) {
