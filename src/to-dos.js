@@ -1,6 +1,10 @@
+import format from "date-fns/format";
 import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput, 
     dueDateInput, priorityInput, listMenu, projectDiv } from "./ui";
 import { allLists, checkListMenu, checkCurrentList } from "./lists";
+
+const test = format(new Date(2023, 5, 28), 'EEEE, MMMM do, yyyy');
+console.log(test);
 
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
