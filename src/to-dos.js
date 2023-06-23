@@ -3,9 +3,6 @@ import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput
     dueDateInput, priorityInput, listMenu, projectDiv } from "./ui";
 import { allLists, checkListMenu, checkCurrentList } from "./lists";
 
-const test = format(new Date(2023, 5, 28), 'EEEE, MMMM do, yyyy');
-console.log(test);
-
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
     title, description, dueDate, priority, list});
@@ -356,7 +353,7 @@ function helpToDo(listVar, a, b, c, d, e) {
         if (allLists[listVar][allLists[listVar].length - 1].dueDate === '') {
             dueDateVar.innerText = 'no due date';
         } else {
-            dueDateVar.innerText = allLists[listVar][allLists[listVar].length - 1].dueDate;
+            dueDateVar.innerText = format(new Date(allLists[listVar][allLists[listVar].length - 1].dueDate), 'E, MMM d, yyyy');
         }
         if (allLists[listVar][allLists[listVar].length - 1].description === '') {
             descriptionVar.innerText = 'no description';
