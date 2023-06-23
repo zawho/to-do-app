@@ -90,7 +90,7 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
             if (editedDate.value === '') {
                 toDoArr[i].innerText = 'no due date';
             } else {
-                toDoArr[i].innerText = editedDate.value;
+                toDoArr[i].innerText = format(new Date(editedDate.value), 'E, MMM d, yyyy');
             }
         }
         if (toDoArr[i].className === 'priority-div') {
@@ -132,7 +132,8 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
             if (editedDate.value === '') {
                 expandedToDoArr[i].innerText = 'no due date';
             } else {
-                expandedToDoArr[i].innerText = editedDate.value;
+                expandedToDoArr[i].innerText = format(new Date(editedDate.value),
+                 'E, MMM d, yyyy');
             }
             editedDate.remove();
         }
@@ -332,8 +333,8 @@ function openEditor(event, a) {
     doneButton.addEventListener('click', (eventTwo) => confirmEdit(eventTwo, toDoEdit,
          titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel, 
          descriptionEditLabel, priorityEditLabel, listMenuEdit));
-    cancelEditButton.addEventListener('click', (eventThree) => cancelEdit(eventThree, toDoEdit,
-        titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel, 
+    cancelEditButton.addEventListener('click', (eventThree) => cancelEdit(eventThree, 
+        toDoEdit, titleEdit, descriptionEdit, dateEdit, priorityEdit, titleEditLabel, 
         descriptionEditLabel, priorityEditLabel));
 }
 
@@ -353,7 +354,8 @@ function helpToDo(listVar, a, b, c, d, e) {
         if (allLists[listVar][allLists[listVar].length - 1].dueDate === '') {
             dueDateVar.innerText = 'no due date';
         } else {
-            dueDateVar.innerText = format(new Date(allLists[listVar][allLists[listVar].length - 1].dueDate), 'E, MMM d, yyyy');
+            dueDateVar.innerText = format(new Date(allLists[listVar][allLists[listVar].
+            length - 1].dueDate), 'E, MMM d, yyyy');
         }
         if (allLists[listVar][allLists[listVar].length - 1].description === '') {
             descriptionVar.innerText = 'no description';
