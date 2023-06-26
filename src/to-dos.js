@@ -232,6 +232,18 @@ function displaySelectedList(listMenuVar) {
     }
 }
 
+// Helper function returns due date value of selected to do object.
+function getToDoDate(toDoTitleVar) {
+    let toDoDate = '';
+    const currentList = checkCurrentList();
+    for (let i = 0; i < allLists[currentList].length; i++) {
+        if (allLists[currentList][i].title === toDoTitleVar) {
+            toDoDate = allLists[currentList][i].dueDate;
+        }
+    }
+    return toDoDate;
+}
+
 // Open to do editor.
 function openEditor(event, a) {
     preventPropagation(event);
@@ -248,6 +260,7 @@ function openEditor(event, a) {
     const listMenuEdit = listMenu.cloneNode(true);
     const doneButton = document.createElement('button');
     const cancelEditButton = document.createElement('button');
+    const toDoTitle = toDoEdit.id.replace('-expanded', '');
     titleEdit.type = 'text';
     descriptionEdit.style.resize = 'none';
     descriptionEdit.cols = '20';
@@ -299,7 +312,7 @@ function openEditor(event, a) {
         }
         if (toDoArr[i].className === 'date-div') {
             if (!(toDoArr[i].innerText === 'no due date')) {
-                dateEdit.value = toDoArr[i].innerText;
+                dateEdit.value = getToDoDate(toDoTitle);
             }
             dateEdit.addEventListener('click', preventPropagation);
             dateEdit.id = `${toDoEdit.id.replace('-expanded', '')}-date-edit`.
