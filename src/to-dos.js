@@ -38,6 +38,8 @@ function setDateDisplay(dateValue, displayType, pastVar) {
     }
     if (isPast(parsedDate) === true) {
         x.style.color = 'red';
+    } else {
+        x.style.color = 'black'; 
     }
     return dateDisplay;
 }
