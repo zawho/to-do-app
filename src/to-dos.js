@@ -1,4 +1,6 @@
 import format from 'date-fns/format';
+import isPast from 'date-fns/isPast';
+import parseISO from 'date-fns/parseISO';
 import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput, 
     dueDateInput, priorityInput, listMenu, projectDiv } from './ui';
 import { allLists, checkListMenu, checkCurrentList } from './lists';
@@ -27,10 +29,14 @@ function preventPropagation(e) {
 // Helper function sets date display for to do creation and editing.
 function setDateDisplay(dateValue, displayType) {
     let dateDisplay;
+    const parsedDate = parseISO(dateValue);
     if (displayType === 'expanded') {
         dateDisplay = format(new Date(dateValue),'EEEE, MMMM d, yyyy');
     } else if (displayType === 'display') {
         dateDisplay = format(new Date(dateValue),'E, MMM d, yyyy');
+    }
+    if (isPast(parsedDate) === true) {
+        console.log('past!');
     }
     return dateDisplay;
 }
