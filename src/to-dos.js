@@ -27,7 +27,8 @@ function preventPropagation(e) {
 }
 
 // Helper function sets date display for to do creation and editing.
-function setDateDisplay(dateValue, displayType) {
+function setDateDisplay(dateValue, displayType, pastVar) {
+    const x = pastVar;
     let dateDisplay;
     const parsedDate = parseISO(dateValue);
     if (displayType === 'expanded') {
@@ -36,7 +37,7 @@ function setDateDisplay(dateValue, displayType) {
         dateDisplay = format(new Date(dateValue),'E, MMM d, yyyy');
     }
     if (isPast(parsedDate) === true) {
-        console.log('past!');
+        x.style.color = 'red';
     }
     return dateDisplay;
 }
@@ -110,7 +111,7 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
                 toDoArr[i].innerText = 'no due date';
             } else {
                 toDoArr[i].innerText = setDateDisplay(editedDate.value, 
-                    expandedDateDisplayVar);
+                    expandedDateDisplayVar, toDoArr[i]);
             }
         }
         if (toDoArr[i].className === 'priority-div') {
@@ -153,7 +154,7 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
                 expandedToDoArr[i].innerText = 'no due date';
             } else {
                 expandedToDoArr[i].innerText = setDateDisplay(editedDate.value, 
-                    dateDisplayVar);
+                    dateDisplayVar, expandedToDoArr[i]);
             }
             editedDate.remove();
         }
@@ -448,7 +449,7 @@ function createExpandedToDo(currentList) {
             expandedDueDate.innerText = 'no due date';
         } else {
                 expandedDueDate.innerText = setDateDisplay(allLists[currentList][i].
-                    dueDate, expandedDateDisplayVar);
+                    dueDate, expandedDateDisplayVar, expandedDueDate);
         }
     }
     helpToDo(currentList, expandedToDoDiv, expandedTitle, expandedDueDate, expandedPriority, 
@@ -480,7 +481,7 @@ function displayToDo(currentList) {
             displayDueDate.innerText = 'no due date';
         } else {
             displayDueDate.innerText = setDateDisplay(allLists[currentList][i].dueDate,
-                 dateDisplayVar);
+                 dateDisplayVar, displayDueDate);
         }
     }
     helpToDo(currentList, toDoDisplay, displayTitle, displayDueDate, displayPriority,
