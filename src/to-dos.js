@@ -1,5 +1,8 @@
 import format from 'date-fns/format';
 import isPast from 'date-fns/isPast';
+import isToday from 'date-fns/isToday';
+import isTomorrow from 'date-fns/isTomorrow';
+import isYesterday from 'date-fns/isYesterday';
 import parseISO from 'date-fns/parseISO';
 import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput, 
     dueDateInput, priorityInput, listMenu, projectDiv } from './ui';
@@ -40,6 +43,15 @@ function setDateDisplay(dateValue, displayType, pastVar) {
         x.style.color = 'red';
     } else {
         x.style.color = 'black'; 
+    }
+    if (isToday(parsedDate) === true) {
+        dateDisplay = 'Today';
+    }
+    if (isTomorrow(parsedDate) === true) {
+        dateDisplay = 'Tomorrow';
+    }
+    if (isYesterday(parsedDate) === true) {
+        dateDisplay = 'Yesterday';
     }
     return dateDisplay;
 }
