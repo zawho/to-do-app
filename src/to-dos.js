@@ -24,6 +24,17 @@ function preventPropagation(e) {
     e.stopPropagation();
 }
 
+// Helper function sets date display for to do creation and editing.
+function setDateDisplay(dateValue, displayType) {
+    let dateDisplay;
+    if (displayType === 'expanded') {
+        dateDisplay = format(new Date(dateValue),'EEEE, MMMM d, yyyy');
+    } else if (displayType === 'display') {
+        dateDisplay = format(new Date(dateValue),'E, MMM d, yyyy');
+    }
+    return dateDisplay;
+}
+
 // Confirm edit.
 function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
     preventPropagation(event);
@@ -42,6 +53,8 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
     const projectArr = Array.from(projectDiv.childNodes);
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes);
     const expandedToDoArr = Array.from(editedToDo.childNodes);
+    const expandedDateDisplayVar = 'expanded';
+    const dateDisplayVar = 'display';
     for (let i = 0; i < projectArr.length; i++) {
         if (!(projectArr[i].className.includes('-expanded')) &&
            !(projectArr[i].className === selectedListEdit) && projectArr[i].id === editedID) {
@@ -90,7 +103,8 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
             if (editedDate.value === '') {
                 toDoArr[i].innerText = 'no due date';
             } else {
-                toDoArr[i].innerText = format(new Date(editedDate.value), 'E, MMM d, yyyy');
+                toDoArr[i].innerText = setDateDisplay(editedDate.value, 
+                    expandedDateDisplayVar);
             }
         }
         if (toDoArr[i].className === 'priority-div') {
@@ -132,8 +146,8 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
             if (editedDate.value === '') {
                 expandedToDoArr[i].innerText = 'no due date';
             } else {
-                expandedToDoArr[i].innerText = format(new Date(editedDate.value),
-                 'EEEE, MMMM d, yyyy');
+                expandedToDoArr[i].innerText = setDateDisplay(editedDate.value, 
+                    dateDisplayVar);
             }
             editedDate.remove();
         }
@@ -242,17 +256,6 @@ function getToDoDate(toDoTitleVar) {
         }
     }
     return toDoDate;
-}
-
-// Helper function sets date display for to do creation and editing.
-function setDateDisplay(dateValue, displayType) {
-    let dateDisplay;
-    if (displayType === 'expanded') {
-        dateDisplay = format(new Date(dateValue),'EEEE, MMMM d, yyyy');
-    } else if (displayType === 'display') {
-        dateDisplay = format(new Date(dateValue),'E, MMM d, yyyy');
-    }
-    return dateDisplay;
 }
 
 // Open to do editor.
@@ -419,7 +422,7 @@ function createExpandedToDo(currentList) {
     const expandedPriority = document.createElement('div');
     const editButton = document.createElement('button');
     const deleteButton = document.createElement('button');
-    const dateDisplayVar = 'expanded';
+    const expandedDateDisplayVar = 'expanded';
     expandedToDoDiv.className = `${listMenu.value}-expanded`.replaceAll(' ', '-');
     expandedToDoDiv.style.display = 'flex';
     expandedToDoDiv.style.flexDirection = 'column';
@@ -439,7 +442,7 @@ function createExpandedToDo(currentList) {
             expandedDueDate.innerText = 'no due date';
         } else {
                 expandedDueDate.innerText = setDateDisplay(allLists[currentList][i].
-                    dueDate, dateDisplayVar);
+                    dueDate, expandedDateDisplayVar);
         }
     }
     helpToDo(currentList, expandedToDoDiv, expandedTitle, expandedDueDate, expandedPriority, 
