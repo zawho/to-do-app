@@ -244,6 +244,17 @@ function getToDoDate(toDoTitleVar) {
     return toDoDate;
 }
 
+// Helper function sets date display for to do creation and editing.
+function setDateDisplay(dateValue, displayType) {
+    let dateDisplay;
+    if (displayType === 'expanded') {
+        dateDisplay = format(new Date(dateValue),'EEEE, MMMM d, yyyy');
+    } else if (displayType === 'display') {
+        dateDisplay = format(new Date(dateValue),'E, MMM d, yyyy');
+    }
+    return dateDisplay;
+}
+
 // Open to do editor.
 function openEditor(event, a) {
     preventPropagation(event);
@@ -408,6 +419,7 @@ function createExpandedToDo(currentList) {
     const expandedPriority = document.createElement('div');
     const editButton = document.createElement('button');
     const deleteButton = document.createElement('button');
+    const dateDisplayVar = 'expanded';
     expandedToDoDiv.className = `${listMenu.value}-expanded`.replaceAll(' ', '-');
     expandedToDoDiv.style.display = 'flex';
     expandedToDoDiv.style.flexDirection = 'column';
@@ -426,8 +438,8 @@ function createExpandedToDo(currentList) {
         if (allLists[currentList][i].dueDate === '') {
             expandedDueDate.innerText = 'no due date';
         } else {
-                expandedDueDate.innerText = format(new Date(allLists[currentList][i].
-                    dueDate),'EEEE, MMMM d, yyyy');
+                expandedDueDate.innerText = setDateDisplay(allLists[currentList][i].
+                    dueDate, dateDisplayVar);
         }
     }
     helpToDo(currentList, expandedToDoDiv, expandedTitle, expandedDueDate, expandedPriority, 
@@ -445,6 +457,7 @@ function displayToDo(currentList) {
     const displayDescription = document.createElement('div');
     const displayDueDate = document.createElement('div');
     const displayPriority = document.createElement('div');
+    const dateDisplayVar = 'display';
     toDoDisplay.className = `${listMenu.value}`.replaceAll(' ', '-');
     toDoDisplay.style.display = 'flex';
     toDoDisplay.style.justifyContent = 'space-between';
@@ -457,10 +470,12 @@ function displayToDo(currentList) {
         if (allLists[currentList][i].dueDate === '') {
             displayDueDate.innerText = 'no due date';
         } else {
-            displayDueDate.innerText = format(new Date(allLists[currentList][i].dueDate), 'E, MMM d, yyyy');
+            displayDueDate.innerText = setDateDisplay(allLists[currentList][i].dueDate,
+                 dateDisplayVar);
         }
     }
-    helpToDo(currentList, toDoDisplay, displayTitle, displayDueDate, displayPriority, displayDescription);
+    helpToDo(currentList, toDoDisplay, displayTitle, displayDueDate, displayPriority,
+         displayDescription);
     if (projectDiv.id === currentList) {
         toDoDisplay.style.display = 'flex';
     } else {
