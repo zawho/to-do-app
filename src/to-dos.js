@@ -1,7 +1,7 @@
-import format from "date-fns/format";
+import format from 'date-fns/format';
 import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput, 
-    dueDateInput, priorityInput, listMenu, projectDiv } from "./ui";
-import { allLists, checkListMenu, checkCurrentList } from "./lists";
+    dueDateInput, priorityInput, listMenu, projectDiv } from './ui';
+import { allLists, checkListMenu, checkCurrentList } from './lists';
 
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({

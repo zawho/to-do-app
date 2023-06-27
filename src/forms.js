@@ -1,4 +1,4 @@
-import { newToDoButton, newListButton, newToDoForm, newListForm } from "./ui";
+import { newToDoButton, newListButton, newToDoForm, newListForm } from './ui';
 
 function openToDoForm() {
     newToDoForm.reset();

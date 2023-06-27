@@ -1,4 +1,4 @@
-import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, projectDiv } from "./ui";
+import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, projectDiv } from './ui';
 
 // List object.
 const allLists = {
