@@ -5,8 +5,8 @@ function savetoStorage(toDoVar, toDoName) {
 
 // Check storage.
 function checkStorage() {
-    for (let i = 0; i <= localStorage.length; i++) {
-        console.log(localStorage.getItem(localStorage.key(i)));
+    for (let i = 0; i < localStorage.length; i++) {
+        console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
     }
 }
 
@@ -14,5 +14,7 @@ function checkStorage() {
 function clearStorage() {
     localStorage.clear();
 }
+
+// clearStorage();
 
 export { savetoStorage, checkStorage };
