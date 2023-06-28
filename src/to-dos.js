@@ -522,7 +522,7 @@ function createToDo(e) {
         newListButton.style.display = 'flex';
         displayToDo(selectedList);
         createExpandedToDo(selectedList);
-        savetoStorage(allLists[selectedList]);
+        savetoStorage(allLists[selectedList], selectedList);
         checkStorage();
     }
 }
