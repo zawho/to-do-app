@@ -7,6 +7,7 @@ import parseISO from 'date-fns/parseISO';
 import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput, 
     dueDateInput, priorityInput, listMenu, projectDiv } from './ui';
 import { allLists, checkListMenu, checkCurrentList } from './lists';
+import { savetoStorage, checkStorage } from './storage';
 
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
@@ -521,6 +522,8 @@ function createToDo(e) {
         newListButton.style.display = 'flex';
         displayToDo(selectedList);
         createExpandedToDo(selectedList);
+        savetoStorage(allLists[selectedList]);
+        checkStorage();
     }
 }
 
