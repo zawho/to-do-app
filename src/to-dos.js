@@ -523,7 +523,7 @@ function createToDo(e) {
         newListButton.style.display = 'flex';
         displayToDo(selectedList);
         createExpandedToDo(selectedList);
-        savetoStorage(newToDo, selectedList, titleInput.value);
+        savetoStorage(newToDo, selectedList, allLists[selectedList].length - 1);
         checkStorage();
     }
 }
