@@ -1,6 +1,6 @@
 // Save to dos to local storage.
-function savetoStorage(toDoVar, toDoName) {
-    localStorage.setItem(`${toDoName}ToDo`, JSON.stringify(toDoVar));
+function savetoStorage(toDoVar, listName, toDoName) {
+    localStorage.setItem(`${listName}-${toDoName}`, JSON.stringify(toDoVar));
 }
 
 // Check storage.
@@ -15,6 +15,6 @@ function clearStorage() {
     localStorage.clear();
 }
 
-// clearStorage();
+clearStorage();
 
 export { savetoStorage, checkStorage };

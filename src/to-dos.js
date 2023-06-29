@@ -513,16 +513,17 @@ function createToDo(e) {
     if (!(titleInput.value === '')) {
         e.preventDefault();
         const selectedList = checkListMenu(listMenu);
-        allLists[selectedList].push(toDo(titleInput.value, 
+        const newToDo = toDo(titleInput.value, 
             descriptionInput.value.replaceAll('\n', ' '), 
             dueDateInput.value, 
-            priorityInput.checked, listMenu.value));
+            priorityInput.checked, listMenu.value)
+        allLists[selectedList].push(newToDo);
         newToDoForm.style.display = 'none';
         newToDoButton.style.display = 'flex';
         newListButton.style.display = 'flex';
         displayToDo(selectedList);
         createExpandedToDo(selectedList);
-        savetoStorage(allLists[selectedList], selectedList);
+        savetoStorage(newToDo, selectedList, titleInput.value);
         checkStorage();
     }
 }
