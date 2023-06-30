@@ -1,3 +1,5 @@
+import { allLists, checkCurrentList } from './lists';
+
 // Save to dos to local storage.
 function savetoStorage(toDoVar, listName, toDoName) {
     localStorage.setItem(`${listName}-${toDoName}`, JSON.stringify(toDoVar));
@@ -12,8 +14,10 @@ function checkStorage() {
 
 // Get storage items for page load.
 function getStorage() {
-    const savedItems = JSON.parse(localStorage.getItem('default-0'));
-    return savedItems;
+    const currentList = checkCurrentList();
+    for (let i = 0; i < localStorage.length; i++) {
+            allLists[currentList].push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+    }
 }
 
 // Clear storage.

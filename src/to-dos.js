@@ -9,15 +9,7 @@ import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput
 import { allLists, checkListMenu, checkCurrentList } from './lists';
 import { savetoStorage, checkStorage, getStorage } from './storage';
 
-function loadSavedItems() {
-    const currentList = checkCurrentList();
-    if (!(getStorage() === null)) {
-        allLists[currentList].push(getStorage());
-        console.log(allLists[currentList]);
-    }
-}
-
-loadSavedItems();
+getStorage();
 
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
@@ -534,7 +526,6 @@ function createToDo(e) {
         displayToDo(selectedList);
         createExpandedToDo(selectedList);
         savetoStorage(newToDo, selectedList, allLists[selectedList].length - 1);
-        // checkStorage();
     }
 }
 
