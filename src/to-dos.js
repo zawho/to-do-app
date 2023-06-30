@@ -7,7 +7,17 @@ import parseISO from 'date-fns/parseISO';
 import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput, 
     dueDateInput, priorityInput, listMenu, projectDiv } from './ui';
 import { allLists, checkListMenu, checkCurrentList } from './lists';
-import { savetoStorage, checkStorage } from './storage';
+import { savetoStorage, checkStorage, getStorage } from './storage';
+
+function loadSavedItems() {
+    const currentList = checkCurrentList();
+    if (!(getStorage() === null)) {
+        allLists[currentList].push(getStorage());
+        console.log(allLists[currentList]);
+    }
+}
+
+loadSavedItems();
 
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
@@ -524,7 +534,7 @@ function createToDo(e) {
         displayToDo(selectedList);
         createExpandedToDo(selectedList);
         savetoStorage(newToDo, selectedList, allLists[selectedList].length - 1);
-        checkStorage();
+        // checkStorage();
     }
 }
 

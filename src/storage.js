@@ -10,11 +10,17 @@ function checkStorage() {
     }
 }
 
+// Get storage items for page load.
+function getStorage() {
+    const savedItems = JSON.parse(localStorage.getItem('default-0'));
+    return savedItems;
+}
+
 // Clear storage.
 function clearStorage() {
     localStorage.clear();
 }
 
-clearStorage();
+// clearStorage();
 
-export { savetoStorage, checkStorage };
+export { savetoStorage, checkStorage, getStorage };
