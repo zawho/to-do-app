@@ -11,9 +11,9 @@ function checkStorage() {
 }
 
 // Get storage items for page load.
-function getStorage(foo) {
-    const test = JSON.parse(localStorage.getItem('allLists'))
-    Object.assign(foo, test);
+function getStorage(listObj) {
+    const savedLists = JSON.parse(localStorage.getItem('allLists'))
+    Object.assign(listObj, savedLists);
 }
 
 // Clear storage.
