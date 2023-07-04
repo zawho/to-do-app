@@ -9,7 +9,7 @@ import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput
 import { allLists, checkListMenu, checkCurrentList } from './lists';
 import { savetoStorage, checkStorage, getStorage } from './storage';
 
-getStorage();
+getStorage(allLists);
 console.log(allLists);
 
 // To do factory function.

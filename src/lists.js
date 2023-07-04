@@ -1,4 +1,5 @@
 import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, projectDiv } from './ui';
+import { savetoStorage } from './storage';
 
 // List object.
 const allLists = {
@@ -49,6 +50,7 @@ function createList(e) {
     newListForm.style.display = 'none';
     newToDoButton.style.display = 'flex';
     newListButton.style.display = 'flex';
+    savetoStorage(allLists);
 }
 
 // Check for list name from array and menu.
