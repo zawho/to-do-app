@@ -10,6 +10,7 @@ import { allLists, checkListMenu, checkCurrentList } from './lists';
 import { savetoStorage, checkStorage, getStorage } from './storage';
 
 getStorage();
+console.log(allLists.default);
 
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
@@ -526,6 +527,7 @@ function createToDo(e) {
         displayToDo(selectedList);
         createExpandedToDo(selectedList);
         savetoStorage(newToDo, selectedList, allLists[selectedList].length - 1);
+        console.log(allLists[selectedList]);
     }
 }
 
