@@ -12,7 +12,7 @@ function checkStorage() {
 
 // Get storage items for page load.
 function getStorage(listObj) {
-    const savedLists = JSON.parse(localStorage.getItem('allLists'))
+    const savedLists = JSON.parse(localStorage.getItem('allLists'));
     Object.assign(listObj, savedLists);
 }
 
