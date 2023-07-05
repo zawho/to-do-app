@@ -7,7 +7,7 @@ import parseISO from 'date-fns/parseISO';
 import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput, 
     dueDateInput, priorityInput, listMenu, projectDiv } from './ui';
 import { allLists, checkListMenu, checkCurrentList } from './lists';
-import { savetoStorage, checkStorage, getStorage } from './storage';
+import { savetoStorage, getStorage } from './storage';
 
 getStorage(allLists);
 console.log(allLists);
@@ -529,5 +529,118 @@ function createToDo(e) {
         savetoStorage(allLists);
     }
 }
+
+function loadDisplay(currentList) {
+    for (let i = 0; i < allLists[currentList].length; i++) {
+        const toDoDisplay = document.createElement('div');
+        const displayTitle = document.createElement('div');
+        const displayDescription = document.createElement('div');
+        const displayDueDate = document.createElement('div');
+        const displayPriority = document.createElement('div');
+        const dateDisplayVar = 'display';
+        displayTitle.className = 'title-div';
+        displayDueDate.className = 'date-div';
+        displayPriority.className = 'priority-div';
+        displayDescription.className = 'description-div';
+        toDoDisplay.className = `${listMenu.value}`.replaceAll(' ', '-');
+        toDoDisplay.style.display = 'flex';
+        toDoDisplay.style.justifyContent = 'space-between';
+        toDoDisplay.style.gap = '10px';
+        toDoDisplay.style.padding = '5px';
+        displayDescription.style.display = 'none';
+        toDoDisplay.id = `${allLists[currentList][i].title}`.replaceAll(' ', '-');
+        displayTitle.innerText = allLists[currentList][i].title;
+        if (allLists[currentList][i].description === '') {
+            displayDescription.innerText = 'no description';
+        } else {
+            displayDescription.innerText = allLists[currentList][i]
+            .description;
+        }
+        if (allLists[currentList][i].dueDate === '') {
+            displayDueDate.innerText = 'no due date';
+        } else {
+            displayDueDate.innerText = setDateDisplay(allLists[currentList][i].dueDate,
+                 dateDisplayVar, displayDueDate);
+        }
+        if (allLists[currentList][i].priority === true) {
+            displayPriority.innerText = 'important';
+        } else {
+            displayPriority.innerText = '';
+        }
+        if (projectDiv.id === currentList) {
+            toDoDisplay.style.display = 'flex';
+        } else {
+            toDoDisplay.style.display = 'none';
+        }
+        projectDiv.appendChild(toDoDisplay);
+        toDoDisplay.appendChild(displayTitle);
+        toDoDisplay.appendChild(displayDescription);
+        toDoDisplay.appendChild(displayDueDate);
+        toDoDisplay.appendChild(displayPriority);
+        toDoDisplay.addEventListener('click', expandToDo);
+    }
+}
+
+function loadExpandedDisplay(currentList) {
+    for (let i = 0; i < allLists[currentList].length; i++) {
+        const expandedToDoDiv = document.createElement('div');
+        const expandedTitle = document.createElement('div');
+        const expandedDescription = document.createElement('div');
+        const expandedDueDate = document.createElement('div');
+        const expandedPriority = document.createElement('div');
+        const editButton = document.createElement('button');
+        const deleteButton = document.createElement('button');
+        const expandedDateDisplayVar = 'expanded';
+        expandedTitle.className = 'title-div';
+        expandedDueDate.className = 'date-div';
+        expandedPriority.className = 'priority-div';
+        expandedDescription.className = 'description-div';
+        expandedToDoDiv.className = `${listMenu.value}-expanded`.replaceAll(' ', '-');
+        expandedToDoDiv.style.display = 'flex';
+        expandedToDoDiv.style.flexDirection = 'column';
+        expandedToDoDiv.style.gap = '10px';
+        expandedToDoDiv.style.padding = '5px';
+        editButton.innerText = 'edit';
+        editButton.className = 'edit-button';
+        editButton.style.alignSelf = 'flex-end';
+        deleteButton.innerText = 'delete';
+        deleteButton.className = 'delete-button';
+        deleteButton.style.alignSelf = 'flex-end';
+        expandedToDoDiv.style.display = 'none';
+        expandedToDoDiv.id = `${allLists[currentList][i]
+        .title}-expanded`.replaceAll(' ', '-');
+        expandedTitle.innerText = allLists[currentList][i].title;
+        if (allLists[currentList][i].description === '') {
+            expandedDescription.innerText = 'no description';
+        } else {
+            expandedDescription.innerText = allLists[currentList][i]
+            .description;
+        }
+        if (allLists[currentList][i].dueDate === '') {
+            expandedDueDate.innerText = 'no due date';
+        } else {
+            expandedDueDate.innerText = setDateDisplay(allLists[currentList][i].
+            dueDate, expandedDateDisplayVar, expandedDueDate);
+        }
+        if (allLists[currentList][i].priority === true) {
+            expandedPriority.innerText = 'important';
+        } else {
+            expandedPriority.innerText = '';
+        }
+        projectDiv.appendChild(expandedToDoDiv);
+        expandedToDoDiv.appendChild(expandedTitle);
+        expandedToDoDiv.appendChild(expandedDescription);
+        expandedToDoDiv.appendChild(expandedDueDate);
+        expandedToDoDiv.appendChild(expandedPriority);
+        expandedToDoDiv.appendChild(editButton);
+        expandedToDoDiv.appendChild(deleteButton);
+        expandedToDoDiv.before(projectDiv.firstChild);
+        editButton.addEventListener('click', (event) => openEditor(event, expandedToDoDiv));
+        deleteButton.addEventListener('click', deleteToDo);
+        expandedToDoDiv.addEventListener('click', expandToDo);
+    }
+}
+loadDisplay('default');
+loadExpandedDisplay('default');
 
 export default createToDo;
