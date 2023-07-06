@@ -1,11 +1,13 @@
 import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, projectDiv } from './ui';
-import { savetoStorage } from './storage';
+import { savetoStorage, getStorage } from './storage';
 
 // List object.
 const allLists = {
     default: [],
     other: [],
 }
+
+getStorage(allLists);
 
 // Highlight selected list.
 function highlightList() {
@@ -32,6 +34,24 @@ function displayList() {
     }
     highlightList();
 }
+
+function loadLists() {
+    const allListsArr = Object.keys(allLists);
+    for (let i = 2; i < allListsArr.length; i++) {
+        const newListOption = document.createElement('option');
+        newListOption.value = allListsArr[i];
+        newListOption.innerText = allListsArr[i];
+        listMenu.appendChild(newListOption);
+        const newList = document.createElement('button');
+        newList.className = `${allListsArr[i]}`.replaceAll(' ', '-');
+        newList.id = `${allListsArr[i]}-list`.replaceAll(' ', '-');
+        newList.innerText = allListsArr[i];
+        listButtonDiv.appendChild(newList);
+        newList.addEventListener('click', displayList);
+    }
+}
+
+loadLists();
 
 // Create new list.
 function createList(e) {

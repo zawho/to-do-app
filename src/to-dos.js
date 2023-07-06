@@ -10,7 +10,6 @@ import { allLists, checkListMenu, checkCurrentList } from './lists';
 import { savetoStorage, getStorage } from './storage';
 
 getStorage(allLists);
-console.log(allLists);
 
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
@@ -641,7 +640,7 @@ function loadExpandedDisplay(currentList) {
     }
 }
 
-function loadAllLists() {
+function loadAllToDos() {
     const allListsArr = Object.keys(allLists);
     for (let i = 0; i < allListsArr.length; i++) {
         loadDisplay(allListsArr[i]);
@@ -650,6 +649,6 @@ function loadAllLists() {
         loadExpandedDisplay(allListsArr[i]);
     }
 }
-loadAllLists();
+loadAllToDos();
 
 export default createToDo;
