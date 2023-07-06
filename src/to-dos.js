@@ -542,7 +542,7 @@ function loadDisplay(currentList) {
         displayDueDate.className = 'date-div';
         displayPriority.className = 'priority-div';
         displayDescription.className = 'description-div';
-        toDoDisplay.className = `${listMenu.value}`.replaceAll(' ', '-');
+        toDoDisplay.className = `${allLists[currentList][i].list}`.replaceAll(' ', '-');
         toDoDisplay.style.display = 'flex';
         toDoDisplay.style.justifyContent = 'space-between';
         toDoDisplay.style.gap = '10px';
@@ -595,7 +595,7 @@ function loadExpandedDisplay(currentList) {
         expandedDueDate.className = 'date-div';
         expandedPriority.className = 'priority-div';
         expandedDescription.className = 'description-div';
-        expandedToDoDiv.className = `${listMenu.value}-expanded`.replaceAll(' ', '-');
+        expandedToDoDiv.className = `${allLists[currentList][i].list}-expanded`.replaceAll(' ', '-');
         expandedToDoDiv.style.display = 'flex';
         expandedToDoDiv.style.flexDirection = 'column';
         expandedToDoDiv.style.gap = '10px';
@@ -640,7 +640,15 @@ function loadExpandedDisplay(currentList) {
         expandedToDoDiv.addEventListener('click', expandToDo);
     }
 }
-loadDisplay('default');
-loadExpandedDisplay('default');
+
+function test() {
+    const testArr = Object.keys(allLists);
+    for (let i = 0; i < testArr.length; i++) {
+        loadDisplay(testArr[i]);
+        loadExpandedDisplay(testArr[i]);
+    }
+}
+test();
+
 
 export default createToDo;
