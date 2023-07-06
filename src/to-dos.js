@@ -641,14 +641,15 @@ function loadExpandedDisplay(currentList) {
     }
 }
 
-function test() {
-    const testArr = Object.keys(allLists);
-    for (let i = 0; i < testArr.length; i++) {
-        loadDisplay(testArr[i]);
-        loadExpandedDisplay(testArr[i]);
+function loadAllLists() {
+    const allListsArr = Object.keys(allLists);
+    for (let i = 0; i < allListsArr.length; i++) {
+        loadDisplay(allListsArr[i]);
+    }
+    for (let i = 0; i < allListsArr.length; i++) {
+        loadExpandedDisplay(allListsArr[i]);
     }
 }
-test();
-
+loadAllLists();
 
 export default createToDo;
