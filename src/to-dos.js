@@ -437,6 +437,8 @@ function deleteToDo(event) {
     }
     currentToDo.previousSibling.remove();
     currentToDo.remove();
+    savetoStorage(allLists);
+    console.log(allLists);
 }
 
 // Create expanded to do.
