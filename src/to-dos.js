@@ -10,6 +10,7 @@ import { allLists, checkListMenu, checkCurrentList } from './lists';
 import { savetoStorage, getStorage } from './storage';
 
 getStorage(allLists);
+console.log(allLists);
 
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
@@ -188,6 +189,7 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
             expandedToDoArr[i].remove();
         }
     }
+    savetoStorage(allLists);
 }
 
 // Cancel edit and close editor.
