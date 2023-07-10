@@ -10,7 +10,7 @@ import { allLists, checkListMenu, checkCurrentList } from './lists';
 import { savetoStorage, getStorage } from './storage';
 
 getStorage(allLists);
-console.log(allLists);
+
 
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
@@ -438,7 +438,6 @@ function deleteToDo(event) {
     currentToDo.previousSibling.remove();
     currentToDo.remove();
     savetoStorage(allLists);
-    console.log(allLists);
 }
 
 // Create expanded to do.
@@ -464,7 +463,7 @@ function createExpandedToDo(currentList) {
     deleteButton.style.alignSelf = 'flex-end';
     expandedToDoDiv.style.display = 'none';
     for (let i = 0; i < allLists[currentList].length; i++) {
-        expandedToDoDiv.id = `${allLists[currentList][allLists[currentList].length - 1]
+        expandedToDoDiv.id = `${i}-${allLists[currentList][allLists[currentList].length - 1]
             .title}-expanded`.replaceAll(' ', '-');
         if (allLists[currentList][i].dueDate === '') {
             expandedDueDate.innerText = 'no due date';
@@ -496,7 +495,7 @@ function displayToDo(currentList) {
     toDoDisplay.style.padding = '5px';
     displayDescription.style.display = 'none';
     for (let i = 0; i < allLists[currentList].length; i++) {
-        toDoDisplay.id = `${allLists[currentList][allLists[currentList].length - 1].title}`
+        toDoDisplay.id = `${i}-${allLists[currentList][allLists[currentList].length - 1].title}`
         .replaceAll(' ', '-');
         if (allLists[currentList][i].dueDate === '') {
             displayDueDate.innerText = 'no due date';
@@ -653,6 +652,7 @@ function loadAllToDos() {
         loadExpandedDisplay(allListsArr[i]);
     }
 }
+
 loadAllToDos();
 
 export default createToDo;
