@@ -328,7 +328,8 @@ function openEditor(event, a) {
         if (toDoArr[i].className === 'title-div') {
             titleEdit.addEventListener('click', preventPropagation);
             titleEdit.value = toDoArr[i].innerText;
-            titleEdit.id = `${toDoArr[i].innerText}-edit`.replaceAll(' ', '-');
+            titleEdit.id = `${toDoEdit.id}-edit`.replaceAll(' ', '-')
+            .replace('-expanded', '');
             toDoArr[i].innerText = '';
             titleEditLabel.id = `${titleEdit.id}-label`;
             titleEditLabel.innerText = 'title';
