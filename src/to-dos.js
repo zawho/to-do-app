@@ -93,10 +93,13 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
             projectArr[i].style.display = 'none';
         }
         if (projectArr[i].id === editedID) {
-            projectArr[i].id = editedTitle.value;
+            console.log(editedID.indexOf('-'));
+            projectArr[i].id = 
+            `${projectArr[i].id.slice(0, (editedID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}`;
         }
         if (projectArr[i].id === `${editedID}-expanded`) {
-            projectArr[i].id = `${editedTitle.value}-expanded`;
+            projectArr[i].id = 
+            `${projectArr[i].id.slice(0, (editedID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}-expanded`;
         }
     }
     for (let i = 0; i < allLists[currentList].length; i++) {
