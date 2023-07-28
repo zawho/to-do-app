@@ -21,6 +21,6 @@ function clearStorage() {
     localStorage.clear();
 }
 
-// clearStorage();
+ // clearStorage();
 
 export { savetoStorage, checkStorage, getStorage };
