@@ -554,7 +554,7 @@ function loadDisplay(currentList) {
         toDoDisplay.style.gap = '10px';
         toDoDisplay.style.padding = '5px';
         displayDescription.style.display = 'none';
-        toDoDisplay.id = `${allLists[currentList][i].title}`.replaceAll(' ', '-');
+        toDoDisplay.id = `${i}-${allLists[currentList][i].title}`.replaceAll(' ', '-');
         displayTitle.innerText = allLists[currentList][i].title;
         if (allLists[currentList][i].description === '') {
             displayDescription.innerText = 'no description';
@@ -613,7 +613,7 @@ function loadExpandedDisplay(currentList) {
         deleteButton.className = 'delete-button';
         deleteButton.style.alignSelf = 'flex-end';
         expandedToDoDiv.style.display = 'none';
-        expandedToDoDiv.id = `${allLists[currentList][i]
+        expandedToDoDiv.id = `${i}-${allLists[currentList][i]
         .title}-expanded`.replaceAll(' ', '-');
         expandedTitle.innerText = allLists[currentList][i].title;
         if (allLists[currentList][i].description === '') {
