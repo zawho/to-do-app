@@ -10,6 +10,7 @@ import { allLists, checkListMenu, checkCurrentList } from './lists';
 import { savetoStorage, getStorage } from './storage';
 
 getStorage(allLists);
+console.log(allLists.default[0]);
 
 
 // To do factory function.
@@ -73,37 +74,41 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
     const editedPriorityLabel = h;
     const editedList = j;
     const selectedListEdit = checkListMenu(editedList);
-    const editedID = editedTitle.id.replace('-edit', '');
+    const shortID = editedTitle.id.replace('-edit', '');
     const currentList = checkCurrentList();
     const projectArr = Array.from(projectDiv.childNodes);
     const toDoArr = Array.from(editedToDo.previousSibling.childNodes);
     const expandedToDoArr = Array.from(editedToDo.childNodes);
     const expandedDateDisplayVar = 'expanded';
     const dateDisplayVar = 'display';
+    let editedID;
+    let editedExpandedID;
     for (let i = 0; i < projectArr.length; i++) {
         if (!(projectArr[i].className.includes('-expanded')) &&
-           !(projectArr[i].className === selectedListEdit) && projectArr[i].id === editedID) {
+           !(projectArr[i].className === selectedListEdit) && projectArr[i].id === shortID) {
             projectArr[i].className = selectedListEdit;
             projectArr[i].style.display = 'none';
         }
         if (projectArr[i].className.includes('-expanded') && 
            !(projectArr[i].className.replace('-expanded', '') === selectedListEdit) &&
-           projectArr[i].id === `${editedID}-expanded`) {
+           projectArr[i].id === `${shortID}-expanded`) {
             projectArr[i].className = `${selectedListEdit}-expanded`;
             projectArr[i].style.display = 'none';
         }
-        if (projectArr[i].id === editedID) {
-            console.log(editedID.indexOf('-'));
-            projectArr[i].id = 
-            `${projectArr[i].id.slice(0, (editedID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}`;
+        if (projectArr[i].id === shortID) {
+            editedID = 
+            `${projectArr[i].id.slice(0, (shortID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}`;
+            projectArr[i].id = editedID;
         }
-        if (projectArr[i].id === `${editedID}-expanded`) {
-            projectArr[i].id = 
-            `${projectArr[i].id.slice(0, (editedID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}-expanded`;
+        if (projectArr[i].id === `${shortID}-expanded`) {
+            editedExpandedID = 
+            `${projectArr[i].id.slice(0, (shortID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}-expanded`;
+            projectArr[i].id = editedExpandedID;
+            
         }
     }
     for (let i = 0; i < allLists[currentList].length; i++) {
-        if (allLists[currentList][i].title === editedID) {
+        if (allLists[currentList][i].title === shortID.slice((shortID.indexOf('-') + 1))) {
             allLists[currentList][i].title = editedTitle.value;
             allLists[currentList][i].description = editedDescription.value.
             replaceAll('\n', ' ');
@@ -193,6 +198,7 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
         }
     }
     savetoStorage(allLists);
+    console.log(allLists.default[0]);
 }
 
 // Cancel edit and close editor.
