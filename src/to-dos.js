@@ -106,7 +106,7 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
         }
     }
     for (let i = 0; i < allLists[currentList].length; i++) {
-        if (allLists[currentList][i].title === shortID.slice((shortID.indexOf('-') + 1))) {
+        if (i.toString() === shortID.slice(0, shortID.indexOf('-'))) {
             allLists[currentList][i].title = editedTitle.value;
             allLists[currentList][i].description = editedDescription.value.
             replaceAll('\n', ' ');
