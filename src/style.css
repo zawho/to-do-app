@@ -44,3 +44,7 @@ input[type=checkbox] {
     border: 1px solid black;
     padding: 3px;
 }
+
+.list-edit-div {
+    margin-top: 10px;
+}
