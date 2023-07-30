@@ -1,4 +1,4 @@
-import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, projectDiv } from './ui';
+import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, projectDiv, listEditDiv } from './ui';
 import { savetoStorage, getStorage } from './storage';
 
 // List object.
@@ -98,4 +98,22 @@ function checkCurrentList() {
     return currentList;
 }
 
-export { allLists, createList, checkListMenu, displayList, checkCurrentList };
+// Open list editor.
+function openListEditor() {
+    const editListInput = document.createElement('input');
+    const confirmCancelDiv = document.createElement('div');
+    const confirmListEdit = document.createElement('button');
+    const cancelListEdit = document.createElement('button');
+    confirmCancelDiv.style.marginTop = '10px';
+    confirmCancelDiv.style.display = 'flex';
+    confirmCancelDiv.style.gap = '10px';
+    confirmListEdit.innerText = 'confirm';
+    cancelListEdit.innerText = 'cancel';
+    listEditDiv.appendChild(editListInput);
+    listEditDiv.appendChild(confirmCancelDiv);
+    confirmCancelDiv.appendChild(confirmListEdit);
+    confirmCancelDiv.appendChild(cancelListEdit);
+    this.style.display = 'none';
+}
+
+export { allLists, createList, checkListMenu, displayList, checkCurrentList, openListEditor };

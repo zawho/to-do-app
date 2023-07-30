@@ -16,6 +16,8 @@ const listButtonDiv = document.querySelector('.list-button-div');
 const defaultListButton = document.getElementById('default-list');
 const otherListButton = document.getElementById('other-list');
 const projectDiv = document.querySelector('.project-div');
+const listEditDiv = document.querySelector('.list-edit-div');
+const editListButton = document.querySelector('.edit-list-button');
 
 export { 
     newToDoButton,
@@ -35,5 +37,7 @@ export {
     listButtonDiv,
     defaultListButton,
     otherListButton, 
-    projectDiv
+    projectDiv,
+    listEditDiv,
+    editListButton
 };
