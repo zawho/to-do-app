@@ -98,21 +98,38 @@ function checkCurrentList() {
     return currentList;
 }
 
+// Cancel list edit.
+function cancelListEdit() {
+    const listEditArr = Array.from(listEditDiv.childNodes);
+    for (let i = 0; i < listEditArr.length; i++) {
+        if (listEditArr[i].className === 'edit-list-button') {
+            listEditArr[i].style.display = 'flex';
+        } else {
+            listEditArr[i].remove();
+        }
+    }
+}
+
 // Open list editor.
 function openListEditor() {
     const editListInput = document.createElement('input');
     const confirmCancelDiv = document.createElement('div');
-    const confirmListEdit = document.createElement('button');
-    const cancelListEdit = document.createElement('button');
+    const confirmListEditButton = document.createElement('button');
+    const cancelListEditButton = document.createElement('button');
+    editListInput.className = 'edit-list-input';
+    confirmCancelDiv.className = 'confirm-cancel-div';
+    confirmListEditButton.className = 'confirm-list-edit';
+    cancelListEditButton.className = 'cancel-list-edit';
     confirmCancelDiv.style.marginTop = '10px';
     confirmCancelDiv.style.display = 'flex';
     confirmCancelDiv.style.gap = '10px';
-    confirmListEdit.innerText = 'confirm';
-    cancelListEdit.innerText = 'cancel';
+    confirmListEditButton.innerText = 'confirm';
+    cancelListEditButton.innerText = 'cancel';
+    cancelListEditButton.addEventListener('click', cancelListEdit);
     listEditDiv.appendChild(editListInput);
     listEditDiv.appendChild(confirmCancelDiv);
-    confirmCancelDiv.appendChild(confirmListEdit);
-    confirmCancelDiv.appendChild(cancelListEdit);
+    confirmCancelDiv.appendChild(confirmListEditButton);
+    confirmCancelDiv.appendChild(cancelListEditButton);
     this.style.display = 'none';
 }
 
