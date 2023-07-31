@@ -121,7 +121,7 @@ function cancelListEdit() {
 function confirmListEdit() {
     const currentList = checkCurrentList();
     const listButtonArr = Array.from(listButtonDiv.childNodes);
-    const editListInput = document.querySelector('.edit-list-input')
+    const editListInput = document.querySelector('.edit-list-input');
     for (let i = 0; i < listButtonArr.length; i++) {
         if (listButtonArr[i].innerText === currentList) {
             listButtonArr[i].innerText = editListInput.value;
@@ -139,6 +139,7 @@ function openListEditor() {
     const confirmCancelDiv = document.createElement('div');
     const confirmListEditButton = document.createElement('button');
     const cancelListEditButton = document.createElement('button');
+    const currentList = checkCurrentList();
     editListInput.className = 'edit-list-input';
     confirmCancelDiv.className = 'confirm-cancel-div';
     confirmListEditButton.className = 'confirm-list-edit';
@@ -146,6 +147,7 @@ function openListEditor() {
     confirmCancelDiv.style.marginTop = '10px';
     confirmCancelDiv.style.display = 'flex';
     confirmCancelDiv.style.gap = '10px';
+    editListInput.value = currentList;
     confirmListEditButton.innerText = 'confirm';
     cancelListEditButton.innerText = 'cancel';
     confirmListEditButton.addEventListener('click', confirmListEdit);
