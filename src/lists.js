@@ -110,6 +110,21 @@ function cancelListEdit() {
     }
 }
 
+// Confirm list edit.
+function confirmListEdit() {
+    const currentList = checkCurrentList();
+    const listButtonArr = Array.from(listButtonDiv.childNodes);
+    const editListInput = document.querySelector('.edit-list-input')
+    for (let i = 0; i < listButtonArr.length; i++) {
+        if (listButtonArr[i].innerText === currentList) {
+            listButtonArr[i].innerText = editListInput.value;
+            listButtonArr[i].className = `${editListInput.value}`.replaceAll(' ', '-');
+            listButtonArr[i].id = `${editListInput.value}-list`.replaceAll(' ', '-');
+        }
+    }
+    cancelListEdit();
+}
+
 // Open list editor.
 function openListEditor() {
     const editListInput = document.createElement('input');
@@ -125,6 +140,7 @@ function openListEditor() {
     confirmCancelDiv.style.gap = '10px';
     confirmListEditButton.innerText = 'confirm';
     cancelListEditButton.innerText = 'cancel';
+    confirmListEditButton.addEventListener('click', confirmListEdit);
     cancelListEditButton.addEventListener('click', cancelListEdit);
     listEditDiv.appendChild(editListInput);
     listEditDiv.appendChild(confirmCancelDiv);
