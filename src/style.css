@@ -30,10 +30,6 @@ input[type=checkbox] {
     border-radius: 3px;
 }
 
-#default-list {
-    border: 2px solid red;
-}
-
 .project-div {
     display: flex;
     flex-direction: column;

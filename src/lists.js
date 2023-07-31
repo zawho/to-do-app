@@ -1,4 +1,4 @@
-import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, projectDiv, listEditDiv } from './ui';
+import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, defaultListButton, projectDiv, listEditDiv } from './ui';
 import { savetoStorage, getStorage } from './storage';
 
 // List object.
@@ -8,6 +8,13 @@ const allLists = {
 }
 
 getStorage(allLists);
+
+// Set default list selected border on page load.
+function setDefaultListBorder() {
+    defaultListButton.style.border = '2px solid rgb(255, 0, 0)';
+}
+
+setDefaultListBorder();
 
 // Highlight selected list.
 function highlightList() {
@@ -120,6 +127,7 @@ function confirmListEdit() {
             listButtonArr[i].innerText = editListInput.value;
             listButtonArr[i].className = `${editListInput.value}`.replaceAll(' ', '-');
             listButtonArr[i].id = `${editListInput.value}-list`.replaceAll(' ', '-');
+            projectDiv.id = `${editListInput.value}`.replaceAll(' ', '-');   
         }
     }
     cancelListEdit();
