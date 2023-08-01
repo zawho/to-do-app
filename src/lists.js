@@ -63,6 +63,7 @@ loadLists();
 // Create new list.
 function createList(e) {
     e.preventDefault();
+    const listButtonArr = Array.from(listButtonDiv.childNodes);
     if (listNameInput.value === '') {
         listNameInput.placeholder = 'please enter a name';
     } else {
@@ -72,8 +73,8 @@ function createList(e) {
         newListOption.innerText = listNameInput.value;
         listMenu.appendChild(newListOption);
         const newList = document.createElement('button');
-        newList.className = `${listNameInput.value}`.replaceAll(' ', '-');
-        newList.id = `${listNameInput.value}-list`.replaceAll(' ', '-');
+        newList.className = `${listButtonArr.length}-${listNameInput.value}`.replaceAll(' ', '-');
+        newList.id = `${listButtonArr.length}-${listNameInput.value}-list`.replaceAll(' ', '-');
         newList.innerText = listNameInput.value;
         listButtonDiv.appendChild(newList);
         newList.addEventListener('click', displayList);
@@ -82,6 +83,7 @@ function createList(e) {
         newListButton.style.display = 'flex';
         savetoStorage(allLists);
     }
+    console.log(listButtonArr);
 }
 
 // Check for list name from array and menu.
