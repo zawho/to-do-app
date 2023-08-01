@@ -122,15 +122,19 @@ function confirmListEdit() {
     const currentList = checkCurrentList();
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     const editListInput = document.querySelector('.edit-list-input');
-    for (let i = 0; i < listButtonArr.length; i++) {
-        if (listButtonArr[i].innerText === currentList) {
-            listButtonArr[i].innerText = editListInput.value;
-            listButtonArr[i].className = `${editListInput.value}`.replaceAll(' ', '-');
-            listButtonArr[i].id = `${editListInput.value}-list`.replaceAll(' ', '-');
-            projectDiv.id = `${editListInput.value}`.replaceAll(' ', '-');   
+    if (editListInput.value === '') {
+        editListInput.placeholder = 'please enter a name';
+    } else {
+        for (let i = 0; i < listButtonArr.length; i++) {
+            if (listButtonArr[i].innerText === currentList) {
+                listButtonArr[i].innerText = editListInput.value;
+                listButtonArr[i].className = `${editListInput.value}`.replaceAll(' ', '-');
+                listButtonArr[i].id = `${editListInput.value}-list`.replaceAll(' ', '-');
+                projectDiv.id = `${editListInput.value}`.replaceAll(' ', '-');   
+            }
         }
+        cancelListEdit();
     }
-    cancelListEdit();
 }
 
 // Open list editor.
