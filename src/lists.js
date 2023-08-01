@@ -83,7 +83,6 @@ function createList(e) {
         newListButton.style.display = 'flex';
         savetoStorage(allLists);
     }
-    console.log(listButtonArr);
 }
 
 // Check for list name from array and menu.
@@ -105,7 +104,7 @@ function checkCurrentList() {
     for (let i = 0; i < listButtonArr.length; i++) {
         const listStyles = window.getComputedStyle(listButtonArr[i]);
         if (listStyles.border === '2px solid rgb(255, 0, 0)') {
-            currentList = listButtonArr[i].className.replaceAll('-', ' ');
+            currentList = listButtonArr[i].innerText;
         }
     }
     return currentList;
@@ -149,7 +148,6 @@ function openListEditor() {
     const confirmCancelDiv = document.createElement('div');
     const confirmListEditButton = document.createElement('button');
     const cancelListEditButton = document.createElement('button');
-    const currentList = checkCurrentList();
     editListInput.className = 'edit-list-input';
     confirmCancelDiv.className = 'confirm-cancel-div';
     confirmListEditButton.className = 'confirm-list-edit';
@@ -157,7 +155,6 @@ function openListEditor() {
     confirmCancelDiv.style.marginTop = '10px';
     confirmCancelDiv.style.display = 'flex';
     confirmCancelDiv.style.gap = '10px';
-    editListInput.value = currentList;
     confirmListEditButton.innerText = 'confirm';
     cancelListEditButton.innerText = 'cancel';
     confirmListEditButton.addEventListener('click', confirmListEdit);
