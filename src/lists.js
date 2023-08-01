@@ -63,21 +63,25 @@ loadLists();
 // Create new list.
 function createList(e) {
     e.preventDefault();
-    allLists[listNameInput.value] = [];
-    const newListOption = document.createElement('option');
-    newListOption.value = listNameInput.value;
-    newListOption.innerText = listNameInput.value;
-    listMenu.appendChild(newListOption);
-    const newList = document.createElement('button');
-    newList.className = `${listNameInput.value}`.replaceAll(' ', '-');
-    newList.id = `${listNameInput.value}-list`.replaceAll(' ', '-');
-    newList.innerText = listNameInput.value;
-    listButtonDiv.appendChild(newList);
-    newList.addEventListener('click', displayList);
-    newListForm.style.display = 'none';
-    newToDoButton.style.display = 'flex';
-    newListButton.style.display = 'flex';
-    savetoStorage(allLists);
+    if (listNameInput.value === '') {
+        listNameInput.placeholder = 'please enter a name';
+    } else {
+        allLists[listNameInput.value] = [];
+        const newListOption = document.createElement('option');
+        newListOption.value = listNameInput.value;
+        newListOption.innerText = listNameInput.value;
+        listMenu.appendChild(newListOption);
+        const newList = document.createElement('button');
+        newList.className = `${listNameInput.value}`.replaceAll(' ', '-');
+        newList.id = `${listNameInput.value}-list`.replaceAll(' ', '-');
+        newList.innerText = listNameInput.value;
+        listButtonDiv.appendChild(newList);
+        newList.addEventListener('click', displayList);
+        newListForm.style.display = 'none';
+        newToDoButton.style.display = 'flex';
+        newListButton.style.display = 'flex';
+        savetoStorage(allLists);
+    }
 }
 
 // Check for list name from array and menu.
