@@ -60,6 +60,14 @@ function loadLists() {
 
 loadLists();
 
+// Update list selection options.
+function updateListOptions(listVar) {
+    const newListOption = document.createElement('option');
+        newListOption.value = listVar.value;
+        newListOption.innerText = listVar.value;
+        listMenu.appendChild(newListOption);
+}
+
 // Create new list.
 function createList(e) {
     e.preventDefault();
@@ -67,11 +75,8 @@ function createList(e) {
     if (listNameInput.value === '') {
         listNameInput.placeholder = 'please enter a name';
     } else {
+        updateListOptions(listNameInput);
         allLists[listNameInput.value] = [];
-        const newListOption = document.createElement('option');
-        newListOption.value = listNameInput.value;
-        newListOption.innerText = listNameInput.value;
-        listMenu.appendChild(newListOption);
         const newList = document.createElement('button');
         newList.className = `${listButtonArr.length}-${listNameInput.value}`.replaceAll(' ', '-');
         newList.id = `${listButtonArr.length}-${listNameInput.value}-list`.replaceAll(' ', '-');
