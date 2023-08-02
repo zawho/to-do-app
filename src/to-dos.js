@@ -5,9 +5,10 @@ import isTomorrow from 'date-fns/isTomorrow';
 import isYesterday from 'date-fns/isYesterday';
 import parseISO from 'date-fns/parseISO';
 import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput, 
-    dueDateInput, priorityInput, listMenu, projectDiv } from './ui';
+    dueDateInput, priorityInput, listMenu, listButtonDiv, projectDiv } from './ui';
 import { allLists, checkListMenu, checkCurrentList } from './lists';
 import { savetoStorage, getStorage } from './storage';
+import lastDayOfQuarterWithOptions from 'date-fns/esm/fp/lastDayOfQuarterWithOptions/index.js';
 
 getStorage(allLists);
 
@@ -495,7 +496,12 @@ function displayToDo(currentList) {
     const displayDueDate = document.createElement('div');
     const displayPriority = document.createElement('div');
     const dateDisplayVar = 'display';
-    toDoDisplay.className = `${listMenu.value}`.replaceAll(' ', '-');
+    const listButtonArr = Array.from(listButtonDiv.childNodes);
+    for (let i = 0; i < listButtonArr.length; i++) {
+        if (listMenu.value === listButtonArr[i].innerText) {
+            toDoDisplay.className = `${listButtonArr[i].className}`;
+        }
+    }
     toDoDisplay.style.display = 'flex';
     toDoDisplay.style.justifyContent = 'space-between';
     toDoDisplay.style.gap = '10px';
@@ -528,7 +534,7 @@ function createToDo(e) {
         const newToDo = toDo(titleInput.value, 
             descriptionInput.value.replaceAll('\n', ' '), 
             dueDateInput.value, 
-            priorityInput.checked, listMenu.value)
+            priorityInput.checked, listMenu.value);
         allLists[selectedList].push(newToDo);
         newToDoForm.style.display = 'none';
         newToDoButton.style.display = 'flex';
