@@ -21,7 +21,7 @@ function highlightList() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     for (let i = 0; i < listButtonArr.length; i++) {
         if (listButtonArr[i].className === projectDiv.id) {
-            listButtonArr[i].style.border = '2px solid red';
+            listButtonArr[i].style.border = '2px solid rgb(255, 0, 0)';
         } else {
             listButtonArr[i].style.border = '2px solid black';
         }
@@ -124,14 +124,13 @@ function cancelListEdit() {
 
 // Confirm list edit.
 function confirmListEdit() {
-    const currentList = checkCurrentList();
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     const editListInput = document.querySelector('.edit-list-input');
     if (editListInput.value === '') {
         editListInput.placeholder = 'please enter a name';
     } else {
         for (let i = 0; i < listButtonArr.length; i++) {
-            if (listButtonArr[i].innerText === currentList) {
+            if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
                 listButtonArr[i].innerText = editListInput.value;
                 listButtonArr[i].className = `${editListInput.value}`.replaceAll(' ', '-');
                 listButtonArr[i].id = `${editListInput.value}-list`.replaceAll(' ', '-');
