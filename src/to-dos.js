@@ -458,7 +458,12 @@ function createExpandedToDo(currentList) {
     const editButton = document.createElement('button');
     const deleteButton = document.createElement('button');
     const expandedDateDisplayVar = 'expanded';
-    expandedToDoDiv.className = `${listMenu.value}-expanded`.replaceAll(' ', '-');
+    const listButtonArr = Array.from(listButtonDiv.childNodes);
+    for (let i = 0; i < listButtonArr.length; i++) {
+        if (listMenu.value === listButtonArr[i].innerText) {
+            expandedToDoDiv.className = `${listButtonArr[i].className}-expanded`;
+        }
+    }
     expandedToDoDiv.style.display = 'flex';
     expandedToDoDiv.style.flexDirection = 'column';
     expandedToDoDiv.style.gap = '10px';
