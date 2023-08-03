@@ -61,7 +61,7 @@ function loadLists() {
 loadLists();
 
 // Update list selection options.
-function updateListOptions(listVar) {
+function addListOption(listVar) {
     const newListOption = document.createElement('option');
         newListOption.value = listVar.value;
         newListOption.innerText = listVar.value;
@@ -75,7 +75,7 @@ function createList(e) {
     if (listNameInput.value === '') {
         listNameInput.placeholder = 'please enter a name';
     } else {
-        updateListOptions(listNameInput);
+        addListOption(listNameInput);
         allLists[listNameInput.value] = [];
         const newList = document.createElement('button');
         newList.className = `${listButtonArr.length}-${listNameInput.value}`.replaceAll(' ', '-');
