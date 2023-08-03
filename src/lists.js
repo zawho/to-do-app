@@ -127,6 +127,18 @@ function cancelListEdit() {
     }
 }
 
+// test
+function editListOption(listVar) {
+    const listMenuArr = Array.from(listMenu.childNodes);
+    const currentList = checkCurrentList();
+    for (let i = 0; i < listMenuArr.length; i++) {
+        if (listMenuArr[i].innerText === currentList) {
+            listMenuArr[i].innerText = listVar.value;
+            listMenuArr[i].value = listVar.value;
+        }
+    }
+}
+
 // Confirm list edit.
 function confirmListEdit() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
@@ -134,6 +146,7 @@ function confirmListEdit() {
     if (editListInput.value === '') {
         editListInput.placeholder = 'please enter a name';
     } else {
+        editListOption(editListInput);
         for (let i = 0; i < listButtonArr.length; i++) {
             if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
                 listButtonArr[i].innerText = editListInput.value;

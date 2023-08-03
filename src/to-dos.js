@@ -8,7 +8,6 @@ import { newToDoButton, newListButton, newToDoForm, titleInput, descriptionInput
     dueDateInput, priorityInput, listMenu, listButtonDiv, projectDiv } from './ui';
 import { allLists, checkListMenu, checkCurrentList } from './lists';
 import { savetoStorage, getStorage } from './storage';
-import lastDayOfQuarterWithOptions from 'date-fns/esm/fp/lastDayOfQuarterWithOptions/index.js';
 
 getStorage(allLists);
 
