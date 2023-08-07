@@ -151,6 +151,13 @@ function updateKeyNames(listVar) {
     }
 }
 
+// Update list property values.
+function updateListPropValue(listVar) {
+    for (let i = 0; i < allLists[listVar.value].length; i++) {
+        allLists[listVar.value][i].list = listVar.value;
+    }
+}
+
 // Confirm list edit.
 function confirmListEdit() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
@@ -160,6 +167,7 @@ function confirmListEdit() {
     } else {
         updateKeyNames(editListInput);
         editListOption(editListInput);
+        updateListPropValue(editListInput);
         for (let i = 0; i < listButtonArr.length; i++) {
             if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
                 listButtonArr[i].innerText = editListInput.value;
