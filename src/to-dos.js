@@ -79,20 +79,16 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
     const expandedToDoArr = Array.from(editedToDo.childNodes);
     const expandedDateDisplayVar = 'expanded';
     const dateDisplayVar = 'display';
+    const listButtonArr = Array.from(listButtonDiv.childNodes);
     let editedID;
     let editedExpandedID;
+    let newToDoClass;
+    for (let i = 0; i < listButtonArr.length; i++) {
+        if (listButtonArr[i].innerText === selectedListEdit) {
+            newToDoClass = listButtonArr[i].className;
+        }
+    }
     for (let i = 0; i < projectArr.length; i++) {
-        if (!(projectArr[i].className.includes('-expanded')) &&
-           !(projectArr[i].className === selectedListEdit) && projectArr[i].id === shortID) {
-            projectArr[i].className = selectedListEdit;
-            projectArr[i].style.display = 'none';
-        }
-        if (projectArr[i].className.includes('-expanded') && 
-           !(projectArr[i].className.replace('-expanded', '') === selectedListEdit) &&
-           projectArr[i].id === `${shortID}-expanded`) {
-            projectArr[i].className = `${selectedListEdit}-expanded`;
-            projectArr[i].style.display = 'none';
-        }
         if (projectArr[i].id === shortID) {
             editedID = 
             `${projectArr[i].id.slice(0, (shortID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}`;
@@ -103,6 +99,17 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
             `${projectArr[i].id.slice(0, (shortID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}-expanded`;
             projectArr[i].id = editedExpandedID;
             
+        }
+        if (!(projectArr[i].className.includes('-expanded')) &&
+           !(projectArr[i].className === selectedListEdit) && projectArr[i].id === shortID) {
+            projectArr[i].className = newToDoClass;
+            projectArr[i].style.display = 'none';
+        }
+        if (projectArr[i].className.includes('-expanded') && 
+           !(projectArr[i].className.replace('-expanded', '') === selectedListEdit) &&
+           projectArr[i].id === `${shortID}-expanded`) {
+            projectArr[i].className = `${newToDoClass}-expanded`;
+            projectArr[i].style.display = 'none';
         }
     }
     for (let i = 0; i < allLists[currentList].length; i++) {
@@ -196,6 +203,7 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
         }
     }
     savetoStorage(allLists);
+    console.log(allLists.default);
 }
 
 // Cancel edit and close editor.
