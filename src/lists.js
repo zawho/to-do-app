@@ -127,7 +127,7 @@ function cancelListEdit() {
     }
 }
 
-// test
+// Update list selection options when name is edited.
 function editListOption(listVar) {
     const listMenuArr = Array.from(listMenu.childNodes);
     const currentList = checkCurrentList();
@@ -139,6 +139,18 @@ function editListOption(listVar) {
     }
 }
 
+// Update list object key names on list edit.
+function updateKeyNames(listVar) {
+    const allListsArr = Object.keys(allLists);
+    const currentList = checkCurrentList();
+    for (let i = 0; i < allListsArr.length; i++) {
+        if (allListsArr[i] === currentList) {
+            allLists[`${listVar.value}`] = allLists[`${allListsArr[i]}`];
+            delete allLists[`${allListsArr[i]}`];
+        }
+    }
+}
+
 // Confirm list edit.
 function confirmListEdit() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
@@ -146,6 +158,7 @@ function confirmListEdit() {
     if (editListInput.value === '') {
         editListInput.placeholder = 'please enter a name';
     } else {
+        updateKeyNames(editListInput);
         editListOption(editListInput);
         for (let i = 0; i < listButtonArr.length; i++) {
             if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
