@@ -83,7 +83,6 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
     let editedID;
     let editedExpandedID;
     let newToDoClass;
-    console.log(selectedListEdit);
     for (let i = 0; i < listButtonArr.length; i++) {
         if (listButtonArr[i].innerText === selectedListEdit) {
             newToDoClass = listButtonArr[i].className;
@@ -102,12 +101,14 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
             
         }
         if (!(projectArr[i].className.includes('-expanded')) &&
-           !(projectArr[i].className.slice((projectArr[i].className.indexOf('-') + 1)) === selectedListEdit) && projectArr[i].id === shortID) {
+           !(projectArr[i].className.slice((projectArr[i].className.indexOf('-') + 1)) 
+           === selectedListEdit) && projectArr[i].id === shortID) {
             projectArr[i].className = newToDoClass;
             projectArr[i].style.display = 'none';
         }
         if (projectArr[i].className.includes('-expanded') && 
-           !(projectArr[i].className.slice((projectArr[i].className.indexOf('-') + 1)).replace('-expanded', '') === selectedListEdit) &&
+           !(projectArr[i].className.slice((projectArr[i].className.indexOf('-') + 1))
+           .replace('-expanded', '') === selectedListEdit) &&
            projectArr[i].id === `${shortID}-expanded`) {
             projectArr[i].className = `${newToDoClass}-expanded`;
             projectArr[i].style.display = 'none';
