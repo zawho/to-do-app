@@ -89,17 +89,6 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
         }
     }
     for (let i = 0; i < projectArr.length; i++) {
-        if (projectArr[i].id === shortID) {
-            editedID = 
-            `${projectArr[i].id.slice(0, (shortID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}`;
-            projectArr[i].id = editedID;
-        }
-        if (projectArr[i].id === `${shortID}-expanded`) {
-            editedExpandedID = 
-            `${projectArr[i].id.slice(0, (shortID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}-expanded`;
-            projectArr[i].id = editedExpandedID;
-            
-        }
         if (!(projectArr[i].className.includes('-expanded')) &&
            !(projectArr[i].className.slice((projectArr[i].className.indexOf('-') + 1)) 
            === selectedListEdit) && projectArr[i].id === shortID) {
@@ -112,6 +101,17 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
            projectArr[i].id === `${shortID}-expanded`) {
             projectArr[i].className = `${newToDoClass}-expanded`;
             projectArr[i].style.display = 'none';
+        }
+        if (projectArr[i].id === shortID) {
+            editedID = 
+            `${projectArr[i].id.slice(0, (shortID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}`;
+            projectArr[i].id = editedID;
+        }
+        if (projectArr[i].id === `${shortID}-expanded`) {
+            editedExpandedID = 
+            `${projectArr[i].id.slice(0, (shortID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}-expanded`;
+            projectArr[i].id = editedExpandedID;
+            
         }
     }
     for (let i = 0; i < allLists[currentList].length; i++) {
