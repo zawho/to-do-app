@@ -175,7 +175,8 @@ function confirmListEdit() {
                 `${listButtonArr[i].className.slice(0, (listButtonArr[i].className.indexOf('-') + 1))}${editListInput.value}`.replaceAll(' ', '-');
                 listButtonArr[i].id = 
                 `${listButtonArr[i].id.slice(0, (listButtonArr[i].id.indexOf('-') + 1))}${editListInput.value}-list`.replaceAll(' ', '-');
-                projectDiv.id = `${editListInput.value}`.replaceAll(' ', '-');   
+                projectDiv.id = 
+                `${listButtonArr[i].className.slice(0, (listButtonArr[i].className.indexOf('-') + 1))}${editListInput.value}`.replaceAll(' ', '-');   
             }
         }
         cancelListEdit();
