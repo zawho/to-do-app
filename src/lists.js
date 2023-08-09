@@ -158,6 +158,23 @@ function updateListPropValue(listVar) {
     }
 }
 
+// Update to do class names on list name edit.
+function updateListClassNames(listVar) {
+    const testArr = Array.from(projectDiv.childNodes);
+    const currentList = checkCurrentList();
+    for (let i = 0; i < testArr.length; i++) {
+        if (testArr[i].className === 
+            `${testArr[i].className.slice(0, (testArr[i].className.indexOf('-') + 1))}${currentList}`) {
+                testArr[i].className = 
+                `${testArr[i].className.slice(0, (testArr[i].className.indexOf('-') + 1))}${listVar.value}`;
+        } else if (testArr[i].className ===
+            `${testArr[i].className.slice(0, (testArr[i].className.indexOf('-') + 1))}${currentList}-expanded`) {
+                testArr[i].className = 
+                `${testArr[i].className.slice(0, (testArr[i].className.indexOf('-') + 1))}${listVar.value}-expanded`;
+            }
+    }
+}
+
 // Confirm list edit.
 function confirmListEdit() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
@@ -165,6 +182,7 @@ function confirmListEdit() {
     if (editListInput.value === '') {
         editListInput.placeholder = 'please enter a name';
     } else {
+        updateListClassNames(editListInput);
         updateKeyNames(editListInput);
         editListOption(editListInput);
         updateListPropValue(editListInput);
