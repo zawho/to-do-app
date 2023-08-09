@@ -171,8 +171,10 @@ function confirmListEdit() {
         for (let i = 0; i < listButtonArr.length; i++) {
             if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
                 listButtonArr[i].innerText = editListInput.value;
-                listButtonArr[i].className = `${editListInput.value}`.replaceAll(' ', '-');
-                listButtonArr[i].id = `${editListInput.value}-list`.replaceAll(' ', '-');
+                listButtonArr[i].className =
+                `${listButtonArr[i].className.slice(0, (listButtonArr[i].className.indexOf('-') + 1))}${editListInput.value}`.replaceAll(' ', '-');
+                listButtonArr[i].id = 
+                `${listButtonArr[i].id.slice(0, (listButtonArr[i].id.indexOf('-') + 1))}${editListInput.value}-list`.replaceAll(' ', '-');
                 projectDiv.id = `${editListInput.value}`.replaceAll(' ', '-');   
             }
         }
