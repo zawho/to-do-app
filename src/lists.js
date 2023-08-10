@@ -1,4 +1,4 @@
-import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, defaultListButton, projectDiv, listEditDiv } from './ui';
+import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, defaultListButton, projectDiv, listEditDiv, deleteListButton } from './ui';
 import { savetoStorage, getStorage } from './storage';
 
 // List object.
@@ -16,12 +16,23 @@ function setDefaultListBorder() {
 
 setDefaultListBorder();
 
+// Display delete list button.
+function displayDeleteListButton(listVar) {
+    console.log(listVar.className.slice(0, 1));
+    if (listVar.className.slice(0, 1) === '0') {
+        deleteListButton.style.display = 'none';
+    } else {
+        deleteListButton.style.display = 'flex';
+    }
+}
+
 // Highlight selected list.
 function highlightList() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     for (let i = 0; i < listButtonArr.length; i++) {
         if (listButtonArr[i].className === projectDiv.id) {
             listButtonArr[i].style.border = '2px solid rgb(255, 0, 0)';
+            displayDeleteListButton(listButtonArr[i]);
         } else {
             listButtonArr[i].style.border = '2px solid black';
         }

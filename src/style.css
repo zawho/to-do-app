@@ -47,3 +47,7 @@ input[type=checkbox] {
     gap: 10px;
     margin-top: 10px;
 }
+
+.delete-list-button {
+    display: none;
+}
