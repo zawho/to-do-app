@@ -225,4 +225,9 @@ function openListEditor() {
     this.style.display = 'none';
 }
 
-export { allLists, createList, checkListMenu, displayList, checkCurrentList, openListEditor };
+// Delete list.
+function deleteList() {
+    console.log(allLists);
+}
+
+export { allLists, createList, checkListMenu, displayList, checkCurrentList, openListEditor, deleteList };
