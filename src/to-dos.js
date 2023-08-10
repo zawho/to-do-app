@@ -445,9 +445,11 @@ function deleteToDo(event) {
     preventPropagation(event);
     const currentList = checkCurrentList();
     const currentToDo = this.parentNode;
-    const currentToDoID = this.parentNode.id.replace('-expanded', '').replaceAll('-', ' ');
+    const firstEditID = this.parentNode.id.slice((this.parentNode.id.indexOf('-') + 1));
+    const secondEditID = 
+    firstEditID.replace('-expanded', '').replaceAll('-', ' ');
     for (let i = 0; i < allLists[currentList].length; i++) {
-        if (allLists[currentList][i].title === currentToDoID) {
+        if (allLists[currentList][i].title === secondEditID) {
             allLists[currentList].splice(i, 1);
         }
     }
