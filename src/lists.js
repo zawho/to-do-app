@@ -18,7 +18,8 @@ setDefaultListBorder();
 
 // Display delete list button.
 function displayDeleteListButton(listVar) {
-    if (listVar.className.slice(0, 1) === '0') {
+    if (listVar.className.slice(0, 1) === '0' || editListButton.style.display === 'none' ||
+    (listVar.className.slice(0, 1) === '0' && editListButton.style.display === 'none')) {
         deleteListButton.style.display = 'none';
     } else {
         deleteListButton.style.display = 'flex';
@@ -128,11 +129,17 @@ function checkCurrentList() {
 // Cancel list edit.
 function cancelListEdit() {
     const listEditArr = Array.from(listEditDiv.childNodes);
+    const listButtonArr = Array.from(listButtonDiv.childNodes);
     for (let i = 0; i < listEditArr.length; i++) {
         if (listEditArr[i].className === 'edit-list-button') {
             listEditArr[i].style.display = 'flex';
         } else {
             listEditArr[i].remove();
+        }
+    }
+    for (let i = 0; i < listButtonArr.length; i++) {
+        if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
+            displayDeleteListButton(listButtonArr[i]);
         }
     }
 }
