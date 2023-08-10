@@ -1,4 +1,4 @@
-import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, defaultListButton, projectDiv, listEditDiv, deleteListButton } from './ui';
+import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, defaultListButton, projectDiv, listEditDiv, editListButton, deleteListButton } from './ui';
 import { savetoStorage, getStorage } from './storage';
 
 // List object.
@@ -18,12 +18,11 @@ setDefaultListBorder();
 
 // Display delete list button.
 function displayDeleteListButton(listVar) {
-    console.log(listVar.className.slice(0, 1));
     if (listVar.className.slice(0, 1) === '0') {
         deleteListButton.style.display = 'none';
     } else {
         deleteListButton.style.display = 'flex';
-    }
+    }  
 }
 
 // Highlight selected list.
@@ -205,7 +204,8 @@ function confirmListEdit() {
                 listButtonArr[i].id = 
                 `${listButtonArr[i].id.slice(0, (listButtonArr[i].id.indexOf('-') + 1))}${editListInput.value}-list`.replaceAll(' ', '-');
                 projectDiv.id = 
-                `${listButtonArr[i].className.slice(0, (listButtonArr[i].className.indexOf('-') + 1))}${editListInput.value}`.replaceAll(' ', '-');   
+                `${listButtonArr[i].className.slice(0, (listButtonArr[i].className.indexOf('-') + 1))}${editListInput.value}`.replaceAll(' ', '-');
+                displayDeleteListButton(listButtonArr[i]);
             }
         }
         cancelListEdit();
@@ -234,6 +234,7 @@ function openListEditor() {
     confirmCancelDiv.appendChild(confirmListEditButton);
     confirmCancelDiv.appendChild(cancelListEditButton);
     this.style.display = 'none';
+    deleteListButton.style.display = 'none';
 }
 
 // Delete list.
