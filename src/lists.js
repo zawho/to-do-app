@@ -41,7 +41,7 @@ function highlightList() {
 
 // Display List.
 function displayList() {
-    projectDiv.id = this.className.replaceAll(' ', '-');
+    projectDiv.id = this.className;
     const listArr = Array.from(projectDiv.childNodes);
     for (let i = 0; i < listArr.length; i++) {
         if (listArr[i].className === projectDiv.id) {
@@ -254,6 +254,19 @@ function highlightPrevList(listVar) {
     }
 }
 
+// Display previous list.
+function displayPrevList(listVar) {
+    projectDiv.id = listVar.className.replaceAll(' ', '-');
+    const listArr = Array.from(projectDiv.childNodes);
+    for (let i = 0; i < listArr.length; i++) {
+        if (listArr[i].className === projectDiv.id) {
+            listArr[i].style.display = 'flex';
+        } else {
+            listArr[i].style.display = 'none';
+        }
+    }
+}
+
 // Delete list.
 function deleteList() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
@@ -262,6 +275,7 @@ function deleteList() {
             highlightPrevList(listButtonArr[i]);
             listButtonArr[i].remove();
             displayDeleteListButton(listButtonArr[i - 1]);
+            displayPrevList(listButtonArr[i - 1]);
         }
     }
     console.log(allLists);
