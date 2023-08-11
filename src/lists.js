@@ -244,12 +244,24 @@ function openListEditor() {
     deleteListButton.style.display = 'none';
 }
 
+// Highlight previous list.
+function highlightPrevList(listVar) {
+    const listButtonArr = Array.from(listButtonDiv.childNodes);
+    for (let i = 0; i < listButtonArr.length; i++) {
+        if (listButtonArr[i] === listVar) {
+            listButtonArr[i - 1].style.border = '2px solid rgb(255, 0, 0)';
+        }
+    }
+}
+
 // Delete list.
 function deleteList() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     for (let i = 0; i < listButtonArr.length; i++) {
         if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
+            highlightPrevList(listButtonArr[i]);
             listButtonArr[i].remove();
+            displayDeleteListButton(listButtonArr[i - 1]);
         }
     }
     console.log(allLists);
