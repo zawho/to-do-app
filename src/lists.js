@@ -246,7 +246,14 @@ function openListEditor() {
 
 // Delete list.
 function deleteList() {
+    const listButtonArr = Array.from(listButtonDiv.childNodes);
+    for (let i = 0; i < listButtonArr.length; i++) {
+        if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
+            listButtonArr[i].remove();
+        }
+    }
     console.log(allLists);
 }
 
-export { allLists, createList, checkListMenu, displayList, checkCurrentList, openListEditor, deleteList };
+export { allLists, createList, checkListMenu, displayList, checkCurrentList, 
+    openListEditor, deleteList };
