@@ -267,11 +267,22 @@ function displayPrevList(listVar) {
     }
 }
 
+// Delete list selection options.
+function deleteListOption(listVar) {
+    const listMenuArr = Array.from(listMenu.childNodes);
+    for (let i = 0; i < listMenuArr.length; i++) {
+        if (listMenuArr[i].innerText === listVar) {
+            listMenuArr[i].remove();
+        }
+    }
+}
+
 // Delete list.
 function deleteList() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     for (let i = 0; i < listButtonArr.length; i++) {
         if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
+            deleteListOption(listButtonArr[i].innerText);
             highlightPrevList(listButtonArr[i]);
             listButtonArr[i].remove();
             displayDeleteListButton(listButtonArr[i - 1]);
