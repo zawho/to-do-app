@@ -284,9 +284,9 @@ function deleteList() {
         if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
             deleteListOption(listButtonArr[i].innerText);
             highlightPrevList(listButtonArr[i]);
-            listButtonArr[i].remove();
             displayDeleteListButton(listButtonArr[i - 1]);
             displayPrevList(listButtonArr[i - 1]);
+            listButtonArr[i].remove();
         }
     }
     console.log(allLists);
