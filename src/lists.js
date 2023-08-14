@@ -280,8 +280,11 @@ function deleteListOption(listVar) {
 // Delete list.
 function deleteList() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
+    const todoArr = Array.from(projectDiv.childNodes);
+    let currentListClass;
     for (let i = 0; i < listButtonArr.length; i++) {
         if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
+            currentListClass = listButtonArr[i].className;
             deleteListOption(listButtonArr[i].innerText);
             highlightPrevList(listButtonArr[i]);
             displayDeleteListButton(listButtonArr[i - 1]);
@@ -289,7 +292,12 @@ function deleteList() {
             listButtonArr[i].remove();
         }
     }
-    console.log(allLists);
+    for (let i = 0; i < todoArr.length; i++) {
+        if (todoArr[i].className.slice(0, todoArr[i].className.indexOf('-')) === 
+        currentListClass.slice(0, currentListClass.indexOf('-'))) {
+            todoArr[i].remove();
+        }
+    }
 }
 
 export { allLists, createList, checkListMenu, displayList, checkCurrentList, 
