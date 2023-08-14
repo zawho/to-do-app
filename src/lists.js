@@ -281,6 +281,7 @@ function deleteListOption(listVar) {
 function deleteList() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     const todoArr = Array.from(projectDiv.childNodes);
+    const currentList = checkCurrentList();
     let currentListClass;
     for (let i = 0; i < listButtonArr.length; i++) {
         if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
@@ -298,6 +299,7 @@ function deleteList() {
             todoArr[i].remove();
         }
     }
+    delete allLists[currentList];
 }
 
 export { allLists, createList, checkListMenu, displayList, checkCurrentList, 
