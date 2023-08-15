@@ -159,8 +159,11 @@ function editListOption(listVar) {
 // Update list object key names on list edit.
 function updateKeyNames(listVar) {
     const currentList = checkCurrentList();
-    allLists[`${listVar.value}`] = allLists[currentList];
-    delete allLists[currentList];
+    if (!(listVar.value === currentList)) {
+        allLists[`${listVar.value}`] = allLists[currentList];
+        delete allLists[currentList];
+    }
+    console.log(allLists);
 }
 
 // Update list property values.
