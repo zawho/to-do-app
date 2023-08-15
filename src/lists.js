@@ -106,7 +106,6 @@ function createList(e) {
         newListButton.style.display = 'flex';
         savetoStorage(allLists);
     }
-    console.log(allLists);
 }
 
 // Check for list name from array and menu.
@@ -229,7 +228,6 @@ function confirmListEdit() {
         }
         cancelListEdit();
     }
-    console.log(allLists);
 }
 
 // Open list editor.
