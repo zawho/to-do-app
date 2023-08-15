@@ -534,7 +534,8 @@ function displayToDo(currentList) {
     }
     helpToDo(currentList, toDoDisplay, displayTitle, displayDueDate, displayPriority,
          displayDescription);
-    if (projectDiv.id.slice(projectDiv.id.indexOf('-') + 1) === currentList) {
+    if (projectDiv.id.slice(projectDiv.id.indexOf('-') + 1).replaceAll('-', ' ') === 
+    currentList) {
         toDoDisplay.style.display = 'flex';
     } else {
         toDoDisplay.style.display = 'none';
