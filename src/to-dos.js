@@ -11,8 +11,6 @@ import { savetoStorage, getStorage } from './storage';
 
 getStorage(allLists);
 
-console.log(allLists);
-
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
     title, description, dueDate, priority, list});
