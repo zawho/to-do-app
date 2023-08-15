@@ -172,17 +172,17 @@ function updateListPropValue(listVar) {
 
 // Update to do class names on list name edit.
 function updateListClassNames(listVar) {
-    const testArr = Array.from(projectDiv.childNodes);
+    const todoArr = Array.from(projectDiv.childNodes);
     const currentList = checkCurrentList();
-    for (let i = 0; i < testArr.length; i++) {
-        if (testArr[i].className === 
-            `${testArr[i].className.slice(0, (testArr[i].className.indexOf('-') + 1))}${currentList}`) {
-                testArr[i].className = 
-                `${testArr[i].className.slice(0, (testArr[i].className.indexOf('-') + 1))}${listVar.value}`;
-        } else if (testArr[i].className ===
-            `${testArr[i].className.slice(0, (testArr[i].className.indexOf('-') + 1))}${currentList}-expanded`) {
-                testArr[i].className = 
-                `${testArr[i].className.slice(0, (testArr[i].className.indexOf('-') + 1))}${listVar.value}-expanded`;
+    for (let i = 0; i < todoArr.length; i++) {
+        if (todoArr[i].className === 
+            `${todoArr[i].className.slice(0, (todoArr[i].className.indexOf('-') + 1))}${currentList.replaceAll(' ', '-')}`) {
+                todoArr[i].className = 
+                `${todoArr[i].className.slice(0, (todoArr[i].className.indexOf('-') + 1))}${listVar.value.replaceAll(' ', '-')}`;
+        } else if (todoArr[i].className ===
+            `${todoArr[i].className.slice(0, (todoArr[i].className.indexOf('-') + 1))}${currentList.replaceAll(' ', '-')}-expanded`) {
+                todoArr[i].className = 
+                `${todoArr[i].className.slice(0, (todoArr[i].className.indexOf('-') + 1))}${listVar.value.replaceAll(' ', '-')}-expanded`;
             }
     }
 }
