@@ -292,28 +292,30 @@ function deleteListOption(listVar) {
 
 // Delete list.
 function deleteList() {
-    const listButtonArr = Array.from(listButtonDiv.childNodes);
-    const todoArr = Array.from(projectDiv.childNodes);
-    const currentList = checkCurrentList();
-    let currentListClass;
-    for (let i = 0; i < listButtonArr.length; i++) {
-        if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
-            currentListClass = listButtonArr[i].className;
-            deleteListOption(listButtonArr[i].innerText);
-            highlightPrevList(listButtonArr[i]);
-            displayDeleteListButton(listButtonArr[i - 1]);
-            displayPrevList(listButtonArr[i - 1]);
-            listButtonArr[i].remove();
+    if (window.confirm('are you sure?') === true) { // eslint-disable-line no-alert
+        const listButtonArr = Array.from(listButtonDiv.childNodes);
+        const todoArr = Array.from(projectDiv.childNodes);
+        const currentList = checkCurrentList();
+        let currentListClass;
+        for (let i = 0; i < listButtonArr.length; i++) {
+            if (listButtonArr[i].style.border === '2px solid rgb(255, 0, 0)') {
+                currentListClass = listButtonArr[i].className;
+                deleteListOption(listButtonArr[i].innerText);
+                highlightPrevList(listButtonArr[i]);
+                displayDeleteListButton(listButtonArr[i - 1]);
+                displayPrevList(listButtonArr[i - 1]);
+                listButtonArr[i].remove();
+            }
         }
-    }
-    for (let i = 0; i < todoArr.length; i++) {
-        if (todoArr[i].className.slice(0, todoArr[i].className.indexOf('-')) === 
-        currentListClass.slice(0, currentListClass.indexOf('-'))) {
-            todoArr[i].remove();
+        for (let i = 0; i < todoArr.length; i++) {
+            if (todoArr[i].className.slice(0, todoArr[i].className.indexOf('-')) === 
+            currentListClass.slice(0, currentListClass.indexOf('-'))) {
+                todoArr[i].remove();
+            }
         }
+        delete allLists[currentList];
+        savetoStorage(allLists);
     }
-    delete allLists[currentList];
-    savetoStorage(allLists);
 }
 
 export { allLists, createList, checkListMenu, displayList, checkCurrentList, 

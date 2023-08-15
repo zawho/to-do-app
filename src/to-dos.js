@@ -443,19 +443,21 @@ function helpToDo(listVar, a, b, c, d, e) {
 // Delete to do.
 function deleteToDo(event) {
     preventPropagation(event);
-    const currentList = checkCurrentList();
-    const currentToDo = this.parentNode;
-    const firstEditID = this.parentNode.id.slice((this.parentNode.id.indexOf('-') + 1));
-    const secondEditID = 
-    firstEditID.replace('-expanded', '').replaceAll('-', ' ');
-    for (let i = 0; i < allLists[currentList].length; i++) {
-        if (allLists[currentList][i].title === secondEditID) {
-            allLists[currentList].splice(i, 1);
+    if (window.confirm('are you sure?') === true) { // eslint-disable-line no-alert
+        const currentList = checkCurrentList();
+        const currentToDo = this.parentNode;
+        const firstEditID = this.parentNode.id.slice((this.parentNode.id.indexOf('-') + 1));
+        const secondEditID = 
+        firstEditID.replace('-expanded', '').replaceAll('-', ' ');
+        for (let i = 0; i < allLists[currentList].length; i++) {
+            if (allLists[currentList][i].title === secondEditID) {
+                allLists[currentList].splice(i, 1);
+            }
         }
+        currentToDo.previousSibling.remove();
+        currentToDo.remove();
+        savetoStorage(allLists);
     }
-    currentToDo.previousSibling.remove();
-    currentToDo.remove();
-    savetoStorage(allLists);
 }
 
 // Create expanded to do.
