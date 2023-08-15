@@ -226,6 +226,7 @@ function confirmListEdit() {
                 displayDeleteListButton(listButtonArr[i]);
             }
         }
+        savetoStorage(allLists);
         cancelListEdit();
     }
 }
@@ -312,6 +313,7 @@ function deleteList() {
         }
     }
     delete allLists[currentList];
+    savetoStorage(allLists);
 }
 
 export { allLists, createList, checkListMenu, displayList, checkCurrentList, 
