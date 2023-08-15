@@ -120,7 +120,7 @@ function checkCurrentList() {
     for (let i = 0; i < listButtonArr.length; i++) {
         const listStyles = window.getComputedStyle(listButtonArr[i]);
         if (listStyles.border === '2px solid rgb(255, 0, 0)') {
-            currentList = listButtonArr[i].innerText;
+            currentList = listButtonArr[i].textContent;
         }
     }
     return currentList;
@@ -163,7 +163,6 @@ function updateKeyNames(listVar) {
         allLists[`${listVar.value}`] = allLists[currentList];
         delete allLists[currentList];
     }
-    console.log(allLists);
 }
 
 // Update list property values.
