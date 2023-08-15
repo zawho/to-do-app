@@ -565,7 +565,6 @@ function createToDo(e) {
 
 function loadDisplay(currentList) {
     for (let i = 0; i < allLists[currentList].length; i++) {
-        console.log(allLists[0]);
         const toDoDisplay = document.createElement('div');
         const displayTitle = document.createElement('div');
         const displayDescription = document.createElement('div');
@@ -606,7 +605,7 @@ function loadDisplay(currentList) {
         } else {
             displayPriority.innerText = '';
         }
-        if (projectDiv.id === `${i}-${currentList}`) {
+        if (projectDiv.id === toDoDisplay.className) {
             toDoDisplay.style.display = 'flex';
         } else {
             toDoDisplay.style.display = 'none';
