@@ -83,8 +83,15 @@ function addListOption(listVar) {
 function createList(e) {
     e.preventDefault();
     const listButtonArr = Array.from(listButtonDiv.childNodes);
-    if (listNameInput.value === '') {
-        listNameInput.placeholder = 'please enter a name';
+    let isNameValid;
+    for (let i = 0; i < listButtonArr.length; i++) {
+        if (listNameInput.value === listButtonArr[i].innerText) {
+            isNameValid = 'no';
+        }
+    }
+    if (listNameInput.value === '' || isNameValid === 'no') {
+        listNameInput.value = '';
+        listNameInput.placeholder = 'please enter a valid name';
     } else {
         addListOption(listNameInput);
         allLists[listNameInput.value] = [];
@@ -99,6 +106,7 @@ function createList(e) {
         newListButton.style.display = 'flex';
         savetoStorage(allLists);
     }
+    console.log(allLists);
 }
 
 // Check for list name from array and menu.
