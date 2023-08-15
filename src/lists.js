@@ -193,8 +193,15 @@ function updateListClassNames(listVar) {
 function confirmListEdit() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     const editListInput = document.querySelector('.edit-list-input');
-    if (editListInput.value === '') {
-        editListInput.placeholder = 'please enter a name';
+    let isNameValid;
+    for (let i = 0; i < listButtonArr.length; i++) {
+        if (editListInput.value === listButtonArr[i].innerText) {
+            isNameValid = 'no';
+        }
+    }
+    if (editListInput.value === '' || isNameValid === 'no') {
+        editListInput.value = '';
+        editListInput.placeholder = 'please enter a valid name';
     } else {
         updateListClassNames(editListInput);
         updateKeyNames(editListInput);
@@ -214,6 +221,7 @@ function confirmListEdit() {
         }
         cancelListEdit();
     }
+    console.log(allLists);
 }
 
 // Open list editor.
@@ -223,6 +231,7 @@ function openListEditor() {
     const confirmListEditButton = document.createElement('button');
     const cancelListEditButton = document.createElement('button');
     editListInput.className = 'edit-list-input';
+    editListInput.size = '25';
     confirmCancelDiv.className = 'confirm-cancel-div';
     confirmListEditButton.className = 'confirm-list-edit';
     cancelListEditButton.className = 'cancel-list-edit';
