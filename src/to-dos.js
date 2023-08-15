@@ -11,6 +11,8 @@ import { savetoStorage, getStorage } from './storage';
 
 getStorage(allLists);
 
+console.log(allLists);
+
 // To do factory function.
 const toDo = (title, description, dueDate, priority, list) => ({
     title, description, dueDate, priority, list});
@@ -563,24 +565,30 @@ function createToDo(e) {
 
 function loadDisplay(currentList) {
     for (let i = 0; i < allLists[currentList].length; i++) {
+        console.log(allLists[0]);
         const toDoDisplay = document.createElement('div');
         const displayTitle = document.createElement('div');
         const displayDescription = document.createElement('div');
         const displayDueDate = document.createElement('div');
         const displayPriority = document.createElement('div');
         const dateDisplayVar = 'display';
+        const listButtonArr = Array.from(listButtonDiv.childNodes);
         displayTitle.className = 'title-div';
         displayDueDate.className = 'date-div';
         displayPriority.className = 'priority-div';
         displayDescription.className = 'description-div';
-        toDoDisplay.className = `${allLists[currentList][i].list}`.replaceAll(' ', '-');
         toDoDisplay.style.display = 'flex';
         toDoDisplay.style.justifyContent = 'space-between';
         toDoDisplay.style.gap = '10px';
         toDoDisplay.style.padding = '5px';
         displayDescription.style.display = 'none';
-        toDoDisplay.id = `${i}-${allLists[currentList][i].title}`.replaceAll(' ', '-');
         displayTitle.innerText = allLists[currentList][i].title;
+        for (let j = 0; j < listButtonArr.length; j++) {
+            if (listButtonArr[j].textContent === allLists[currentList][i].list) {
+                toDoDisplay.className = `${listButtonArr[j].className}`.replaceAll(' ', '-');
+            }
+        }
+        toDoDisplay.id = `${i}-${allLists[currentList][i].title}`.replaceAll(' ', '-');
         if (allLists[currentList][i].description === '') {
             displayDescription.innerText = 'no description';
         } else {
@@ -598,7 +606,7 @@ function loadDisplay(currentList) {
         } else {
             displayPriority.innerText = '';
         }
-        if (projectDiv.id === currentList) {
+        if (projectDiv.id === `${i}-${currentList}`) {
             toDoDisplay.style.display = 'flex';
         } else {
             toDoDisplay.style.display = 'none';
@@ -622,11 +630,11 @@ function loadExpandedDisplay(currentList) {
         const editButton = document.createElement('button');
         const deleteButton = document.createElement('button');
         const expandedDateDisplayVar = 'expanded';
+        const listButtonArr = Array.from(listButtonDiv.childNodes);
         expandedTitle.className = 'title-div';
         expandedDueDate.className = 'date-div';
         expandedPriority.className = 'priority-div';
         expandedDescription.className = 'description-div';
-        expandedToDoDiv.className = `${allLists[currentList][i].list}-expanded`.replaceAll(' ', '-');
         expandedToDoDiv.style.display = 'flex';
         expandedToDoDiv.style.flexDirection = 'column';
         expandedToDoDiv.style.gap = '10px';
@@ -638,9 +646,15 @@ function loadExpandedDisplay(currentList) {
         deleteButton.className = 'delete-button';
         deleteButton.style.alignSelf = 'flex-end';
         expandedToDoDiv.style.display = 'none';
+        expandedTitle.innerText = allLists[currentList][i].title;
+        for (let j = 0; j < listButtonArr.length; j++) {
+            if (listButtonArr[j].textContent === allLists[currentList][i].list) {
+                expandedToDoDiv.className = 
+                `${listButtonArr[j].className}-expanded`.replaceAll(' ', '-');
+            }
+        }
         expandedToDoDiv.id = `${i}-${allLists[currentList][i]
         .title}-expanded`.replaceAll(' ', '-');
-        expandedTitle.innerText = allLists[currentList][i].title;
         if (allLists[currentList][i].description === '') {
             expandedDescription.innerText = 'no description';
         } else {
