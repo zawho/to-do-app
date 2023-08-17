@@ -4,7 +4,6 @@ import { savetoStorage, getStorage } from './storage';
 // List object.
 const allLists = {
     default: [],
-    other: [],
 }
 
 getStorage(allLists);

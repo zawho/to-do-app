@@ -14,7 +14,6 @@ const addListButton = document.querySelector('.add-list-button');
 const cancelListButton = document.querySelector('.cancel-list-button');
 const listButtonDiv = document.querySelector('.list-button-div');
 const defaultListButton = document.getElementById('0-default-list');
-const otherListButton = document.getElementById('1-other-list');
 const projectDiv = document.querySelector('.project-div');
 const listEditDiv = document.querySelector('.list-edit-div');
 const editListButton = document.querySelector('.edit-list-button');
@@ -36,8 +35,7 @@ export {
     addListButton,
     cancelListButton,
     listButtonDiv,
-    defaultListButton,
-    otherListButton, 
+    defaultListButton, 
     projectDiv,
     listEditDiv,
     editListButton,
