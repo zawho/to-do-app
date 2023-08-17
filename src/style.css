@@ -4,7 +4,7 @@ html {
 
 button {
     background: none;
-    border: 2px solid black;
+    border: none;
 }
 
 .form-div {
@@ -32,10 +32,6 @@ input[type=checkbox] {
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
-}
-
-.list-button-div > button {
-    border-radius: 3px;
 }
 
 .project-div {
