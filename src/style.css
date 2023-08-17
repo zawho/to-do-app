@@ -1,5 +1,6 @@
-html {
+* {
     background-color: rgb(236, 220, 200);
+    font-family: 'Rajdhani', sans-serif;
 }
 
 button {
@@ -12,7 +13,12 @@ button {
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
-    gap: 10px;
+    gap: 30px;
+}
+
+.form-div > button {
+    font-style: italic;
+    font-size: 1.5rem;
 }
 
 .new-to-do-form, .new-list-form {
