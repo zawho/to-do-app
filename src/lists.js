@@ -10,8 +10,6 @@ function checkDefaultList() {
     const allListsObj = Object.keys(allLists);
     if (allListsObj.length === 0) {
         allLists.default = [];
-        // const defaultListButton = document.querySelector('0-default');
-        // defaultListButton.style.borderBottom = '1px solid black';
     }
 }
 
@@ -65,11 +63,12 @@ function loadLists() {
         listMenu.appendChild(newListOption);
         const newList = document.createElement('button');
         newList.className = `${i}-${allListsArr[i]}`.replaceAll(' ', '-');
-        newList.id = `${allListsArr[i]}-list`.replaceAll(' ', '-');
+        newList.id = `${i}-${allListsArr[i]}-list`.replaceAll(' ', '-');
         newList.innerText = allListsArr[i];
         listButtonDiv.appendChild(newList);
         newList.addEventListener('click', displayList);
     }
+    projectDiv.id = listButtonDiv.firstChild.className;
 }
 
 loadLists();
