@@ -1,6 +1,5 @@
-import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, defaultListButton, projectDiv, listEditDiv, editListButton, deleteListButton } from './ui';
+import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, projectDiv, listEditDiv, editListButton, deleteListButton } from './ui';
 import { savetoStorage, getStorage } from './storage';
-
 
 // List object.
 const allLists = {
@@ -11,19 +10,14 @@ function checkDefaultList() {
     const allListsObj = Object.keys(allLists);
     if (allListsObj.length === 0) {
         allLists.default = [];
+        // const defaultListButton = document.querySelector('0-default');
+        // defaultListButton.style.borderBottom = '1px solid black';
     }
 }
 
 getStorage(allLists);
 
 checkDefaultList();
-
-// Set default list selected style on page load.
-function setDefaultListBorder() {
-    defaultListButton.style.borderBottom = '1px solid black';
-}
-
-setDefaultListBorder();
 
 // Display delete list button.
 function displayDeleteListButton(listVar) {
@@ -64,7 +58,7 @@ function displayList() {
 
 function loadLists() {
     const allListsArr = Object.keys(allLists);
-    for (let i = 1; i < allListsArr.length; i++) {
+    for (let i = 0; i < allListsArr.length; i++) {
         const newListOption = document.createElement('option');
         newListOption.value = allListsArr[i];
         newListOption.innerText = allListsArr[i];
@@ -79,6 +73,13 @@ function loadLists() {
 }
 
 loadLists();
+
+// Set default list selected style on page load.
+function setDefaultListBorder() {
+    listButtonDiv.firstChild.style.borderBottom = '1px solid black';
+}
+
+setDefaultListBorder();
 
 // Update list selection options.
 function addListOption(listVar) {

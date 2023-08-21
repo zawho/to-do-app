@@ -1,8 +1,8 @@
 import { newToDoButton, newListButton, addToDoButton, addListButton, cancelToDoButton, 
-    cancelListButton, defaultListButton, editListButton, 
+    cancelListButton, editListButton, 
     deleteListButton } from "./ui";
 import createToDo from './to-dos';
-import { createList, displayList, openListEditor, deleteList } from './lists';
+import { createList, openListEditor, deleteList } from './lists';
 import { openToDoForm, cancelToDoForm, openListForm, cancelListForm } from './forms';
 
 newToDoButton.addEventListener('click', openToDoForm);
@@ -11,6 +11,5 @@ addToDoButton.addEventListener('click', createToDo);
 addListButton.addEventListener('click', createList);
 cancelToDoButton.addEventListener('click', cancelToDoForm);
 cancelListButton.addEventListener('click', cancelListForm);
-defaultListButton.addEventListener('click', displayList);
 editListButton.addEventListener('click', openListEditor);
 deleteListButton.addEventListener('click', deleteList);
