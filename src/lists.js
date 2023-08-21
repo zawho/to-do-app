@@ -60,7 +60,7 @@ function loadLists() {
         newListOption.innerText = allListsArr[i];
         listMenu.appendChild(newListOption);
         const newList = document.createElement('button');
-        newList.className = `${allListsArr[i]}`.replaceAll(' ', '-');
+        newList.className = `${i}-${allListsArr[i]}`.replaceAll(' ', '-');
         newList.id = `${allListsArr[i]}-list`.replaceAll(' ', '-');
         newList.innerText = allListsArr[i];
         listButtonDiv.appendChild(newList);
