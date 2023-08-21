@@ -1,12 +1,22 @@
 import { newToDoButton, newListButton, listMenu, newListForm, listNameInput, listButtonDiv, defaultListButton, projectDiv, listEditDiv, editListButton, deleteListButton } from './ui';
 import { savetoStorage, getStorage } from './storage';
 
+
 // List object.
 const allLists = {
-    default: [],
+}
+
+// test
+function checkDefaultList() {
+    const allListsObj = Object.keys(allLists);
+    if (allListsObj.length === 0) {
+        allLists.default = [];
+    }
 }
 
 getStorage(allLists);
+
+checkDefaultList();
 
 // Set default list selected style on page load.
 function setDefaultListBorder() {
@@ -227,6 +237,7 @@ function confirmListEdit() {
         }
         savetoStorage(allLists);
         cancelListEdit();
+        console.log(allLists);
     }
 }
 
