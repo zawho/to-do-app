@@ -54,7 +54,7 @@ function displayList() {
 
 function loadLists() {
     const allListsArr = Object.keys(allLists);
-    for (let i = 2; i < allListsArr.length; i++) {
+    for (let i = 1; i < allListsArr.length; i++) {
         const newListOption = document.createElement('option');
         newListOption.value = allListsArr[i];
         newListOption.innerText = allListsArr[i];
