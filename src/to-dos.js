@@ -94,6 +94,8 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
            !(projectArr[i].className.slice((projectArr[i].className.indexOf('-') + 1)) 
            === selectedListEdit) && projectArr[i].id === shortID) {
             projectArr[i].className = newToDoClass;
+            projectArr[i].id = 
+            `${allLists[selectedListEdit].length}${shortID.slice(shortID.indexOf('-'))}`;
             projectArr[i].style.display = 'none';
         }
         if (projectArr[i].className.includes('-expanded') && 
@@ -101,6 +103,8 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
            .replace('-expanded', '') === selectedListEdit) &&
            projectArr[i].id === `${shortID}-expanded`) {
             projectArr[i].className = `${newToDoClass}-expanded`;
+            projectArr[i].id = 
+            `${allLists[selectedListEdit].length}${shortID.slice(shortID.indexOf('-'))}-expanded`;
             projectArr[i].style.display = 'none';
         }
         if (projectArr[i].id === shortID) {
@@ -112,7 +116,6 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
             editedExpandedID = 
             `${projectArr[i].id.slice(0, (shortID.indexOf('-') + 1))}${editedTitle.value.replaceAll(' ', '-')}-expanded`;
             projectArr[i].id = editedExpandedID;
-            
         }
     }
     for (let i = 0; i < allLists[currentList].length; i++) {
