@@ -49,6 +49,7 @@ input[type=checkbox] {
 .project-div > * {
     border: 1px solid black;
     padding: 3px;
+    max-width: 500px;
 }
 
 .list-edit-delete-div {
