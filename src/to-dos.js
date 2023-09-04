@@ -84,6 +84,7 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
     let editedID;
     let editedExpandedID;
     let newToDoClass;
+    let currentToDoIndex;
     for (let i = 0; i < listButtonArr.length; i++) {
         if (listButtonArr[i].innerText === selectedListEdit) {
             newToDoClass = listButtonArr[i].className;
@@ -106,6 +107,13 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
             projectArr[i].id = 
             `${allLists[selectedListEdit].length}${shortID.slice(shortID.indexOf('-'))}-expanded`;
             projectArr[i].style.display = 'none';
+            currentToDoIndex = i;
+            for (let k = (currentToDoIndex + 1); k < projectArr.length; k++) {
+                if (projectArr[k].className.replace('-expanded', '') === projectDiv.id) {
+                    projectArr[k].id =
+                    `${projectArr[k].id.slice(0, 1) - 1}-${projectArr[k].id.slice((projectArr[k].id.indexOf('-') + 1))}`;
+                }
+            }
         }
         if (projectArr[i].id === shortID) {
             editedID = 
