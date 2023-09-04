@@ -453,10 +453,21 @@ function deleteToDo(event) {
         const firstEditID = this.parentNode.id.slice((this.parentNode.id.indexOf('-') + 1));
         const secondEditID = 
         firstEditID.replace('-expanded', '').replaceAll('-', ' ');
+        const projectArr = Array.from(projectDiv.childNodes);
+        let currentToDoIndex;
         for (let i = 0; i < allLists[currentList].length; i++) {
             if (allLists[currentList][i].title === secondEditID) {
                 allLists[currentList].splice(i, 1);
             }
+        }
+        for (let i = 0; i < projectArr.length; i++) {
+            if (projectArr[i] === currentToDo) {
+                currentToDoIndex = i;
+            }
+        }
+        for (let i = (currentToDoIndex + 1); i < projectArr.length; i++) {
+            projectArr[i].id =
+            `${projectArr[i].id.slice(0, 1) - 1}-${projectArr[i].id.slice((this.parentNode.id.indexOf('-') + 1))}`;
         }
         currentToDo.previousSibling.remove();
         currentToDo.remove();
