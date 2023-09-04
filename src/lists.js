@@ -32,7 +32,7 @@ function highlightList() {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     for (let i = 0; i < listButtonArr.length; i++) {
         if (listButtonArr[i].className === projectDiv.id) {
-            listButtonArr[i].style.borderBottom = '1px solid black';
+            listButtonArr[i].style.borderBottom = '2px solid rgb(226, 226, 221)';
             displayDeleteListButton(listButtonArr[i]);
         } else {
             listButtonArr[i].style.borderBottom = 'none';
@@ -75,7 +75,7 @@ loadLists();
 
 // Set default list selected style on page load.
 function setDefaultListBorder() {
-    listButtonDiv.firstChild.style.borderBottom = '1px solid black';
+    listButtonDiv.firstChild.style.borderBottom = '2px solid rgb(226, 226, 221)';
 }
 
 setDefaultListBorder();
@@ -154,7 +154,7 @@ function cancelListEdit() {
         }
     }
     for (let i = 0; i < listButtonArr.length; i++) {
-        if (listButtonArr[i].style.borderBottom === '1px solid black') {
+        if (listButtonArr[i].style.borderBottom === '2px solid rgb(226, 226, 221)') {
             displayDeleteListButton(listButtonArr[i]);
         }
     }
@@ -224,7 +224,7 @@ function confirmListEdit() {
         editListOption(editListInput);
         updateListPropValue(editListInput);
         for (let i = 0; i < listButtonArr.length; i++) {
-            if (listButtonArr[i].style.borderBottom === '1px solid black') {
+            if (listButtonArr[i].style.borderBottom === '2px solid rgb(226, 226, 221)') {
                 listButtonArr[i].innerText = editListInput.value;
                 listButtonArr[i].className =
                 `${listButtonArr[i].className.slice(0, (listButtonArr[i].className.indexOf('-') + 1))}${editListInput.value}`.replaceAll(' ', '-');
@@ -272,7 +272,7 @@ function highlightPrevList(listVar) {
     const listButtonArr = Array.from(listButtonDiv.childNodes);
     for (let i = 0; i < listButtonArr.length; i++) {
         if (listButtonArr[i] === listVar) {
-            listButtonArr[i - 1].style.borderBottom = '1px solid black';
+            listButtonArr[i - 1].style.borderBottom = '2px solid rgb(226, 226, 221)';
         }
     }
 }
@@ -308,7 +308,7 @@ function deleteList() {
         const currentList = checkCurrentList();
         let currentListClass;
         for (let i = 0; i < listButtonArr.length; i++) {
-            if (listButtonArr[i].style.borderBottom === '1px solid black') {
+            if (listButtonArr[i].style.borderBottom === '2px solid rgb(226, 226, 221)') {
                 currentListClass = listButtonArr[i].className;
                 deleteListOption(listButtonArr[i].innerText);
                 highlightPrevList(listButtonArr[i]);
