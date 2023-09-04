@@ -466,8 +466,10 @@ function deleteToDo(event) {
             }
         }
         for (let i = (currentToDoIndex + 1); i < projectArr.length; i++) {
-            projectArr[i].id =
-            `${projectArr[i].id.slice(0, 1) - 1}-${projectArr[i].id.slice((this.parentNode.id.indexOf('-') + 1))}`;
+            if (projectArr[i].className.replace('-expanded', '') === projectDiv.id) {
+                projectArr[i].id =
+                `${projectArr[i].id.slice(0, 1) - 1}-${projectArr[i].id.slice((this.parentNode.id.indexOf('-') + 1))}`;
+            }
         }
         currentToDo.previousSibling.remove();
         currentToDo.remove();
