@@ -14,6 +14,7 @@ button {
 input, textarea, select {
     background-color: rgb(238, 229, 202);
     border: none;
+    margin: 2px;
 }
 
 input:focus, textarea:focus, select:focus {
