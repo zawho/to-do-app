@@ -11,6 +11,15 @@ button {
     border: none;
 }
 
+input, textarea {
+    background-color: rgb(238, 229, 202);
+    border: none;
+}
+
+input:focus, textarea:focus {
+    outline: 2px solid rgb(96, 177, 42);
+}
+
 .form-div {
     display: flex;
     justify-content: center;
@@ -51,6 +60,7 @@ input[type=checkbox] {
 
 .list-button-div > * {
     color: rgb(226, 226, 221);
+    font-size: 0.9rem;
 }
 
 .project-div {
@@ -64,6 +74,7 @@ input[type=checkbox] {
     color: black;
     padding: 3px;
     max-width: 500px;
+    font-size: 1rem;
 }
 
 .list-edit-delete-div {
@@ -81,9 +92,11 @@ input[type=checkbox] {
 
 .edit-list-button {
     color: rgb(226, 226, 221);
+    font-size: 0.9rem;
 }
 
 .delete-list-button {
     display: none;
     color: rgb(226, 226, 221);
+    font-size: 0.9rem;
 }
