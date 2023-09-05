@@ -82,8 +82,14 @@ input[type=checkbox] {
     width: 140px;
 }
 
+.description-div {
+    max-width: 300px;
+    min-width: 100px;
+    word-break: break-all;
+}
+
 .date-div {
- width: 160px;
+    width: 160px;
 }
 
 .title-div, .date-div {
