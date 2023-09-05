@@ -119,9 +119,17 @@ input[type=checkbox] {
     margin-top: 10px;
 }
 
+.list-edit-div > input:focus {
+    outline: 2px solid rgb(235, 189, 90);
+}
+
 .edit-list-button {
     color: rgb(226, 226, 221);
     font-size: 0.9rem;
+}
+
+.confirm-cancel-div > * {
+    color: rgb(226, 226, 221);
 }
 
 .delete-list-button {
