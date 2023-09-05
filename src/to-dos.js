@@ -161,7 +161,7 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
         }
         if (toDoArr[i].className === 'priority-div') {
             if (editedPriority.checked) {
-                toDoArr[i].innerText = 'important';
+                toDoArr[i].innerText = '!';
             } else {
                 toDoArr[i].innerText = '';
             }
@@ -205,7 +205,7 @@ function confirmEdit(event, a, b, c, d, e, f, g, h, j) {
         }
         if (expandedToDoArr[i].className === 'priority-div') {
             if (editedPriority.checked) {
-                expandedToDoArr[i].innerText = 'important';
+                expandedToDoArr[i].innerText = '!';
             } else {
                 expandedToDoArr[i].innerText = '';
             }
@@ -389,7 +389,7 @@ function openEditor(event, a) {
             toDoArr[i].appendChild(dateEdit);
         }
         if (toDoArr[i].className === 'priority-div') {
-            if (toDoArr[i].innerText === 'important') {
+            if (toDoArr[i].innerText === '!') {
                 priorityEdit.checked = true;
             }
             priorityEdit.addEventListener('click', preventPropagation);
@@ -399,7 +399,7 @@ function openEditor(event, a) {
             toDoArr[i].style.gap = '5px';
             toDoArr[i].innerText = '';
             priorityEditLabel.id = `${priorityEdit.id}-label`;
-            priorityEditLabel.innerText = 'important';
+            priorityEditLabel.innerText = '!';
             toDoArr[i].appendChild(priorityEdit);
             toDoArr[i].appendChild(priorityEditLabel);
         }
@@ -443,7 +443,7 @@ function helpToDo(listVar, a, b, c, d, e) {
         toDoVar.appendChild(descriptionVar);
         toDoVar.appendChild(dueDateVar);
         if (priorityInput.checked) {
-            priorityVar.innerText = 'important';
+            priorityVar.innerText = '!';
         } else {
             priorityVar.innerText = '';
         }
@@ -626,7 +626,7 @@ function loadDisplay(currentList) {
                  dateDisplayVar, displayDueDate);
         }
         if (allLists[currentList][i].priority === true) {
-            displayPriority.innerText = 'important';
+            displayPriority.innerText = '!';
         } else {
             displayPriority.innerText = '';
         }
@@ -692,7 +692,7 @@ function loadExpandedDisplay(currentList) {
             dueDate, expandedDateDisplayVar, expandedDueDate);
         }
         if (allLists[currentList][i].priority === true) {
-            expandedPriority.innerText = 'important';
+            expandedPriority.innerText = '!';
         } else {
             expandedPriority.innerText = '';
         }
