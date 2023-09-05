@@ -546,6 +546,8 @@ function displayToDo(currentList) {
     }
     toDoDisplay.style.display = 'flex';
     toDoDisplay.style.justifyContent = 'space-between';
+    toDoDisplay.style.alignItems = 'center';
+    toDoDisplay.style.height = '20px';
     toDoDisplay.style.gap = '10px';
     toDoDisplay.style.padding = '5px';
     displayDescription.style.display = 'none';
@@ -603,6 +605,8 @@ function loadDisplay(currentList) {
         displayDescription.className = 'description-div';
         toDoDisplay.style.display = 'flex';
         toDoDisplay.style.justifyContent = 'space-between';
+        toDoDisplay.style.alignItems = 'center';
+        toDoDisplay.style.height = '20px';
         toDoDisplay.style.gap = '10px';
         toDoDisplay.style.padding = '5px';
         displayDescription.style.display = 'none';
