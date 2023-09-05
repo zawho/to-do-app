@@ -237,7 +237,6 @@ function confirmListEdit() {
         }
         savetoStorage(allLists);
         cancelListEdit();
-        console.log(allLists);
     }
 }
 
