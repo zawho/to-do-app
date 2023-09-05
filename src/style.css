@@ -11,12 +11,12 @@ button {
     border: none;
 }
 
-input, textarea {
+input, textarea, select {
     background-color: rgb(238, 229, 202);
     border: none;
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
     outline: 2px solid rgb(96, 177, 42);
 }
 
