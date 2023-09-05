@@ -32,6 +32,7 @@ input:focus, textarea:focus, select:focus {
     font-style: italic;
     font-size: 1.5rem;
     color: rgb(226, 224, 221);
+    white-space: nowrap;
 }
 
 .new-to-do-form, .new-list-form {
@@ -75,6 +76,20 @@ input[type=checkbox] {
     padding: 3px;
     max-width: 500px;
     font-size: 1rem;
+}
+
+.title-div {
+    width: 140px;
+}
+
+.date-div {
+ width: 160px;
+}
+
+.title-div, .date-div {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .priority-div {
