@@ -39,23 +39,23 @@ function setDateDisplay(dateValue, displayType, pastVar) {
     let dateDisplay;
     const parsedDate = parseISO(dateValue);
     if (displayType === 'expanded') {
-        dateDisplay = format(new Date(dateValue),'EEEE, MMMM d, yyyy');
+        dateDisplay = format(new Date(dateValue),'yyyy-MM-dd');
     } else if (displayType === 'display') {
-        dateDisplay = format(new Date(dateValue),'E, MMM d, yyyy');
+        dateDisplay = format(new Date(dateValue),'yyyy-MM-dd');
     }
     if (isPast(parsedDate) === true) {
-        x.style.color = 'red';
+        x.style.color = 'rgb(226, 113, 0)';
     } else {
         x.style.color = 'black'; 
     }
     if (isToday(parsedDate) === true) {
-        dateDisplay = 'Today';
+        dateDisplay = 'today';
     }
     if (isTomorrow(parsedDate) === true) {
-        dateDisplay = 'Tomorrow';
+        dateDisplay = 'tomorrow';
     }
     if (isYesterday(parsedDate) === true) {
-        dateDisplay = 'Yesterday';
+        dateDisplay = 'yesterday';
     }
     return dateDisplay;
 }

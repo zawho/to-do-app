@@ -31,13 +31,13 @@ input:focus, textarea:focus, select:focus {
 .form-div > button {
     font-style: italic;
     font-size: 1.5rem;
-    color: rgb(226, 226, 221);
+    color: rgb(226, 224, 221);
 }
 
 .new-to-do-form, .new-list-form {
     display: none;
     margin-bottom: 10px;
-    color: rgb(226, 226, 221);
+    color: rgb(226, 224, 221);
 }
 
 .description-input {
