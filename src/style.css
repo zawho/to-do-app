@@ -18,7 +18,7 @@ input, textarea, select {
 }
 
 input:focus, textarea:focus, select:focus {
-    outline: 2px solid rgb(96, 177, 42);
+    outline: 2px solid rgb(235, 189, 90);
 }
 
 .form-div {
