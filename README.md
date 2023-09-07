@@ -1,2 +1,3 @@
 4/26/23 - I am now beginning the to do app project as a part of the The Odin Project's Javascript track. The goal here is to apply what I have learned recently about webpack, modules, and code organization (factory functions, composition, etc) in building a simple to do app.
+
 9/5/23 - After several delays, the to do app is finished. I learned how to use JS modules and local storage. More importantly, I learned how to work on a much bigger project with many more moving parts than anything I had worked on previously, and the importance of keeping the various components of the code organized. A tough but very satisfying project.
